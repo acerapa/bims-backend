@@ -16,7 +16,7 @@
 			env_api = env_local;
 		}
 
-        Plugin_photos.saveInfoTemp = function (photo_refid, filepath, tagged, user_refid) {
+        Plugin_photos.saveInfoTemp = function (photo_refid, filepath, tagged, user_refid, callback) {
             $.get( env_api + "api/plugin_photo/saveInfoTemp?reference_id="+ photo_refid +"&filepath="+ filepath +"&tagged="+ tagged +"&user_refid=" + user_refid, function (response) {
 				callback(response);
 			});
