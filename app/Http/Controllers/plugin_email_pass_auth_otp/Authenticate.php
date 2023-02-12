@@ -16,8 +16,8 @@ api/plugin_email_pass_auth_otp/authLogout/TKN-01062023075839-ZR3
 
 class Authenticate extends Controller
 {
-  public static function authBasic($email, $password) {
-    return \App\Http\Controllers\plugin_email_pass_auth_otp\Config::authBasic($email, $password);
+  public static function authBasic(Request $request) {
+    return \App\Http\Controllers\plugin_email_pass_auth_otp\Config::authBasic($request);
   }
 
   public static function auth(Request $request) {
