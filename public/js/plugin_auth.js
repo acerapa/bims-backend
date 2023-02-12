@@ -26,7 +26,14 @@
             }
             else {
                 $.get( env_api + "api/plugin_email_pass_auth_otp/authBasic?email="+ email +"&password="+ password +"&device=" + device + "&datetime=" + Plugin_datetime.getDateTime(), function (response) {
-                    callback(response);
+                    if(response.success) {
+                        localStorage.setItem("user-data", JSON.stringify(response['user_data']));
+                        localStorage.setItem("user-token", JSON.stringify(response['token']));
+                        callback(response);
+                    }
+                    else {
+                        Swal.fire('Incorrect', response['message'],'warning');
+                    }
                 });
             }
 		};
