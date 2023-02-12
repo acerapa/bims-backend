@@ -27,7 +27,7 @@ class Config extends Controller
     ];
   }
 
-  public static function authBasic(Request $request) {
+  public static function authBasic($request) {
     $user = DB::table("user")->select("reference_id","firstname","lastname","mobile","email")->where([["email", $request['email']],["password", $request['password']]])->get();
     if(count($user) > 0) {
       DB::table("user_authentication")->insert([
