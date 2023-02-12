@@ -38,6 +38,26 @@
             }
 		};
 
+        Plugin_auth.getLocalUser = function () {
+            const local = localStorage.getItem("user-data");
+            if(local) {
+                return JSON.parse(local);
+            }
+            else {
+                return null;
+            }
+        };
+
+        Plugin_auth.getLocalUserToken = function () {
+            const local = localStorage.getItem("user-token");
+            if(local) {
+                return local;
+            }
+            else {
+                return null;
+            }
+        }
+
         return Plugin_auth;
 	};
 
