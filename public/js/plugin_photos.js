@@ -7,7 +7,7 @@
         var env 			= 'local';
 		var env_api 		= '';
 		var env_local 		= 'http://127.0.0.1:8000/';
-		var env_live 		= 'https://mcrichtravel.com/partition-api/v2/public/';
+		var env_live 		=  window.location.origin + '/partition-api/v1/public/';
 
         if(env == 'live') {
 			env_api = env_live;
@@ -16,8 +16,8 @@
 			env_api = env_local;
 		}
 
-        Plugin_photos.convert = function (photo_refid) {
-            $.get( env_api + "api/plugin_photo/saveInfoTemp?reference_id="+ photo_refid +"&filepath=filepath&tagged=tagged&user_refid=", function (response) {
+        Plugin_photos.saveInfoTemp = function (photo_refid, filepath, tagged, user_refid) {
+            $.get( env_api + "api/plugin_photo/saveInfoTemp?reference_id="+ photo_refid +"&filepath="+ filepath +"&tagged="+ tagged +"&user_refid=" + user_refid, function (response) {
 				callback(response);
 			});
         }
