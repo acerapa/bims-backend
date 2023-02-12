@@ -38,6 +38,7 @@ Route::group(['prefix' => 'plugin_inquiry'], function () {
   });
   
   Route::group(['prefix' => 'plugin_email_pass_auth_otp'], function () {
+    Route::get('authBasic', [\App\Http\Controllers\plugin_email_pass_auth_otp\Authenticate::class, 'authBasic']);
     Route::get('authenticate', [\App\Http\Controllers\plugin_email_pass_auth_otp\Authenticate::class, 'auth']);
     Route::get('verifyOTP', [\App\Http\Controllers\plugin_email_pass_auth_otp\Authenticate::class, 'verifyOTP']);
     Route::get('authOnReopen', [\App\Http\Controllers\plugin_email_pass_auth_otp\Authenticate::class, 'authOnReopen']);
