@@ -83,6 +83,27 @@ class Config extends Controller
     ->paginate($request['row_per_page']);
   }
 
+  public static function getPhotosByTagRefID($tagged_refid) {
+    return DB::table("photo_tagging")
+    ->join("photo", "photo_tagging.photo_refid", "=", "photo.reference_id")
+    ->select(
+      "photo.dataid",
+      "photo.reference_id",
+      "photo.filepath",
+      "photo.filename",
+      "photo.description",
+      "photo.created_at",
+      "photo.created_by"
+    )
+    ->where([
+      ["photo_tagging.tagged", $tagged_refid],
+      ["photo_tagging.status", "1"],
+      ["photo.status", "1"]
+    ])
+    ->orderBy("photo.dataid", "DESC")
+    ->get();
+  }
+
   public static function tagFixer() {
 
     $data = DB::table("photo")
@@ -181,13 +202,15 @@ class Config extends Controller
 
       return [
         "success" => true,
-        "message" => "Photo information saved"
+        "message" => "Photo information saved",
+        "photos"  => Config::getPhotosByTagRefID($request['tagged'])
       ];
     }
     else {
       return [
         "success" => false,
-        "message" => "Photo information not saved"
+        "message" => "Photo information not saved",
+        "photos"  => []
       ];
     }
   }
