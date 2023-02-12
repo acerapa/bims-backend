@@ -8,8 +8,8 @@
         Plugin_refid.generateLocal = function (identifier) {
 
             var date    = new Date();
-            var month   = date.getMonth() + 1;
-            var day     = date.getDate();
+            var month   = date.getMonth();
+            var day     = date.getDay();
             var year    = date.getFullYear();
             var hour    = date.getHours();
             var minute  = date.getMinutes();
