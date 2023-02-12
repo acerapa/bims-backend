@@ -28,10 +28,16 @@ class Config extends Controller
   }
 
   public static function authBasic($request) {
-    $user = DB::table("user")->select("reference_id","firstname","lastname","mobile","email")->where([["email", $request['email']],["password", $request['password']]])->get();
+    $user = DB::table("user")
+    ->select("reference_id","firstname","lastname","mobile","email")
+    ->where([
+      ["email", $request['email']],
+      ["password", $request['password']]
+    ])->get();
     if(count($user) > 0) {
+      $access_token = Config::token();
       DB::table("user_authentication")->insert([
-        "reference_id"        => Config::token(),
+        "reference_id"        => $access_token,
         "otp"                 => "000000",
         "verified"            => 0,
         "user_refid"          => $user[0]->reference_id,
@@ -41,14 +47,18 @@ class Config extends Controller
       ]);
 
       return [
-        "success" => true,
-        "message" => "Authenticated"
+        "success"   => true,
+        "message"   => "Authenticated",
+        "token"     => $access_token,
+        "user_data" => $user[0]
       ];
     }
     else {
       return [
-        "success" => false,
-        "message" => "Incorrect email or password"
+        "success"   => false,
+        "message"   => "Incorrect email or password",
+        "token"     => null,
+        "user_data" => []
       ];
     }
   }
