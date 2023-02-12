@@ -97,8 +97,7 @@ class Config extends Controller
     )
     ->where([
       ["photo_tagging.tagged", $tagged_refid],
-      ["photo_tagging.status", "1"],
-      ["photo.status", "1"]
+      ["photo_tagging.status", "1"]
     ])
     ->orderBy("photo.dataid", "DESC")
     ->get();
