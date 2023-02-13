@@ -10,12 +10,12 @@ app/storage/
 # Laravel 5 & Lumen specific
 public/storage
 public/hot
-config/app/config/table-description.php
+app/config/app/config/table-description.php
 
 # Laravel 5 & Lumen specific with changed public path
 public_html/storage
 public_html/hot
-config/app/config/table-description.php
+app/config/app/config/table-description.php
 
 storage/*.key
 Homestead.yaml
