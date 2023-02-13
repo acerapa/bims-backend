@@ -64,8 +64,7 @@ class Config extends Controller
   }
 
   public static function authLogout($token) {
-    $logout = DB::table("user")
-    ->where("reference_id", $token)
+    $logout = DB::table("user_authentication")->where("reference_id", $token)
     ->update([
       "date_logout" => date("Y-m-d h:i:s"),
       "status"      => "2"
