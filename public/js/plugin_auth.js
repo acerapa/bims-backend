@@ -58,6 +58,18 @@
             }
         }
 
+        Plugin_auth.logout = function (callback) {
+            const token = localStorage.getItem("user-token");
+            if(token) {
+                $.get( env_api + "api/plugin_email_pass_auth_otp/authLogout/" + token, function (response) {
+                    callback(response);
+                });
+            }
+            else {
+                console.error("Access token is undefined");
+            }
+        };
+
         return Plugin_auth;
 	};
 
