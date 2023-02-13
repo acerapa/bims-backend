@@ -18,7 +18,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix' => 'plugin_inquiry'], function () {
+  Route::group(['prefix' => 'plugin_config'], function () {
+    Route::get('file/{filepath}', [\App\Http\Controllers\plugin_config\ConfigFile::class, 'file']);
+  });
+
+  Route::group(['prefix' => 'plugin_inquiry'], function () {
     Route::get('postInquiry', [\App\Http\Controllers\plugin_inquiry\Inquiry::class, 'postInquiry']);
   });
   
