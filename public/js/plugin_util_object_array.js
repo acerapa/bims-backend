@@ -24,7 +24,7 @@
                 temp.push(arrList[i]);
             }
             temp.push(obj);
-            callback(obj);
+            callback(temp);
         };
 
         return Plugin_UtilObjArr;
