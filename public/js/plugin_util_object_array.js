@@ -18,6 +18,15 @@
             callback(temp);
         };
 
+        Plugin_UtilObjArr.pushObjectToArray = function (arrList, obj, callback) {
+            var temp = [];
+            for(let i = 0; i < arrList.length; i++) {
+                temp.push(arrList[i]);
+            }
+            temp.push(obj);
+            callback(obj);
+        };
+
         return Plugin_UtilObjArr;
 	};
 
