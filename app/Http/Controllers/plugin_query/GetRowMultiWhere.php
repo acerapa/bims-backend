@@ -34,7 +34,7 @@ class GetRowMultiWhere extends Controller
       ->get();
     }
     else {
-      $column_list =  explode(',', $getColumn);
+      $column_list =  explode(',', $request['getClm']);
       return DB::table($table)
       ->select($column_list)
       ->where($request['where'])
