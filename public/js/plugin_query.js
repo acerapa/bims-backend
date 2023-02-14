@@ -41,6 +41,19 @@
 			});
 		};
 
+		Plugin_query.getRowMultiWhere = function (table, getClm, where, orderByClm, orderBySort, callback) {
+			var args = {
+				table: table,
+				getClm: getClm,
+				where: where,
+				orderByClm: orderByClm,
+				orderBySort: orderBySort
+			};
+			$.get( env_api + "api/plugin_query/getRowMultiWhere?" + $.param(args), function (response) {
+				callback(response);
+			});
+		}
+
 		Plugin_query.getRecordPaginate = function (table, getClm, where, orderByClm, orderBySort, numOfRow, page, callback) {
 			var args = {
 				table: table,
