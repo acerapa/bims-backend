@@ -59,9 +59,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('insertGetId', [\App\Http\Controllers\plugin_query\Create::class, 'insertGetId']);
     Route::get('getRowPaginate', [\App\Http\Controllers\plugin_query\GetRowPaginate::class, 'get']);
     Route::get('getRowBasic/{table}/{getColumn}/{whereColumn}/{whereValue}', [\App\Http\Controllers\plugin_query\GetRowBasic::class, 'get']);
-
     Route::get('getRowMultiWhere', [\App\Http\Controllers\plugin_query\GetRowMultiWhere::class, 'get']);
-
     Route::get('getJoinTwoTablePaginate', [\App\Http\Controllers\plugin_query\GetJoinTwoTablePaginate::class, 'get']);
     Route::get('editMultiple', [\App\Http\Controllers\plugin_query\Edit::class, 'editMultiple']);
     Route::get('deletePermanent', [\App\Http\Controllers\plugin_query\Delete::class, 'deletePermanent']);
