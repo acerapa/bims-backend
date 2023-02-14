@@ -35,7 +35,7 @@ class GetRowMultiWhere extends Controller
     }
     else {
       $column_list =  explode(',', $request['getClm']);
-      return DB::table($table)
+      return DB::table($request['table'])
       ->select($column_list)
       ->where($request['where'])
       ->orderBy($request['orderByClm'], $request['orderBySort'])
