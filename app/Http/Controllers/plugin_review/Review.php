@@ -24,22 +24,42 @@ class Review extends Controller
     ]);
 
     if($created) {
-      $tagging = json_decode($request['taglist']);
+      $tagging    = json_decode($request['taglist']);
+      $tag_rev    = [];
       if(count($tagging) > 0) {
         foreach($tagging as $tag) {
-          DB::table("plugin_review_tagging")->insert([
+          $tagged = DB::table("plugin_review_tagging")->insert([
             "review_refid"  => $tag->review_refid,
             "tag_refid"     => $tag->tag_refid,
             "tag_type"      => $tag->tag_type
           ]);
+
+          $tag_rev[] = [
+            "tagged"        => $tagged,
+            "tag_refid"     => $tag->tag_refid,
+            "tag_type"      => $tag->tag_type
+          ];
         }
+        return [
+          "success" => true,
+          "message" => "Successfully posted",
+          "tagging" => $tag_rev
+        ];
       }
       else {
-
+        return [
+          "success" => true,
+          "message" => "Successfully posted",
+          "tagging" => []
+        ];
       }
     }
     else {
-
+      return [
+        "success" => false,
+        "message" => "Posting review unsuccessful",
+        "tagging" => []
+      ];
     }
   }
 }
