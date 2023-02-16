@@ -12,7 +12,7 @@
 		var env 			= 'local';
 		var env_api 		= '';
 		var env_local 		= 'http://127.0.0.1:8000/';
-		var env_live 		= window.location.origin + '/partition-api/v1/public/';
+		var env_live 		= Plugin_config_file.projects()['env_api_multi_purpose'];
 
 		if(env == 'live') {
 			env_api = env_live;
