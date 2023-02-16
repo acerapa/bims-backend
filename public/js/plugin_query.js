@@ -12,7 +12,7 @@
 		var env 			= 'local';
 		var env_api 		= '';
 		var env_local 		= 'http://127.0.0.1:8000/';
-		var env_live 		= window.location.origin + '/partition-api/v1/public/';
+		var env_live 		= 'https://mcrichtravel.com/partition-api-multi-purpose/version-1/public/';
 
 		if(env == 'live') {
 			env_api = env_live;
