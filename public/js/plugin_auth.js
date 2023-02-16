@@ -3,18 +3,8 @@
 	'use strict'
 	function PluginAuth() {
 
-        var Plugin_auth = {};
-        var env 			= 'local';
-		var env_api 		= '';
-		var env_local 		= 'http://127.0.0.1:8000/';
-		var env_live 		=  Plugin_config_file.projects()['env_api_multi_purpose'];
-
-        if(env == 'live') {
-			env_api = env_live;
-		}
-		else {
-			env_api = env_local;
-		}
+        var Plugin_auth     = {};
+		var env_api 		=  Plugin_config_file.projects()['env_api_multi_purpose'];
 
         Plugin_auth.authBasic = function (email, password, callback) {
             const device = window.navigator.userAgent;
