@@ -15,7 +15,7 @@ class Review extends Controller
 {
   public static function create(Request $request) {
     return DB::table("plugin_review")->insert([
-      "reference_id "   => $request["reference_id"],
+      "reference_id"    => $request["reference_id"],
       "name"            => $request["name"],
       "photo"           => $request["photo"],
       "score"           => $request["score"],
