@@ -24,10 +24,14 @@ class Review extends Controller
     ]);
 
     if($created) {
-      $tagging = $request['taglist'];
+      $tagging = json_decode($request['taglist']);
       if(count($tagging) > 0) {
         foreach($tagging as $tag) {
-          DB::table("plugin_review_tagging")->insert($tag);
+          DB::table("plugin_review_tagging")->insert([
+            "review_refid"  => $tag->review_refid,
+            "tag_refid"     => $tag->tag_refid,
+            "tag_type"      => $tag->tag_type
+          ]);
         }
       }
       else {
