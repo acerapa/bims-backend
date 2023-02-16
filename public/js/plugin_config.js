@@ -4,17 +4,7 @@
 	function PluginConfigFile() {
 
         var Plugin_config_file  = {};
-        var env 			    = 'local';
-		var env_api 		    = '';
-		var env_local 		    = 'http://127.0.0.1:8000/';
-		var env_live 		    = 'https://mcrichtravel.com/partition-api-multi-purpose/version-1/public/';
-
-        if(env == 'live') {
-			env_api = env_live;
-		}
-		else {
-			env_api = env_local;
-		}
+		var env_api 		    = window.location.origin + '/partition-api/v1/public/';
 
         Plugin_config_file.projects = function () {
             const hostname = window.location.hostname;

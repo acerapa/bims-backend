@@ -4,17 +4,7 @@
 	function PluginReview() {
 
         var Plugin_review   = {};
-        var env 			= 'local';
-		var env_api 		= '';
-		var env_local 		= 'http://127.0.0.1:8000/';
-		var env_live 		=  Plugin_config_file.projects()['env_api_multi_purpose'];
-
-        if(env == 'live') {
-			env_api = env_live;
-		}
-		else {
-			env_api = env_local;
-		}
+		var env_api 		=  Plugin_config_file.projects()['env_api_multi_purpose'];
 
         Plugin_review.create = function (reference_id, tag_primary, name, photo, score, hightlight, comment, other, taglist, callback) {
             $.get( env_api + "api/plugin_review/create?reference_id="+ reference_id +"&tag_primary="+ tag_primary +"&name="+ name +"&photo="+ photo +"&score="+ score +"&hightlight="+ hightlight +"&comment=" + comment + "&other="+ other +"&taglist=" + taglist, function (response) {
