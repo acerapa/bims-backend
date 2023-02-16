@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 class Review extends Controller
 {
   public static function create(Request $request) {
-    return DB::table("plugin_review")->insert([
+    $created = DB::table("plugin_review")->insert([
       "reference_id"    => $request["reference_id"],
       "name"            => $request["name"],
       "photo"           => $request["photo"],
@@ -22,5 +22,20 @@ class Review extends Controller
       "hightlight"      => $request["hightlight"],
       "comment"         => $request["comment"]
     ]);
+
+    if($created) {
+      $tagging = $request['taglist'];
+      if(count($tagging) > 0) {
+        foreach($tagging as $tag) {
+          DB::table("plugin_review_tagging")->insert($tag);
+        }
+      }
+      else {
+
+      }
+    }
+    else {
+
+    }
   }
 }
