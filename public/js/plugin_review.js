@@ -21,6 +21,13 @@
 				callback(response);
 			});
         }
+
+		Plugin_review.getScore = function (tag_primary, callback) {
+			$.get( env_api + "api/plugin_review/getScore/" + tag_primary, function (response) {
+				callback(response);
+			});
+		};
+
         return Plugin_review;
 	};
 

@@ -13,6 +13,19 @@ use Illuminate\Support\Facades\DB;
 
 class Review extends Controller
 {
+  public static function getScore($tag_primary) {
+    $sum    = DB::table("plugin_review")->where("tag_primary", $tag_primary)->sum("score");
+    $sum    = floatval($sum);
+    $count  = DB::table("plugin_review")->where("tag_primary", $tag_primary)->count();
+    $score  = $sum / $count;
+
+    return [
+      "sum"     => $sum,
+      "count"   => $count,
+      "score"   => round($score, 2)
+    ];
+  }
+
   public static function create(Request $request) {
     $created = DB::table("plugin_review")->insert([
       "reference_id"    => $request["reference_id"],
