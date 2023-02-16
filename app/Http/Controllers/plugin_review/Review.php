@@ -20,7 +20,8 @@ class Review extends Controller
       "photo"           => $request["photo"],
       "score"           => $request["score"],
       "hightlight"      => $request["hightlight"],
-      "comment"         => $request["comment"]
+      "comment"         => $request["comment"],
+      "other"           => $request["other"]
     ]);
 
     if($created) {
