@@ -58,7 +58,7 @@
         Plugin_config_file.file = function (filepath, fetch_local, callback) {
             var local = localStorage.getItem("config-file-" + filepath);
             if((local) && (fetch_local)) {
-                return JSON.parse(local);
+                callback(JSON.parse(local));
             }
             else {
                 $.get( Plugin_config_file.projects()['env_api'] + "api/plugin_config/file/" + filepath, function (response) {
