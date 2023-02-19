@@ -18,6 +18,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+  Route::group(['prefix' => 'plugin_inquiry_web_form'], function () {
+    Route::get('send', [\App\Http\Controllers\plugin_inquiry_web_form\Send::class, 'send']);
+  });
+
   Route::group(['prefix' => 'plugin_review'], function () {
     Route::get('create', [\App\Http\Controllers\plugin_review\Review::class, 'create']);
     Route::get('getScore/{tag_primary}', [\App\Http\Controllers\plugin_review\Review::class, 'getScore']);
