@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\DB;
 \App\Http\Controllers\plugin_email_pass_auth_otp\Config::isTokenActive($token_refid, $user_refid);
 api/plugin_email_pass_auth_otp/authBasic?email=email&password=password&device=&datetime=
 
+1: authBasic - Login using email and password only
+2: auth - Login using email and password with SMS OPT Code
+
 */
 
 class Config extends Controller
@@ -28,15 +31,19 @@ class Config extends Controller
   }
 
   public static function authBasic($request) {
+    
     $user = DB::table(Config::config()['table_users'])
     ->select("reference_id","firstname","lastname","mobile","email")
     ->where([
       ["email", $request['email']],
       ["password", $request['password']]
-    ])->get();
+    ])
+    ->get();
+
     if(count($user) > 0) {
       $access_token = Config::token();
-      DB::table(Config::config()['plugin_user_authentication'])->insert([
+      DB::table(Config::config()['table_auth'])
+      ->insert([
         "reference_id"        => $access_token,
         "otp"                 => "000000",
         "verified"            => 0,
@@ -64,7 +71,7 @@ class Config extends Controller
   }
 
   public static function authLogout($token) {
-    $logout = DB::table(Config::config()['plugin_user_authentication'])
+    $logout = DB::table(Config::config()['table_auth'])
     ->where("reference_id", $token)
     ->update([
       "date_logout" => date("Y-m-d h:i:s"),
