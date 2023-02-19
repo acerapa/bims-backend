@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\DB;
 \App\Http\Controllers\plugin_email_pass_auth_otp\Config::isTokenActive($token_refid, $user_refid);
 api/plugin_email_pass_auth_otp/authBasic?email=email&password=password&device=&datetime=
 
+1: authBasic - Login using email and password only
+2: auth - Login using email and password with SMS OPT Code
+
 */
 
 class Config extends Controller
