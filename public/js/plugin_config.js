@@ -56,7 +56,7 @@
                 return JSON.parse(local);
             }
             else {
-                $.get( env_api + "api/plugin_config/file/" + filepath, function (response) {
+                $.get( Plugin_config_file.projects()['env_api'] + "api/plugin_config/file/" + filepath, function (response) {
                     localStorage.setItem("config-file-" + filepath, JSON.stringify(response));
                     callback(response);
                 });
