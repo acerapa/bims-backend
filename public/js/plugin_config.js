@@ -10,6 +10,7 @@
             const hostname = window.location.hostname;
             if((hostname == 'localhost') || (hostname == '127.0.0.1')) {
                 return {
+                    'env': 'local',
                     'domain': 'localhost/',
                     'env_api': 'http://127.0.0.1:8000/',
                     'env_api_multi_purpose': 'http://127.0.0.1:8000/',
@@ -18,6 +19,7 @@
             }
             else if(hostname == 'mcrichtravel.com') {
                 return {
+                    'env': 'live',
                     'domain': 'https://mcrichtravel.com/',
                     'env_api': 'https://mcrichtravel.com/partition-api/v2/public/',
                     'env_api_multi_purpose': 'https://mcrichtravel.com/partition-api-multi-purpose/version-1/public/',
@@ -26,6 +28,7 @@
             }
             else if(hostname == 'deanleifproperties.com') {
                 return {
+                    'env': 'live',
                     'domain': 'https://deanleifproperties.com/',
                     'env_api': 'https://deanleifproperties.com/partition-api/v2/public/',
                     'env_api_multi_purpose': 'https://deanleifproperties.com/partition-api-multi-purpose/version-1/public/',
@@ -34,6 +37,7 @@
             }
             else if(hostname == 'foxcityph.tech') {
                 return {
+                    'env': 'live',
                     'domain': 'https://foxcityph.tech/',
                     'env_api': 'https://foxcityph.tech/dataserver/version-46/public/',
                     'env_api_multi_purpose': 'https://foxcityph.tech/dataserver-multi-purpose/version-1/public/',
@@ -42,6 +46,7 @@
             }
             else {
                 return {
+                    'env': 'local',
                     'domain': 'localhost/',
                     'env_api': 'http://127.0.0.1:8000/',
                     'env_api_multi_purpose': 'http://127.0.0.1:8000/',
