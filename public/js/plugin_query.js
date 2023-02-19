@@ -16,7 +16,6 @@
 				console.log(args);
 			}
 
-			if(window.location.hostname == 'localhost') {}
 			$.get( uri, function (response) {
 				callback(response);
 			});
