@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\DB;
 \App\Http\Controllers\plugin_email_pass_auth_otp\Config::isTokenActive($token_refid, $user_refid);
 api/plugin_email_pass_auth_otp/authBasic?email=email&password=password&device=&datetime=
 
+1: authBasic - Login using email and password only
+2: auth - Login using email and password with SMS OPT Code
+
 */
 
 class Config extends Controller
@@ -20,23 +23,27 @@ class Config extends Controller
   public static function config() {
     return [
       "enable_otp_sms"      => true,
-      "table_users"         => "user",
-      "table_auth"          => "user_authentication",
+      "table_users"         => "plugin_user",
+      "table_auth"          => "plugin_user_authentication",
       "fetch"               => ["reference_id", "firstname", "lastname","mobile","email","photo"],
       "incorrect_message"   => "Incorrect email or password"
     ];
   }
 
   public static function authBasic($request) {
-    $user = DB::table("user")
+    
+    $user = DB::table(Config::config()['table_users'])
     ->select("reference_id","firstname","lastname","mobile","email")
     ->where([
       ["email", $request['email']],
       ["password", $request['password']]
-    ])->get();
+    ])
+    ->get();
+
     if(count($user) > 0) {
       $access_token = Config::token();
-      DB::table("user_authentication")->insert([
+      DB::table(Config::config()['table_auth'])
+      ->insert([
         "reference_id"        => $access_token,
         "otp"                 => "000000",
         "verified"            => 0,
@@ -64,7 +71,8 @@ class Config extends Controller
   }
 
   public static function authLogout($token) {
-    $logout = DB::table("user_authentication")->where("reference_id", $token)
+    $logout = DB::table(Config::config()['table_auth'])
+    ->where("reference_id", $token)
     ->update([
       "date_logout" => date("Y-m-d h:i:s"),
       "status"      => "2"
@@ -82,7 +90,7 @@ class Config extends Controller
 		$user_refid   = $request['user_refid'];
 		$device       = $request['device'];
 
-    $auth = DB::table("user")
+    $auth = DB::table(Config::config()['table_users'])
     ->where([
       ["reference_id", $token],
       ["user_refid", $user_refid],
@@ -109,7 +117,7 @@ class Config extends Controller
 
   public static function verify($request) {
 
-    $exist = DB::table("user")
+    $exist = DB::table(Config::config()['table_users'])
     ->select("reference_id", "user_credential")
     ->where([
       ["reference_id", $request['token']],
@@ -119,7 +127,7 @@ class Config extends Controller
     ->get();
 
     if(count($exist) > 0) {
-      $verified = DB::table("user")
+      $verified = DB::table(Config::config()['table_users'])
       ->where([
         ["reference_id", $request['token']],
         ["otp", $request['otp']],
