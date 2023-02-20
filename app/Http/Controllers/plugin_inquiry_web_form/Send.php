@@ -20,6 +20,7 @@ class Send extends Controller
       "reference_id"  => $reference_id,
       "name"          => $request['name'],
       "email"         => $request['email'],
+      "mobile"        => $request['mobile'],
       "subject"       => $request['subject'],
       "message"       => $request['message'],
       "created_at"    => date("Y-m-d h:i:s"),
