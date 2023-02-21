@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\DB;
 
 /*
 
-api/plugin_query/getRowBasic/user/all/dataid/1
-api/plugin_query/getRowBasic/user/dataid,first_name,last_name,mobile/dataid/1
+  \App\Http\Controllers\plugin_query\GetRowBasic::get($table, $getColumn, $whereColumn, $whereValue);
+  api/plugin_query/getRowBasic/user/all/dataid/1
+  api/plugin_query/getRowBasic/user/dataid,first_name,last_name,mobile/dataid/1
 
 */
 
