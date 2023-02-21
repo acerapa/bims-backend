@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class Get extends Controller
+class GetSingle extends Controller
 {
-    //
+    public static function get(Request $request) {
+        return $request;
+    }
 }

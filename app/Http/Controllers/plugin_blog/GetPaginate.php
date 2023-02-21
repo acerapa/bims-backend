@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class Edit extends Controller
+class GetPaginate extends Controller
 {
-    
+    public static function get(Request $request) {
+        return $request;
+    }
 }
