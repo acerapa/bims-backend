@@ -17,8 +17,14 @@ class Review extends Controller
     $sum    = DB::table("plugin_review")->where("tag_primary", $tag_primary)->sum("score");
     $sum    = floatval($sum);
     $count  = DB::table("plugin_review")->where("tag_primary", $tag_primary)->count();
-    $score  = $sum / $count;
 
+    if(($sum == 0) || ($count)) {
+      $score = 0;
+    }
+    else {
+      $score  = $sum / $count;
+    }
+    
     return [
       "sum"     => $sum,
       "count"   => $count,
