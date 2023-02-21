@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 /*
 
 var args = {
-  table: "user",
+  table: "plugin_user",
   getClm: 'all',
   where: [
     ["status","1"]
