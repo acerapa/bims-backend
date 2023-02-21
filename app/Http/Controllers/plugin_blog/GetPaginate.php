@@ -16,8 +16,6 @@ class GetPaginate extends Controller
 {
     public static function get(Request $request) {
 
-        $config             = \App\Http\Controllers\plugin_blog\Config::config();
-
         if($request['category_refid'] == 'all') {
             return DB::table("plugin_blog")
             ->join("plugin_user","plugin_blog.created_by","=","plugin_user.reference_id")
