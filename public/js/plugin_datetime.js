@@ -5,6 +5,11 @@
 
         var Plugin_datetime = {};
 
+        Plugin_datetime.dbDateOnly = function (date) {
+            date = new Date(date);
+            return date.toDateString();
+        },
+
         Plugin_datetime.time24To12Format = function (time) {
             var datetime = "2023-02-07 " + time;
             var newdates = new Date(datetime);
