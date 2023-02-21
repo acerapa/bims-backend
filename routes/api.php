@@ -18,6 +18,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+
+  Route::group(['prefix' => 'plugin_blog'], function () {
+    Route::get('getPaginate', [\App\Http\Controllers\plugin_blog\GetPaginate::class, 'get']);
+  });
+
   Route::group(['prefix' => 'plugin_inquiry_web_form'], function () {
     Route::get('send', [\App\Http\Controllers\plugin_inquiry_web_form\Send::class, 'send']);
   });
