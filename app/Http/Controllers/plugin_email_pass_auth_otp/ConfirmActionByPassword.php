@@ -15,7 +15,7 @@ plugin_email_pass_auth_otp/confirmActionByPassword?user_refid=USR-12302022065909
 class ConfirmActionByPassword extends Controller
 {
   public static function confirm(Request $request) {
-    $exist = DB::table("user")
+    $exist = DB::table("plugin_user")
     ->where([
       ["reference_id", $request['user_refid']],
       ["password", $request['password']]
