@@ -29,6 +29,7 @@ class GetSingle extends Controller
                 "blog_header"   => $blog[0],
                 "blog_tagging"  => \App\Http\Controllers\plugin_query\GetRowBasic::get("plugin_blog_tagging", "dataid,tag_refid,tag_type", "blog_refid", $request['blog_refid']),
                 "blog_photos"   => \App\Http\Controllers\plugin_query\GetRowBasic::get("plugin_photo_tagging", "all", "tagged", $request['blog_refid']),
+                "creator"       => \App\Http\Controllers\plugin_query\GetRowBasic::get("plugin_user", "reference_id,firstname,lastname,mobile,email", "reference_id", $blog[0]->created_by)[0],
             ];
         }
         else {
