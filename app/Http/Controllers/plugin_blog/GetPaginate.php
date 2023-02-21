@@ -32,7 +32,8 @@ class GetPaginate extends Controller
                 "plugin_blog.status as blog_status",
                 "plugin_blog.dataid as sorting",
                 "plugin_user.firstname",
-                "plugin_user.lastname"
+                "plugin_user.lastname",
+                "plugin_user.photo"
             )
             ->where([
                 ["plugin_blog.status","1"]
@@ -56,7 +57,8 @@ class GetPaginate extends Controller
                 "plugin_blog.status as blog_status",
                 "plugin_blog.dataid as sorting",
                 "plugin_user.firstname",
-                "plugin_user.lastname"
+                "plugin_user.lastname",
+                "plugin_user.photo"
             )
             ->where([
                 ["plugin_blog.status","1"],
