@@ -20,9 +20,16 @@
         }
 
         Plugin_blog.getPaginate = function (fetch_local, category_refid, page, callback) {
-            $.get( env_api + "api/plugin_blog/getPaginate?category_refid="+ category_refid +"&page=" + page, function (response) {
-				callback(response);
-			});
+			var local = Plugin_storage.getItem('blogs-'+category_refid+"-"+page);
+			if((fetch_local) && (local)) {
+				callback(local);
+			}
+			else {
+				$.get( env_api + "api/plugin_blog/getPaginate?category_refid="+ category_refid +"&page=" + page, function (response) {
+					Plugin_storage.setItem('blogs-'+category_refid+"-"+page);
+					callback(response);
+				});
+			}
         }
         return Plugin_blog;
 	};

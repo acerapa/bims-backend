@@ -17,8 +17,8 @@ use Carbon\Carbon;
 
 class Exist extends Controller
 {
-  public static function exist($store_path, $menute) {
-    $folder_data = "public/plugin_json_data/".$store_path;
+  public static function exist($filename, $menute) {
+    $folder_data = "public/plugin_json_data/".$filename;
     if (Storage::exists($folder_data)) {
       $last_modified          = Storage::lastModified($folder_data);
       $current_date_time      = Carbon::now()->timestamp;
