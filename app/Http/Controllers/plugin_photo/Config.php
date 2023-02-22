@@ -23,7 +23,7 @@ class Config extends Controller
   public static function config() {
     return [
       "enable"           => true,
-      "db_table"         => "photo",
+      "db_table"         => "plugin_photo",
       "hostname"         => "82.180.152.30",
       "username"         => "u604418523.MC_1231rich",
       "password"         => "8&*RLm/_677ui",
@@ -40,7 +40,7 @@ class Config extends Controller
       ];
     }
     else {
-      $created = DB::table("photo_tagging")->insert([
+      $created = DB::table("plugin_photo_tagging")->insert([
         "photo_refid" => $photo_refid,
         "tagged"      => $package_refid,
         "created_at"  => date("Y-m-d h:i:s"),
@@ -63,49 +63,49 @@ class Config extends Controller
   }
 
   public static function getPhotos($request) {
-    return DB::table("photo_tagging")
-    ->join("photo", "photo_tagging.photo_refid", "=", "photo.reference_id")
+    return DB::table("plugin_photo_tagging")
+    ->join("plugin_photo", "plugin_photo_tagging.photo_refid", "=", "plugin_photo.reference_id")
     ->select(
-      "photo.dataid",
-      "photo.reference_id",
-      "photo.filepath",
-      "photo.filename",
-      "photo.description",
-      "photo.created_at",
-      "photo.created_by"
+      "plugin_photo.dataid",
+      "plugin_photo.reference_id",
+      "plugin_photo.filepath",
+      "plugin_photo.filename",
+      "plugin_photo.description",
+      "plugin_photo.created_at",
+      "plugin_photo.created_by"
     )
     ->where([
-      ["photo_tagging.tagged", $request['tagged']],
-      ["photo_tagging.status", "1"],
-      ["photo.status", "1"]
+      ["plugin_photo_tagging.tagged", $request['tagged']],
+      ["plugin_photo_tagging.status", "1"],
+      ["plugin_photo.status", "1"]
     ])
     ->orderBy($request['orderByColumn'], $request['orderBySort'])
     ->paginate($request['row_per_page']);
   }
 
   public static function getPhotosByTagRefID($tagged_refid) {
-    return DB::table("photo_tagging")
-    ->join("photo", "photo_tagging.photo_refid", "=", "photo.reference_id")
+    return DB::table("plugin_photo_tagging")
+    ->join("plugin_photo", "plugin_photo_tagging.photo_refid", "=", "plugin_photo.reference_id")
     ->select(
-      "photo.dataid",
-      "photo.reference_id",
-      "photo.filepath",
-      "photo.filename",
-      "photo.description",
-      "photo.created_at",
-      "photo.created_by"
+      "plugin_photo.dataid",
+      "plugin_photo.reference_id",
+      "plugin_photo.filepath",
+      "plugin_photo.filename",
+      "plugin_photo.description",
+      "plugin_photo.created_at",
+      "plugin_photo.created_by"
     )
     ->where([
-      ["photo_tagging.tagged", $tagged_refid],
-      ["photo_tagging.status", "1"]
+      ["plugin_photo_tagging.tagged", $tagged_refid],
+      ["plugin_photo_tagging.status", "1"]
     ])
-    ->orderBy("photo.dataid", "DESC")
+    ->orderBy("plugin_photo.dataid", "DESC")
     ->get();
   }
 
   public static function tagFixer() {
 
-    $data = DB::table("photo")
+    $data = DB::table("plugin_photo")
     ->select("reference_id", "tagged", "created_by")
     ->where("status", "1")
     ->get();
@@ -119,7 +119,7 @@ class Config extends Controller
       $tagCreated   = false;
       if($tagExist == false) {
       $tagCreated   = false;
-        $tagCreated = DB::table("photo_tagging")->insert([
+        $tagCreated = DB::table("plugin_photo_tagging")->insert([
           "photo_refid"   => $reference_id,
           "tagged"        => $tagged,
           "created_at"    => date("Y-m-d h:i:s"),
@@ -139,7 +139,7 @@ class Config extends Controller
   }
 
   public static function isTagExist($photo_refid, $tagged) {
-    $exist = DB::table("photo_tagging")->where([
+    $exist = DB::table("plugin_photo_tagging")->where([
       ["photo_refid", $photo_refid],
       ["tagged", $tagged]
     ])
@@ -181,7 +181,7 @@ class Config extends Controller
 
   public static function saveInfoTemp($request) {
     
-    $saved = DB::table(Config::config()['db_table'])->insert([
+    $saved = DB::table("plugin_photo")->insert([
       "reference_id"    => $request['reference_id'],
       "filepath"        => $request['filepath'],
       "tagged"          => $request['tagged'],
@@ -192,7 +192,7 @@ class Config extends Controller
 
     if($saved) {
 
-      DB::table("photo_tagging")->insert([
+      DB::table("plugin_photo_tagging")->insert([
         "photo_refid" => $request['reference_id'],
         "tagged"      => $request['tagged'],
         "created_at"  => date("Y-m-d h:i:s"),
@@ -215,7 +215,7 @@ class Config extends Controller
   }
 
   public static function removeTag($photo_refid, $tagged) {
-    $delete_tagging = DB::table("photo_tagging")
+    $delete_tagging = DB::table("plugin_photo_tagging")
     ->where([
       ["photo_refid", $photo_refid],
       ["tagged", $tagged]
@@ -239,10 +239,10 @@ class Config extends Controller
 
   public static function delete($photo_refid) {
 
-    $delete_photo   = DB::table("photo")->where("reference_id", $photo_refid)->delete();
+    $delete_photo   = DB::table("plugin_photo")->where("reference_id", $photo_refid)->delete();
     
     if($delete_photo) {
-      $delete_tagging = DB::table("photo_tagging")->where("photo_refid", $photo_refid)->delete();
+      $delete_tagging = DB::table("plugin_photo_tagging")->where("photo_refid", $photo_refid)->delete();
       return [
         "success" => true,
         "message" => "Photo successfully deleted",
