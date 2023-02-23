@@ -31,6 +31,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
   Route::group(['prefix' => 'plugin_review'], function () {
     Route::get('create', [\App\Http\Controllers\plugin_review\Review::class, 'create']);
+    Route::get('calculate/{tag_primary}', [\App\Http\Controllers\plugin_review\ScoreCalculator::class, 'calculate']);
     Route::get('getScore/{tag_primary}', [\App\Http\Controllers\plugin_review\Review::class, 'getScore']);
   });
 
