@@ -18,6 +18,12 @@
 			});
 		};
 
+		Plugin_review.getScoreRecalculate = function (tag_refid, tag_table, tag_whereClm, tag_whereVal) {
+			$.get( env_api + "api/plugin_review/calculate?tag_refid="+ tag_refid +"&table="+ tag_table +"&whereClm="+ tag_whereClm +"&whereVal="+tag_whereVal, function (response) {
+				callback(response);
+			});
+		};
+
         return Plugin_review;
 	};
 
