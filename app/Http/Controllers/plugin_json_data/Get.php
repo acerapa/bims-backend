@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\File;
 
 class Get extends Controller
 {
-  public static function get($store_path) {
-    $folder_data = "public/plugin_json_data/".$store_path;
+  public static function get($filename) {
+    $folder_data = "public/plugin_json_data/".$filename;
     if (Storage::exists($folder_data)) {
       $path = storage_path("app/".$folder_data);
       return json_decode(file_get_contents($path), true);
