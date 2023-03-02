@@ -41,6 +41,7 @@ class Review extends Controller
       "score"           => $request["score"],
       "hightlight"      => $request["hightlight"],
       "comment"         => $request["comment"],
+      "attachment"      => $request["attachment"],
       "other"           => $request["other"]
     ]);
 
