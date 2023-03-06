@@ -24,7 +24,7 @@
 				callback({ success: false, message: 'Inquiry message is required' });
 			}
 			else {
-				var uri 	= env_api + "api/plugin_inquiry_web_form/send?name="+ name +"&email="+ email +"&mobile="+ mobile +"&subject="+ subject +"&message=" + message + "&taglist=" + taglist;
+				var uri 	= env_api + "api/plugin_inquiry_web_form/send?name="+ name +"&email="+ email +"&mobile="+ mobile +"&subject="+ subject +"&message=" + message + "&tag_list=" + taglist;
 				if(Plugin_config_file.projects()['env'] == 'local') {
 					console.log("Request to:");
 					console.log(uri);
