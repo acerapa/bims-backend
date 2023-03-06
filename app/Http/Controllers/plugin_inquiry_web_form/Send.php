@@ -34,7 +34,8 @@ class Send extends Controller
         foreach($tag_list as $tag) {
           DB::table("plugin_inquiry_web_form_tagging")->insert([
             "inquiry_refid" => $reference_id,
-            "tag_refid"     => $tag
+            "tag_refid"     => $tag->reference_id,
+            "recipient"     => $tag->recipient
           ]);
         }
       }
