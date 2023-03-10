@@ -42,7 +42,14 @@ class Config extends Controller
     }
 
     public static function allCity($province_code) {
-        return DB::table("plugin_geo_citymun")->where("provCode", $province_code)->orderBy("citymunDesc","asc")->get();
+        return DB::table("plugin_geo_citymun")
+        ->select("citymunCode","citymunDesc","regDesc as regCode","provCode")
+        ->where([
+            ["provCode", $province_code],
+            ["status","1"]
+        ])
+        ->orderBy("citymunDesc","asc")
+        ->get();
     }
 
     public static function allBarangay($city_code) {
