@@ -22,7 +22,16 @@
         };
 
         Plugin_geo.allCity = function (fetch_local, province_code, callback) {
-            
+            const local = localStorage.getItem("allCity-" + province_code);
+            if(local && fetch_local) {
+                callback(JSON.parse(local));
+            }
+            else {
+                $.get( Plugin_config_file.projects()['env_api'] + "api/plugin_geography/allCity/" + province_code, function (response) {
+                    localStorage.setItem("allCity-" + province_code, JSON.stringify(response));
+                    callback(response);
+                });
+            }
         };
 
         Plugin_geo.allBarangay = function (fetch_local, city_code, callback) {
