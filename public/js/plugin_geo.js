@@ -9,7 +9,16 @@
         };
 
         Plugin_geo.allProvince = function (fetch_local, region_code, callback) {
-            
+            const local = localStorage.getItem("allProvince-" + region_code);
+            if(local && fetch_local) {
+                callback(JSON.parse(local));
+            }
+            else {
+                $.get( Plugin_config_file.projects()['env_api'] + "api/plugin_geography/allProvince/" + region_code, function (response) {
+                    localStorage.setItem("allProvince-" + region_code, JSON.stringify(response));
+                    callback(response);
+                });
+            }
         };
 
         Plugin_geo.allCity = function (fetch_local, province_code, callback) {

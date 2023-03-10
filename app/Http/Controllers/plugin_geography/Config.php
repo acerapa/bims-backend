@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
  * plugin_geography/allRegion
  * plugin_geography/allActiveCityWithProvice
  * plugin_geography/allProvince/01
+ * plugin_geography/allProvince/all
  * plugin_geography/allCity/0128
  * 
  */
@@ -21,7 +22,21 @@ class Config extends Controller
     }
 
     public static function allProvince($region_code) {
-        return DB::table("plugin_geo_province")->where("regCode", $region_code)->orderBy("provDesc","asc")->get();
+        if($region_code == 'all') {
+            return DB::table("plugin_geo_province")
+            ->where("status", "1")
+            ->orderBy("provDesc","asc")
+            ->get();
+        }
+        else {
+            return DB::table("plugin_geo_province")
+            ->where([
+                ["regCode", $region_code],
+                ["status", "1"]
+            ])
+            ->orderBy("provDesc","asc")
+            ->get();
+        }
     }
 
     public static function allCity($province_code) {
