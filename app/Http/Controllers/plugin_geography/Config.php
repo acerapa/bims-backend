@@ -24,12 +24,14 @@ class Config extends Controller
     public static function allProvince($region_code) {
         if($region_code == 'all') {
             return DB::table("plugin_geo_province")
+            ->select("provDesc","regCode","provCode")
             ->where("status", "1")
             ->orderBy("provDesc","asc")
             ->get();
         }
         else {
             return DB::table("plugin_geo_province")
+            ->select("provDesc","regCode","provCode")
             ->where([
                 ["regCode", $region_code],
                 ["status", "1"]
