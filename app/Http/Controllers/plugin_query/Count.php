@@ -9,8 +9,21 @@ use Illuminate\Support\Facades\DB;
 class Count extends Controller
 {
     public static function count(Request $request) {
-        return DB::table($request['table'])
+        $count = DB::table($request['table'])
         ->where($request['where'])
         ->count();
+
+        if($count > 0) {
+            return [
+                "success"   => true,
+                "count"    => $count,
+            ];
+        }
+        else {
+            return [
+                "success"   => false,
+                "count"    => $count,
+            ];
+        }
     }
 }
