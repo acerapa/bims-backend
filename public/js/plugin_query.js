@@ -124,11 +124,8 @@
 
 		};
 
-		Plugin_query.updateSingleColumnRecord = function (table, where, update) {
-			var args = { table: table, where: where, update: update};
-			$.get( domain + "api/plugin_query/editMultiple?" + $.param(args), function (response) {
-				callback(response);
-			});
+		Plugin_query.updateSingleColumnRecord = function () {
+			
 		};
 
 		Plugin_query.updateMultiColumnRecord = function (table, whereArray, updateArray, callback) {
