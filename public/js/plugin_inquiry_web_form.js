@@ -46,6 +46,17 @@
 			});
 		};
 
+		Plugin_inquiry_web_form.delete = function (inquiry_refid, callback) {
+			var uri = env_api + "api/plugin_inquiry_web_form/delete/" + inquiry_refid;
+			if(Plugin_config_file.projects()['env'] == 'local') {
+				console.log("Request to:");
+				console.log(uri);
+			}
+			$.get( uri, function (response) {
+				callback(response);
+			});
+		};
+
         return Plugin_inquiry_web_form;
 	};
 
