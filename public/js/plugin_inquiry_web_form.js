@@ -35,8 +35,8 @@
 			}
         };
 
-		Plugin_inquiry_web_form.getInquiries = function (tag_refid, rowPerPage, orderbyClm, orderbySort, callback) {
-			var uri = env_api + "api/plugin_inquiry_web_form/getInquiries?tag_refid="+ tag_refid +"&rowPerPage="+ rowPerPage +"&orderbyClm="+ orderbyClm +"&orderbySort=" + orderbySort;
+		Plugin_inquiry_web_form.getInquiries = function (tag_refid, rowPerPage, orderbyClm, orderbySort, page, callback) {
+			var uri = env_api + "api/plugin_inquiry_web_form/getInquiries?tag_refid="+ tag_refid +"&rowPerPage="+ rowPerPage +"&orderbyClm="+ orderbyClm +"&orderbySort=" + orderbySort + "&page=" + page;
 			if(Plugin_config_file.projects()['env'] == 'local') {
 				console.log("Request to:");
 				console.log(uri);
