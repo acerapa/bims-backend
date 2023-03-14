@@ -95,6 +95,3 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('sum', [\App\Http\Controllers\plugin_query\Sum::class, 'sum']);
   });
 
-  Route::group(['prefix' => 'deanlief_search_listing'], function () {
-    Route::get('search', [\App\Http\Controllers\deanlief_search_listing\Search::class, 'search']);
-  });
