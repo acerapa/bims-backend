@@ -33,7 +33,19 @@
 					callback(response);
 				});
 			}
-        }
+        };
+
+		Plugin_inquiry_web_form.getInquiries = function (tag_refid, rowPerPage, orderbyClm, orderbySort, callback) {
+			var uri = env_api + "api/plugin_inquiry_web_form/getInquiries?tag_refid="+ tag_refid +"&rowPerPage="+ rowPerPage +"&orderbyClm="+ orderbyClm +"&orderbySort=" + orderbySort;
+			if(Plugin_config_file.projects()['env'] == 'local') {
+				console.log("Request to:");
+				console.log(uri);
+			}
+			$.get( uri, function (response) {
+				callback(response);
+			});
+		};
+
         return Plugin_inquiry_web_form;
 	};
 

@@ -37,6 +37,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
   Route::group(['prefix' => 'plugin_inquiry_web_form'], function () {
     Route::get('send', [\App\Http\Controllers\plugin_inquiry_web_form\Send::class, 'send']);
+    Route::get('getInquiries', [\App\Http\Controllers\plugin_inquiry_web_form\GetInquiries::class, 'get']);
   });
 
   Route::group(['prefix' => 'plugin_review'], function () {
