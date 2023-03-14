@@ -57,6 +57,17 @@
 			});
 		};
 
+		Plugin_inquiry_web_form.done = function (inquiry_refid, done_by, callback) {
+			var uri = env_api + "api/plugin_inquiry_web_form/markAsDone?inquiry_refid="+ inquiry_refid +"&done_by=" + done_by;
+			if(Plugin_config_file.projects()['env'] == 'local') {
+				console.log("Request to:");
+				console.log(uri);
+			}
+			$.get( uri, function (response) {
+				callback(response);
+			});
+		};
+
         return Plugin_inquiry_web_form;
 	};
 
