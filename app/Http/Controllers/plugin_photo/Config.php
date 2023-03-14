@@ -74,11 +74,7 @@ class Config extends Controller
       "plugin_photo.created_at",
       "plugin_photo.created_by"
     )
-    ->where([
-      ["plugin_photo_tagging.tagged", $request['tagged']],
-      ["plugin_photo_tagging.status", "1"],
-      ["plugin_photo.status", "1"]
-    ])
+    ->where("plugin_photo_tagging.tagged", $request['tagged'])
     ->orderBy($request['orderByColumn'], $request['orderBySort'])
     ->paginate($request['row_per_page']);
   }
