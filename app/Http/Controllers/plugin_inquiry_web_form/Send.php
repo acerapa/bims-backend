@@ -28,6 +28,18 @@ class Send extends Controller
     ]);
 
     if($header) {
+
+      $tag_list         = json_decode($request['tag_list']);
+      if(count($tag_list) > 0) {
+        foreach($tag_list as $tag) {
+          DB::table("plugin_inquiry_web_form_tagging")->insert([
+            "inquiry_refid" => $reference_id,
+            "tag_refid"     => $tag->reference_id,
+            "recipient"     => $tag->recipient
+          ]);
+        }
+      }
+
       return [
         "success" => true,
         "message" => "Inquiry sent"
@@ -39,14 +51,6 @@ class Send extends Controller
         "message" => "Inquiry not sent."
       ];
     }
-
-    /*
-    $tag_list         = json_decode($request['tag_list']);
-    if(count($tag_list) > 0) {
-
-    }
-    */
-
   }
 
   public static function refid() {

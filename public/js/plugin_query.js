@@ -116,12 +116,12 @@
 			});
 		};
 
-		Plugin_query.getRecordSearch = function () {
+		Plugin_query.getRecordSearchBasic = function () {};
 
-		};
+		Plugin_query.getRecordSearchPaginate = function () {};
 
 		Plugin_query.updateSingleColumnRecord = function () {
-
+			
 		};
 
 		Plugin_query.updateMultiColumnRecord = function (table, whereArray, updateArray, callback) {
@@ -155,6 +155,24 @@
 				callback(response);
 			});
 		};
+
+		Plugin_query.count = function (table, where, callback) {
+			var args = { table: table, where: where };
+			$.get( env_api + "api/plugin_query/count?" + $.param(args), function (response) {
+				callback(response);
+			});
+		};
+
+		Plugin_query.sum = function (table, where, column, callback) {
+			var args = {
+				table: table,
+				where: where,
+				column: column
+			};
+			$.get( env_api + "api/plugin_query/sum?" + $.param(args), function (response) {
+				callback(response);
+			});
+		}
 
 		return Plugin_query;
 	};

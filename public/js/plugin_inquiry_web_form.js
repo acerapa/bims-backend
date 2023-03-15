@@ -24,7 +24,7 @@
 				callback({ success: false, message: 'Inquiry message is required' });
 			}
 			else {
-				var uri 	= env_api + "api/plugin_inquiry_web_form/send?name="+ name +"&email="+ email +"&mobile="+ mobile +"&subject="+ subject +"&message=" + message + "&taglist=" + taglist;
+				var uri 	= env_api + "api/plugin_inquiry_web_form/send?name="+ name +"&email="+ email +"&mobile="+ mobile +"&subject="+ subject +"&message=" + message + "&tag_list=" + taglist;
 				if(Plugin_config_file.projects()['env'] == 'local') {
 					console.log("Request to:");
 					console.log(uri);
@@ -33,7 +33,41 @@
 					callback(response);
 				});
 			}
-        }
+        };
+
+		Plugin_inquiry_web_form.getInquiries = function (tag_refid, rowPerPage, orderbyClm, orderbySort, page, callback) {
+			var uri = env_api + "api/plugin_inquiry_web_form/getInquiries?tag_refid="+ tag_refid +"&rowPerPage="+ rowPerPage +"&orderbyClm="+ orderbyClm +"&orderbySort=" + orderbySort + "&page=" + page;
+			if(Plugin_config_file.projects()['env'] == 'local') {
+				console.log("Request to:");
+				console.log(uri);
+			}
+			$.get( uri, function (response) {
+				callback(response);
+			});
+		};
+
+		Plugin_inquiry_web_form.delete = function (inquiry_refid, callback) {
+			var uri = env_api + "api/plugin_inquiry_web_form/delete/" + inquiry_refid;
+			if(Plugin_config_file.projects()['env'] == 'local') {
+				console.log("Request to:");
+				console.log(uri);
+			}
+			$.get( uri, function (response) {
+				callback(response);
+			});
+		};
+
+		Plugin_inquiry_web_form.done = function (inquiry_refid, done_by, callback) {
+			var uri = env_api + "api/plugin_inquiry_web_form/markAsDone?inquiry_refid="+ inquiry_refid +"&done_by=" + done_by;
+			if(Plugin_config_file.projects()['env'] == 'local') {
+				console.log("Request to:");
+				console.log(uri);
+			}
+			$.get( uri, function (response) {
+				callback(response);
+			});
+		};
+
         return Plugin_inquiry_web_form;
 	};
 

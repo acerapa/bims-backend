@@ -18,7 +18,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+  Route::group(['prefix' => 'plugin_geography'], function () {
+    Route::get('allRegion', [\App\Http\Controllers\plugin_geography\Config::class, 'allRegion']);
+    Route::get('allProvince/{region_code}', [\App\Http\Controllers\plugin_geography\Config::class, 'allProvince']);
+    Route::get('allCity/{province_code}', [\App\Http\Controllers\plugin_geography\Config::class, 'allCity']);
+    Route::get('allBarangay/{city_code}', [\App\Http\Controllers\plugin_geography\Config::class, 'allBarangay']);
+    Route::get('allActiveRegion', [\App\Http\Controllers\plugin_geography\Config::class, 'allActiveRegion']);
+    Route::get('allActiveProvince/{region_code}', [\App\Http\Controllers\plugin_geography\Config::class, 'allActiveProvince']);
+    Route::get('allActiveCity/{province_code}', [\App\Http\Controllers\plugin_geography\Config::class, 'allActiveCity']);
+    Route::get('allActiveBarangay/{city_code}', [\App\Http\Controllers\plugin_geography\Config::class, 'allActiveBarangay']);
+    Route::get('allActiveCityWithProvice', [\App\Http\Controllers\plugin_geography\Config::class, 'allActiveCityWithProvice']);
+  });
 
   Route::group(['prefix' => 'plugin_blog'], function () {
     Route::get('getPaginate', [\App\Http\Controllers\plugin_blog\GetPaginate::class, 'get']);
@@ -27,6 +37,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
   Route::group(['prefix' => 'plugin_inquiry_web_form'], function () {
     Route::get('send', [\App\Http\Controllers\plugin_inquiry_web_form\Send::class, 'send']);
+    Route::get('getInquiries', [\App\Http\Controllers\plugin_inquiry_web_form\GetInquiries::class, 'get']);
+    Route::get('delete/{inquiry_refid}', [\App\Http\Controllers\plugin_inquiry_web_form\Delete::class, 'delete']);
+    Route::get('markAsDone', [\App\Http\Controllers\plugin_inquiry_web_form\MarkAsDone::class, 'done']);
   });
 
   Route::group(['prefix' => 'plugin_review'], function () {
@@ -81,4 +94,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('editMultiple', [\App\Http\Controllers\plugin_query\Edit::class, 'editMultiple']);
     Route::get('deletePermanent', [\App\Http\Controllers\plugin_query\Delete::class, 'deletePermanent']);
     Route::get('getTableSchema/{table}', [\App\Http\Controllers\plugin_query\Scheme::class, 'getTableSchema']);
+    Route::get('count', [\App\Http\Controllers\plugin_query\Count::class, 'count']);
+    Route::get('sum', [\App\Http\Controllers\plugin_query\Sum::class, 'sum']);
   });
+
