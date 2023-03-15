@@ -116,13 +116,9 @@
 			});
 		};
 
-		Plugin_query.getRecordSearchBasic = function () {
+		Plugin_query.getRecordSearchBasic = function () {};
 
-		};
-
-		Plugin_query.getRecordSearchPaginate = function () {
-
-		};
+		Plugin_query.getRecordSearchPaginate = function () {};
 
 		Plugin_query.updateSingleColumnRecord = function () {
 			

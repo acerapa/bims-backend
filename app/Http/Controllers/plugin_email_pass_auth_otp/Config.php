@@ -33,7 +33,7 @@ class Config extends Controller
   public static function authBasic($request) {
     
     $user = DB::table(Config::config()['table_users'])
-    ->select("reference_id","firstname","lastname","mobile","email")
+    ->select("reference_id","firstname","lastname","mobile","email","photo")
     ->where([
       ["email", $request['email']],
       ["password", $request['password']]
