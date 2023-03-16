@@ -34,6 +34,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('create', [\App\Http\Controllers\plugin_blog\Create::class, 'create']);
     Route::get('getPaginate', [\App\Http\Controllers\plugin_blog\GetPaginate::class, 'get']);
     Route::get('getSingle', [\App\Http\Controllers\plugin_blog\GetSingle::class, 'get']);
+    Route::get('delete/{blog_refid}', [\App\Http\Controllers\plugin_blog\Delete::class, 'delete']);
   });
 
   Route::group(['prefix' => 'plugin_inquiry_web_form'], function () {
