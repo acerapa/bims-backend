@@ -4,6 +4,19 @@
 	function PluginUI() {
         var Plugin_ui   = {};
 
+        Plugin_ui.buttonUploading = function (isUploading, elem, label) {
+            if(isUploading) {
+                $(elem).prop("disabled", true).css({'cursor':'not-allowed'});
+                $(elem + " .spinner-border").css({'display':'block'});
+                $(elem + " span").text(label);
+            }
+            else {
+                $(elem).prop("disabled", false).css({'cursor':'pointer'});
+                $(elem + " .spinner-border").css({'display':'none'});
+                $(elem + " span").text(label);
+            }
+        };
+
         Plugin_ui.disableButton = function (elem, text) {
             if($(elem).is('button')) {
                 $(elem).prop("disabled", true).text(text).css({'opacity': 0.4, 'cursor':'not-allowed'});
