@@ -41,3 +41,4 @@
 		window.Plugin_refid = PluginReferenceID();
 	}
 }) (window);
+

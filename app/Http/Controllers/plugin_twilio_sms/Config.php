@@ -34,7 +34,7 @@ class Config extends Controller
 {
   public static function settings() {
     return [
-      "enable"        => false,
+      "enable"        => true,
       "account_sid"   => "AC9bb7f744e4ffdc515a4a4c77cb7e4c62",
       "auth_token"    => "d174fc42fe03a5e297f93ee435bb23ee",
       "sender_number" => "+14092456018",

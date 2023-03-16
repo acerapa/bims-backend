@@ -46,12 +46,6 @@
 					message: 'Blog content is required.'
 				});
 			}
-			else if(cover == false) {
-				callback({
-					success: false,
-					message: 'Blog cover is required.'
-				});
-			}
 			else {
 
 				var creator = Plugin_auth.getLocalUser()['reference_id'];
