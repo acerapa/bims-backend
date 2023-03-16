@@ -16,7 +16,7 @@
 				return temp;
 			}
 			else {
-				return { reference_id: '', title: '', subject: '', cover: '', content: '' };
+				return { reference_id: '', title: '', subject: '', cover: [], content: '' };
 			}
 		};
 
