@@ -96,6 +96,13 @@
 				});
 			}
         }
+
+		Plugin_blog.delete = function (blog_refid, callback) {
+			$.get( env_api + "api/plugin_blog/delete/" + blog_refid, function (response) {
+				callback(response);
+			});
+		};
+
         return Plugin_blog;
 	};
 
