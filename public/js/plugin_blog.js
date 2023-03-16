@@ -22,6 +22,8 @@
 
 		Plugin_blog.create = function (reference_id, title, subject, cover, content, callback) {
 
+			const cover_parsed = JSON.parse(cover);
+
 			if(reference_id == '') {
 				callback({
 					success: false,
@@ -44,6 +46,12 @@
 				callback({
 					success: false,
 					message: 'Blog content is required.'
+				});
+			}
+			else if(cover_parsed.length == 0) {
+				callback({
+					success: false,
+					message: 'Please upload at least one photo.'
 				});
 			}
 			else {
