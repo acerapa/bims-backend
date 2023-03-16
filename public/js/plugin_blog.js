@@ -6,8 +6,8 @@
         var Plugin_blog     = {};
         var env_api 		=  Plugin_config_file.projects()['env_api_multi_purpose'];
 
-		Plugin_blog.saveTemp = function (title, subject, cover, content) {
-			Plugin_storage.setItem("blog-form-data-temp", { title: title, subject: subject, cover: cover, content: content}, 28800000);
+		Plugin_blog.saveTemp = function (reference_id, title, subject, cover, content) {
+			Plugin_storage.setItem("blog-form-data-temp", { reference_id: reference_id, title: title, subject: subject, cover: cover, content: content}, 28800000);
 		};
 
 		Plugin_blog.getTemp = function () {
@@ -16,7 +16,7 @@
 				return temp;
 			}
 			else {
-				return { title: '', subject: '', cover: '', content: '' };
+				return { reference_id: '', title: '', subject: '', cover: '', content: '' };
 			}
 		};
 
