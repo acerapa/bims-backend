@@ -31,6 +31,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
   });
 
   Route::group(['prefix' => 'plugin_blog'], function () {
+    Route::get('create', [\App\Http\Controllers\plugin_blog\Create::class, 'create']);
     Route::get('getPaginate', [\App\Http\Controllers\plugin_blog\GetPaginate::class, 'get']);
     Route::get('getSingle', [\App\Http\Controllers\plugin_blog\GetSingle::class, 'get']);
   });

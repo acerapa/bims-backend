@@ -6,12 +6,67 @@
         var Plugin_blog     = {};
         var env_api 		=  Plugin_config_file.projects()['env_api_multi_purpose'];
 
-		Plugin_blog.saveTemp = function (callback) {
-
+		Plugin_blog.saveTemp = function (title, subject, cover, content) {
+			Plugin_storage.setItem("blog-form-data-temp", { title: title, subject: subject, cover: cover, content: content}, 28800000);
 		};
 
-		Plugin_blog.create = function (callback) {
+		Plugin_blog.getTemp = function () {
+			const temp = Plugin_storage.getItem("blog-form-data-temp");
+			if(temp) {
+				return temp;
+			}
+			else {
+				return { title: '', subject: '', cover: '', content: '' };
+			}
+		};
 
+		Plugin_blog.create = function (reference_id, title, subject, cover, content, callback) {
+
+			if(reference_id == '') {
+				callback({
+					success: false,
+					message: 'Reference Number is required'
+				});
+			}
+			else if(title == '') {
+				callback({
+					success: false,
+					message: 'Blog title is required'
+				});
+			}
+			else if(subject == '') {
+				callback({
+					success: false,
+					message: 'Blog subject is required.'
+				});
+			}
+			else if(content == '') {
+				callback({
+					success: false,
+					message: 'Blog content is required.'
+				});
+			}
+			else if(cover == false) {
+				callback({
+					success: false,
+					message: 'Blog cover is required.'
+				});
+			}
+			else {
+
+				var creator = Plugin_auth.getLocalUser()['reference_id'];
+				var uri 	= env_api + "api/plugin_blog/create?reference_id="+ reference_id +"&title=" + title + "&subject=" + subject + "&cover=" + cover + "&content=" + content + "&created_by=" + creator;
+
+				if(Plugin_config_file.projects()['env'] == 'local') {
+					console.log("Request to:");
+					console.log(uri);
+				}
+
+				$.get( uri, function (response) {
+					callback(response);
+				});
+
+			}
 		};
 
 		Plugin_blog.getSingle = function (fetch_local, blog_refid, callback) {
