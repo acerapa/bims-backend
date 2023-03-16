@@ -1,0 +1,14 @@
+
+
+Project based JS Library
+
+Method Naming:
+    SQL_ACTION.TABLE_NAME_OTHER(parameters) {}
+
+    Example:
+        Create.user(firstname, lastname, email, mobile) {}
+        Get.user(firstname, lastname, email, mobile) {}
+        Edit.user(firstname, lastname, email, mobile) {}
+        Delete.user(firstname, lastname, email, mobile) {}
+
+
