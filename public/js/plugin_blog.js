@@ -6,6 +6,48 @@
         var Plugin_blog     = {};
         var env_api 		=  Plugin_config_file.projects()['env_api_multi_purpose'];
 
+		Plugin_blog.editDetails = function (blog_refid, title, subject, content, callback) {
+
+			if(blog_refid == '') {
+				callback({
+					success: false,
+					message: 'Blog reference number is undefined'
+				});
+			}
+			else if(title == '') {
+				callback({
+					success: false,
+					message: 'Blog title is required'
+				});
+			}
+			else if(subject == '') {
+				callback({
+					success: false,
+					message: 'Blog subject is required'
+				});
+			}
+			else if(content == '') {
+				callback({
+					success: false,
+					message: 'Blog content is required'
+				});
+			}
+			else {
+				var creator = Plugin_auth.getLocalUser()['reference_id'];
+				var uri 	= env_api + "api/plugin_blog/editDetails?reference_id="+ blog_refid +"&title="+ title +"&subject="+ subject +"&content="+ content +"&updated_by=" + creator;
+
+				if(Plugin_config_file.projects()['env'] == 'local') {
+					console.log("Request to:");
+					console.log(uri);
+				}
+
+				$.get( uri, function (response) {
+					callback(response);
+				});
+			}
+
+		};
+
 		Plugin_blog.saveTemp = function (reference_id, title, subject, cover, content, photos) {
 			Plugin_storage.setItem("blog-form-data-temp", { reference_id: reference_id, title: title, subject: subject, cover: cover, content: content, photos: photos}, 28800000);
 		};
