@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 class Edit extends Controller
 {
     public static function details(Request $request) {
-        return DB::table("plugin_blog")
+        $updated = DB::table("plugin_blog")
         ->where("reference_id", $request['reference_id'])
         ->update([
             "title"         => $request['title'],
@@ -23,5 +23,18 @@ class Edit extends Controller
             "updated_by"    => $request['updated_by'],
             "updated_at"    => date("Y-m-d h:i:s")
         ]);
+
+        if($updated) {
+            return [
+                "success"   => true,
+                "message"   => "Successfully updated"
+            ];
+        }
+        else {
+            return [
+                "success"   => false,
+                "message"   => "Something went wrong, please try again later."
+            ];
+        }
     }   
 }
