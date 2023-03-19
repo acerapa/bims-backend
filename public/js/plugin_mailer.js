@@ -14,7 +14,7 @@
         };
 
         Plugin_mailer.sendHTML = function (content, to_email, to_name, subject, callback) {
-            var uri = env_api + "api/plugin_email/sendText?content="+ content +"&to_email="+ to_email +"&to_name="+ to_name +"&subject=" + subject;
+            var uri = env_api + "api/plugin_email/sendHTML?content="+ content +"&to_email="+ to_email +"&to_name="+ to_name +"&subject=" + subject;
 			$.get( uri, function (response) {
 				callback(response);
 			});
