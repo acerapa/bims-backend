@@ -24,6 +24,20 @@
 			});
 		};
 
+		Plugin_review.sortByDropdown = function (elem) {
+			const sort = [
+				{ code: 'recomended', label: 'Recomended'},
+				{ code: 'most_recent', label: 'Most recent'},
+				{ code: 'oldest', label: 'Oldest'},
+				{ code: 'highest_rated', label: 'Highest rated'},
+				{ code: 'lowest_rated', label: 'Lowest rated'}
+			];
+			 
+			for(let i = 0; i < sort.length; i++) {
+				$(elem).append(`<option value='` + sort[i]['code'] + `'>` + sort[i]['label'] + `</option>`);
+			}
+		};
+
         return Plugin_review;
 	};
 
