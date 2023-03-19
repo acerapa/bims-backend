@@ -32,10 +32,17 @@
 				{ code: 'highest_rated', label: 'Highest rated'},
 				{ code: 'lowest_rated', label: 'Lowest rated'}
 			];
-			 
+			
+			$(elem).html('');
 			for(let i = 0; i < sort.length; i++) {
 				$(elem).append(`<option value='` + sort[i]['code'] + `'>` + sort[i]['label'] + `</option>`);
 			}
+		};
+
+		Plugin_review.getFilteredReview = function (tag_primary, sort_by, page, callback) {
+			$.get( env_api + "api/plugin_review/getFilteredReview?tag_primary="+ tag_primary +"&sort_by="+ sort_by +"&page=" + page, function (response) {
+				callback(response);
+			});
 		};
 
         return Plugin_review;

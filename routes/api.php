@@ -18,6 +18,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+  Route::group(['prefix' => 'plugin_email'], function () {
+    Route::get('sendText', [\App\Http\Controllers\plugin_email\SendBasic::class, 'sendText']);
+    Route::get('sendHTML', [\App\Http\Controllers\plugin_email\SendBasic::class, 'sendHTML']);
+  });
+
   Route::group(['prefix' => 'plugin_geography'], function () {
     Route::get('allRegion', [\App\Http\Controllers\plugin_geography\Config::class, 'allRegion']);
     Route::get('allProvince/{region_code}', [\App\Http\Controllers\plugin_geography\Config::class, 'allProvince']);
@@ -49,6 +54,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('create', [\App\Http\Controllers\plugin_review\Review::class, 'create']);
     Route::get('calculate', [\App\Http\Controllers\plugin_review\ScoreCalculator::class, 'calculate']);
     Route::get('getScore/{tag_primary}', [\App\Http\Controllers\plugin_review\Review::class, 'getScore']);
+    Route::get('getFilteredReview', [\App\Http\Controllers\plugin_review\GetFilteredReview::class, 'get']);
   });
 
   Route::group(['prefix' => 'plugin_config'], function () {
