@@ -1,0 +1,6 @@
+
+Posting of comment procedure
+    1: Save to database
+    2: Save user tagging
+    3: Notify tagged users
+    4: Connect to plugin_notification and make log
