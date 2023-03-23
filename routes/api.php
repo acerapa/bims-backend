@@ -107,3 +107,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('sum', [\App\Http\Controllers\plugin_query\Sum::class, 'sum']);
   });
 
+  Route::group(['prefix' => 'plugin_user'], function () {
+    Route::get('changePassword', [\App\Http\Controllers\plugin_user\ChangePassword::class, 'change']);
+  });
+
