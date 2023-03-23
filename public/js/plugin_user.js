@@ -3,7 +3,8 @@
 	'use strict'
 	function PluginUser() {
 
-        var Plugin_user = {};
+        var Plugin_user     = {};
+        var env_api 		= Plugin_config_file.projects()['env_api_multi_purpose'];
 
         Plugin_user.updateBasic = function (user_refid, firstname, lastname, address, mobile, email, callback) {
             if(user_refid == '') {
