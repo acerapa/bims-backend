@@ -25,7 +25,7 @@ class Config extends Controller
       "enable_otp_sms"      => true,
       "table_users"         => "plugin_user",
       "table_auth"          => "plugin_user_authentication",
-      "fetch"               => ["reference_id", "firstname", "lastname","mobile","email","photo"],
+      "fetch"               => ["reference_id", "firstname", "lastname","mobile","email","photo","access","status"],
       "incorrect_message"   => "Incorrect email or password"
     ];
   }
@@ -33,7 +33,7 @@ class Config extends Controller
   public static function authBasic($request) {
     
     $user = DB::table(Config::config()['table_users'])
-    ->select("reference_id","firstname","lastname","mobile","email","photo")
+    ->select("reference_id","firstname","lastname","mobile","email","photo","access","status")
     ->where([
       ["email", $request['email']],
       ["password", $request['password']]
