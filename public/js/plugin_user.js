@@ -12,8 +12,7 @@
             });
         };
 
-        Plugin_user.changePassword = function (current_pass, new_pass, confirm_pass, callback) {
-            const user_refid = Plugin_auth.getLocalUser()['reference_id'];
+        Plugin_user.changePassword = function (user_refid, current_pass, new_pass, confirm_pass, callback) {
             if(user_refid) {
                 var uri 	= env_api + "api/plugin_user/changePassword?user_refid="+ user_refid +"&current_pass=" + current_pass + "&new_pass=" + new_pass + "&confirm_pass=" + confirm_pass
                 $.get( uri, function (response) {
@@ -25,9 +24,7 @@
             }
         };
 
-        Plugin_user.updateBasic = function (firstname, lastname, address, mobile, email, callback) {
-
-            const user_refid = Plugin_auth.getLocalUser()['reference_id'];
+        Plugin_user.updateBasic = function (user_refid, firstname, lastname, address, mobile, email, callback) {
 
             if(firstname == '') {
                 callback({ success: false, message: 'First name is required' });
