@@ -14,7 +14,7 @@ class GetProfile extends Controller
 {
     public static function get($user_refid) {
         $profile    = DB::table("plugin_user")
-                    ->select("reference_id","firstname","lastname","address","mobile","email","photo","status")
+                    ->select("reference_id","firstname","lastname","address","mobile","email","photo","access","status")
                     ->where("reference_id", $user_refid)
                     ->get();
 
