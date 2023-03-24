@@ -109,5 +109,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
   Route::group(['prefix' => 'plugin_user'], function () {
     Route::get('changePassword', [\App\Http\Controllers\plugin_user\ChangePassword::class, 'change']);
+    Route::get('getProfile/{user_refid}', [\App\Http\Controllers\plugin_user\GetProfile::class, 'get']);
   });
 

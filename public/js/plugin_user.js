@@ -6,6 +6,12 @@
         var Plugin_user     = {};
         var env_api 		= Plugin_config_file.projects()['env_api_multi_purpose'];
 
+        Plugin_user.getProfile = function (user_refid, callback) {
+            $.get( env_api + "api/plugin_user/getProfile/" + user_refid, function (response) {
+                callback(response);
+            });
+        };
+
         Plugin_user.changePassword = function (current_pass, new_pass, confirm_pass, callback) {
             const user_refid = Plugin_auth.getLocalUser()['reference_id'];
             if(user_refid) {
