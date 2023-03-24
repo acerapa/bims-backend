@@ -13,14 +13,23 @@
         };
 
         Plugin_user.changePassword = function (user_refid, current_pass, new_pass, confirm_pass, callback) {
-            if(user_refid) {
-                var uri 	= env_api + "api/plugin_user/changePassword?user_refid="+ user_refid +"&current_pass=" + current_pass + "&new_pass=" + new_pass + "&confirm_pass=" + confirm_pass
+            if(current_pass == '') {
+                callback({ success: false, message: 'Please provide the current password to continue.' });
+            }
+            else if(new_pass == '') {
+                callback({ success: false, message: 'Please provide your new password' });
+            }
+            else if(confirm_pass == '') {
+                callback({ success: false, message: 'Please confirm your new password' });
+            }
+            else if(new_pass !== confirm_pass) {
+                callback({ success: false, message: "New password and confirmation password doesn't match." });
+            }
+            else {
+                var uri = env_api + "api/plugin_user/changePassword?user_refid="+ user_refid +"&current_pass=" + current_pass + "&new_pass=" + new_pass + "&confirm_pass=" + confirm_pass
                 $.get( uri, function (response) {
                     callback(response);
                 });
-            }
-            else {
-                console.error("User Reference ID is undefined");
             }
         };
 
