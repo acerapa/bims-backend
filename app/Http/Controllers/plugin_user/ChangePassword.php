@@ -4,6 +4,7 @@ namespace App\Http\Controllers\plugin_user;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ChangePassword extends Controller
 {
@@ -58,7 +59,7 @@ class ChangePassword extends Controller
             if($updated) {
                 return [
                     "success"   => true,
-                    "message"   => "Please confirm your new password"
+                    "message"   => "Password successfully updated"
                 ];
             }
             else {
