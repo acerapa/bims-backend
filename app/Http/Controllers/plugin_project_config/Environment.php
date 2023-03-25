@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 /**
  * Switch Environment
  * api/plugin_project_config/setProjectEnv/mcrichtravel.com
+ * api/plugin_project_config/setProjectEnvAuto
  * 
  * Get Git Info
  * api/plugin_project_config/gitInfo
@@ -64,6 +65,14 @@ class Environment extends Controller
             Environment::setKeyValue("DB_DATABASE", "foxc_foxcity");
             Environment::setKeyValue("DB_USERNAME", "foxc_foxcity");
             Environment::setKeyValue("DB_PASSWORD", "ovy2hcHxx22uLwqe");
+        }
+        else if($hostname == "flipcard.fun") {
+            Environment::setKeyValue("DB_CONNECTION", "mysql");
+            Environment::setKeyValue("DB_HOST", "45.130.228.154");
+            Environment::setKeyValue("DB_PORT", "3306");
+            Environment::setKeyValue("DB_DATABASE", "u200905711_clipcard");
+            Environment::setKeyValue("DB_USERNAME", "u200905711_clipcard");
+            Environment::setKeyValue("DB_PASSWORD", "!e7Pj3IQvF");
         }
         else {
             Environment::setKeyValue("DB_CONNECTION", "mysql");
