@@ -18,6 +18,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+  Route::group(['prefix' => 'plugin_project_config'], function () {
+    Route::get('setProjectEnv/{hostname}', [\App\Http\Controllers\plugin_project_config\Environment::class, 'setProjectEnv']);
+    Route::get('setProjectEnvAuto', [\App\Http\Controllers\plugin_project_config\Environment::class, 'setProjectEnvAuto']);
+    Route::get('gitInfo', [\App\Http\Controllers\plugin_project_config\Environment::class, 'gitInfo']);
+  });
+
   Route::group(['prefix' => 'plugin_email'], function () {
     Route::get('sendText', [\App\Http\Controllers\plugin_email\SendBasic::class, 'sendText']);
     Route::get('sendHTML', [\App\Http\Controllers\plugin_email\SendBasic::class, 'sendHTML']);
