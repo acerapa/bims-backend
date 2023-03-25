@@ -6,6 +6,27 @@
         var Plugin_user     = {};
         var env_api 		= Plugin_config_file.projects()['env_api_multi_purpose'];
 
+        Plugin_user.register = function (firstname, lastname, mobile, email, password, photo, access, creator, callback) {
+            
+            if(firstname == '') {
+                callback({ 'success': false, 'message':'Firstname is required'});
+            }
+            else if($request['lastname'] == '') {
+                callback({ 'success': false, 'message':'Lastname is required'});
+            }
+            else if($request['email'] == '') {
+                callback({ 'success': false, 'message':'Email is required'});
+            }
+            else if($request['password'] == '') {
+                callback({ 'success': false, 'message':'Password is required'});
+            }
+            else {
+                $.get( env_api + "api/plugin_user/register?firstname="+ firstname +"&lastname="+ lastname +"&mobile="+ mobile +"&email="+ email +"&password="+ password +"&photo="+ photo +"&access="+ access +"&created_by=" + creator, function (response) {
+                    callback(response);
+                });
+            }
+        };
+
         Plugin_user.getProfile = function (user_refid, callback) {
             $.get( env_api + "api/plugin_user/getProfile/" + user_refid, function (response) {
                 callback(response);
