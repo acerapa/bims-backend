@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 /**
  * Switch Environment
  * api/plugin_project_config/setProjectEnv/mcrichtravel.com
+ * api/plugin_project_config/setProjectEnvAuto
  * 
  * Get Git Info
  * api/plugin_project_config/gitInfo
