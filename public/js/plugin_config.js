@@ -44,6 +44,15 @@
                     'fileserver':'https://foxcityph.tech/fileserver/'
                 };
             }
+            else if(hostname == 'flipcard.fun') {
+                return {
+                    'env': 'live',
+                    'domain': 'https://flipcard.fun/',
+                    'env_api': 'https://flipcard.fun/',
+                    'env_api_multi_purpose': 'https://flipcard.fun/dataserver-multi-purpose/version-1/public/',
+                    'fileserver':'https://flipcard.fun/fileserver/'
+                };
+            }
             else {
                 return {
                     'env': 'local',
