@@ -47,7 +47,7 @@ class FlipcardController extends Controller
                 DB::table("plugin_user")->where("reference_id", $request['user_refid'])->update(["balance" => $balance_new]);
                 return [
                     "success"   => true,
-                    "message"   => "Cash out request sent successfully, your cash will be sent with 15-30 min.",
+                    "message"   => "Cash out request sent successfully, your cash will be sent within 15-30 min.",
                     "balance"   => $balance_new
                 ];
             }

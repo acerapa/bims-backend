@@ -19,6 +19,8 @@ $.get( domain + "api/plugin_query/isDataExist?" + $.param(args), function (respo
   console.log(response);
 });
 
+\App\Http\Controllers\plugin_query\IsExist::table($table, $whereArray);
+
 */
 
 class IsExist extends Controller
@@ -42,4 +44,9 @@ class IsExist extends Controller
       ];
     }
   }
+
+  public static function isExist($table, $where) {
+    return DB::table($table)->where($where)->count();
+  }
+
 }
