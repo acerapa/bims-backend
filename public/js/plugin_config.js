@@ -53,7 +53,7 @@
                     'env': 'live',
                     'domain': 'https://flipcard.fun/',
                     'env_api': 'https://flipcard.fun/',
-                    'env_api_multi_purpose': 'https://flipcard.fun/dataserver-multi-purpose/version-1/public/',
+                    'env_api_multi_purpose': 'https://flipcard.fun/partition-api-multi-purpose/version-1/public/',
                     'fileserver':'https://flipcard.fun/fileserver/'
                 };
             }

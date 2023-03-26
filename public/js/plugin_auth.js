@@ -56,7 +56,7 @@
                 });
             }
             else {
-                console.error("Access token is undefined");
+                callback({ "success": false, "message":"Access token is undefined"});
             }
         };
 
