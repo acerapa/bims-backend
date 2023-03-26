@@ -9,10 +9,10 @@
         Plugin_auth.authBasic = function (email, password, callback) {
             const device = window.navigator.userAgent;
             if(email == '') {
-                Swal.fire('Required','Email is required','warning');
+                callback({ "success": false, "message":"Email is required"});
             }
             else if(password == '') {
-                Swal.fire('Required','Password is required','warning');
+                callback({ "success": false, "message":"Password is required"});
             }
             else {
                 $.get( env_api + "api/plugin_email_pass_auth_otp/authBasic?email="+ email +"&password="+ password +"&device=" + device + "&datetime=" + Plugin_datetime.getDateTime(), function (response) {
@@ -22,7 +22,7 @@
                         callback(response);
                     }
                     else {
-                        Swal.fire('Incorrect', response['message'],'warning');
+                        callback(response);
                     }
                 });
             }

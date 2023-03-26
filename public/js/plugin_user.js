@@ -11,13 +11,13 @@
             if(firstname == '') {
                 callback({ 'success': false, 'message':'Firstname is required'});
             }
-            else if($request['lastname'] == '') {
+            else if(lastname == '') {
                 callback({ 'success': false, 'message':'Lastname is required'});
             }
-            else if($request['email'] == '') {
+            else if(email == '') {
                 callback({ 'success': false, 'message':'Email is required'});
             }
-            else if($request['password'] == '') {
+            else if(password == '') {
                 callback({ 'success': false, 'message':'Password is required'});
             }
             else {
