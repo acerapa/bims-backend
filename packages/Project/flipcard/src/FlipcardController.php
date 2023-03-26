@@ -7,7 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
 /**
- * http://127.0.0.1:8000/flipcard/submit?user_refid=2212&card=5&bit=10&prize=567&gold_card=1&gold_guess=3&is_win=1
+ * flipcard/submit?user_refid=2212&card=5&bit=10&prize=567&gold_card=1&gold_guess=3&is_win=1
+ * flipcard/cashout?user_refid=XXXX&amount=100&gcash_number=099
  * 
  * Minimum Withdrawal: 50
  * 
@@ -15,6 +16,50 @@ use Illuminate\Support\Facades\DB;
 
 class FlipcardController extends Controller
 {
+    public static function cashout(Request $request) {
+
+        $hasPending     = DB::table("flipcard_cashout")->where([["user_refid", $request['user_refid']],["status","1"]])->count();
+        $user_profile   = FlipcardController::getUserProfile($request['user_refid']);
+        $balance        = floatval($user_profile[0]->balance);
+        $amount         = floatval($request['amount']);
+
+        if($hasPending > 0) {
+            return [
+                "success" => false,
+                "message"   => "You have pending cash out request, only one pending request are allowed."
+            ];
+        }
+        else if($balance < $amount) {
+            return [
+                "success" => false,
+                "message"   => "Your requested amount exceed from your available balance."
+            ];
+        }
+        else {
+            $balance_new = $balance - $amount;
+            $logged = DB::table("flipcard_cashout")->insert([
+                "user_refid"    => $request['user_refid'],
+                "gcash_number"  => $request['gcash_number'],
+                "amount"        => $request['amount']
+            ]);
+
+            if($logged) {
+                DB::table("plugin_user")->where("reference_id", $request['user_refid'])->update(["balance" => $balance_new]);
+                return [
+                    "success"   => true,
+                    "message"   => "Cash out request sent successfully, your cash will be sent with 15-30 min.",
+                    "balance"   => $balance_new
+                ];
+            }
+            else {
+                return [
+                    "success"   => false,
+                    "message"   => "The system refused your request, please try again later."
+                ];
+            }
+        }
+    }
+
     public static function submit(Request $request) {
 
         $user_profile   = FlipcardController::getUserProfile($request['user_refid']);
