@@ -23,7 +23,13 @@ class FlipcardController extends Controller
         $balance        = floatval($user_profile[0]->balance);
         $amount         = floatval($request['amount']);
 
-        if($hasPending > 0) {
+        if($amount < 50) {
+            return [
+                "success" => false,
+                "message"   => "The minimum cashout amount is 50 pesos, play again to earn more."
+            ];
+        }
+        else if($hasPending > 0) {
             return [
                 "success" => false,
                 "message"   => "You have pending cash out request, only one pending request are allowed."
@@ -86,18 +92,13 @@ class FlipcardController extends Controller
                 ];
             }
 
-            if($is_free == 1) {
+            if(($is_free == 1) && ($balance >= 100)) {
                 /**
                  * Rules:
                  * 1: if balance is greater than 150, loss
                  * 2: 
                  */
-                if($balance >= 100) {
-                    $game_win   = 0;
-                }
-                else {
-                    $game_win   = rand(0,1);
-                }
+                $game_win   = 0;
             }
             else {
                 /**
@@ -105,7 +106,7 @@ class FlipcardController extends Controller
                  * 1: if balance is greater than 300, loss
                  * 2: 
                  */
-                if($balance > 300) {
+                if(($balance > 300) || (floatval($request['bit']) > 30)) {
                     $game_win   = 0;
                 }
                 else {

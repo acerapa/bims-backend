@@ -19,7 +19,7 @@ $.get( domain + "api/plugin_query/isDataExist?" + $.param(args), function (respo
   console.log(response);
 });
 
-\App\Http\Controllers\plugin_query\IsExist::table($table, $whereArray);
+\App\Http\Controllers\plugin_query\IsExist::isExist($table, $whereArray);
 
 */
 
