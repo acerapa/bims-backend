@@ -12,6 +12,12 @@
 	        return value;
 		};
 
+		Plugin_URL.getPageName = function () {
+			var path = window.location.pathname;
+			var page = path.split("/").pop();
+			return page;
+		};
+
         return Plugin_URL;
 	};
 

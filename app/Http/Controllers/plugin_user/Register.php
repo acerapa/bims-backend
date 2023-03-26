@@ -14,9 +14,16 @@ class Register extends Controller
 {
     public static function register(Request $request) {
 
-        $reference_id = Register::reference_id();
+        $reference_id       = Register::reference_id();
+        $isExist_email      = \App\Http\Controllers\plugin_query\IsExist::table("plugin_user", [["reference_id","=",$request['email']]]);
 
-        if($request['firstname'] == '') {
+        if($isExist_email > 0) {
+            return [
+                "success"   => false,
+                "message"   => "Email already in use, please use other email"
+            ];
+        }
+        else if($request['firstname'] == '') {
             return [
                 "success"   => false,
                 "message"   => "Firstname is required"

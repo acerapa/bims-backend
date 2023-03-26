@@ -6,6 +6,10 @@
         var Plugin_config_file  = {};
 		var env_api 		    = window.location.origin + '/partition-api/v1/public/';
 
+        Plugin_config_file.assetsJS = function () {
+            //Automatically add the js file to project mete data
+        };
+
         Plugin_config_file.projects = function () {
             const hostname = window.location.hostname;
             if((hostname == 'localhost') || (hostname == '127.0.0.1')) {
@@ -49,7 +53,7 @@
                     'env': 'live',
                     'domain': 'https://flipcard.fun/',
                     'env_api': 'https://flipcard.fun/',
-                    'env_api_multi_purpose': 'https://flipcard.fun/dataserver-multi-purpose/version-1/public/',
+                    'env_api_multi_purpose': 'https://flipcard.fun/partition-api-multi-purpose/version-1/public/',
                     'fileserver':'https://flipcard.fun/fileserver/'
                 };
             }
