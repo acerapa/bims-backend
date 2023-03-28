@@ -26,7 +26,7 @@
 
 		Plugin_review.sortByDropdown = function (elem) {
 			const sort = [
-				{ code: 'recomended', label: 'Recomended'},
+				{ code: 'recomended', label: 'Recommended'},
 				{ code: 'most_recent', label: 'Most recent'},
 				{ code: 'oldest', label: 'Oldest'},
 				{ code: 'highest_rated', label: 'Highest rated'},
