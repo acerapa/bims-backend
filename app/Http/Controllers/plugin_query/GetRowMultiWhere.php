@@ -42,4 +42,23 @@ class GetRowMultiWhere extends Controller
       ->get();
     }
   }
+
+  public static function getWhereIn(Request $request) {
+    if($request['getClm'] == "all") {
+      return DB::table($request['table'])
+      ->where($request['where'])
+      ->whereIn($request['whereIn'])
+      ->orderBy($request['orderByClm'], $request['orderBySort'])
+      ->get();
+    }
+    else {
+      $column_list =  explode(',', $request['getClm']);
+      return DB::table($request['table'])
+      ->select($column_list)
+      ->where($request['where'])
+      ->whereIn($request['whereIn'])
+      ->orderBy($request['orderByClm'], $request['orderBySort'])
+      ->get();
+    }
+  }
 }

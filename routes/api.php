@@ -103,6 +103,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('isDataExist', [\App\Http\Controllers\plugin_query\IsExist::class, 'exist']);
     Route::get('insertGetId', [\App\Http\Controllers\plugin_query\Create::class, 'insertGetId']);
     Route::get('getRowPaginate', [\App\Http\Controllers\plugin_query\GetRowPaginate::class, 'get']);
+    Route::get('getRowPaginateWhereIn', [\App\Http\Controllers\plugin_query\GetRowPaginate::class, 'getWhereIn']);
     Route::get('getRowBasic/{table}/{getColumn}/{whereColumn}/{whereValue}', [\App\Http\Controllers\plugin_query\GetRowBasic::class, 'get']);
     Route::get('getRowMultiWhere', [\App\Http\Controllers\plugin_query\GetRowMultiWhere::class, 'get']);
     Route::get('getJoinTwoTablePaginate', [\App\Http\Controllers\plugin_query\GetJoinTwoTablePaginate::class, 'get']);

@@ -84,6 +84,22 @@
 			});
 		};
 
+		Plugin_query.getRecordPaginateWhereIn = function (table, getClm, where, whereIn, orderByClm, orderBySort, numOfRow, page, callback) {
+
+			var args 	= { table: table, getClm: getClm, where: where, whereIn: whereIn, orderByClm: orderByClm, orderBySort: orderBySort, numOfRow: numOfRow, page: page };
+			var uri 	= env_api + "api/plugin_query/getRowPaginateWhereIn?" + $.param(args);
+
+			if(Plugin_config_file.projects()['env'] == 'local') {
+				console.log("Request to:");
+				console.log(uri);
+				console.log(args);
+			}
+			  
+			$.get( uri, function (response) {
+				callback(response);
+			});
+		};
+
 		Plugin_query.getRecordBasicJoinTable = function (table_pri, table_sec, join_pri, join_sec, getClmArray, whereArray, orderbyClm, orderbySort, page, rowPerPage, callback) {
 			
 			var args 	= { table_pri: table_pri, table_sec: table_sec, join_pri: join_pri, join_sec: join_sec, getClm: getClmArray, where: whereArray, orderbyClm: orderbyClm, orderbySort: orderbySort, page: page, rowPerPage: rowPerPage }
