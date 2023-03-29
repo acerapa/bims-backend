@@ -22,8 +22,15 @@ class FlipcardController extends Controller
         $user_profile   = FlipcardController::getUserProfile($request['user_refid']);
         $balance        = floatval($user_profile[0]->balance);
         $amount         = floatval($request['amount']);
+        $isVerified     = $user_profile[0]->is_email_verified;
 
-        if($amount < 50) {
+        if($isVerified == 0) {
+            return [
+                "success" => false,
+                "message"   => "Please verify your email to cash out, we sent a verification email during account registration. Please check your email."
+            ];
+        }
+        else if($amount < 50) {
             return [
                 "success" => false,
                 "message"   => "The minimum cashout amount is 50 pesos, play again to earn more."
@@ -143,8 +150,6 @@ class FlipcardController extends Controller
 
         $total_bit_update = $total_bit_amount + intval($request['prize']);
         
-            
-
         $logged = DB::table("flipcard_game")->insert([
             "user_refid"    => $request['user_refid'],
             "card"          => $request['card'],
@@ -186,7 +191,7 @@ class FlipcardController extends Controller
 
     public static function getUserProfile($user_refid) {
         return DB::table("plugin_user")
-        ->select("firstname","lastname","email","balance","is_free","total_bit_amount","total_top_up","total_game")
+        ->select("firstname","lastname","email","balance","is_free","total_bit_amount","total_top_up","total_game","is_email_verified")
         ->where("reference_id", $user_refid)
         ->get();
     }
