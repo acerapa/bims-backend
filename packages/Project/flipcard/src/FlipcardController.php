@@ -96,7 +96,6 @@ class FlipcardController extends Controller
                 /**
                  * Rules:
                  * 1: if balance is greater than 150, loss
-                 * 2: 
                  */
                 $game_win   = 0;
             }
@@ -104,7 +103,6 @@ class FlipcardController extends Controller
                 /**
                  * Rules:
                  * 1: if balance is greater than 300, loss
-                 * 2: 
                  */
                 if(($balance > 300) || (floatval($request['bit']) > 30)) {
                     $game_win   = 0;
