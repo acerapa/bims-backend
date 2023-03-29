@@ -56,7 +56,7 @@ class Environment extends Controller
             Environment::setKeyValue("MAIL_PASSWORD", "MC_1231rich");
             Environment::setKeyValue("MAIL_ENCRYPTION", "tls");
             Environment::setKeyValue("MAIL_FROM_ADDRESS", "operator@mcrichtravel.com");
-            Environment::setKeyValue("MAIL_FROM_NAME", "Mcrich Operator");
+            Environment::setKeyValue("MAIL_FROM_NAME", "Mcrich_Operator_Official");
 
         }
         else if($hostname == "deanleifproperties.com") {
@@ -69,14 +69,14 @@ class Environment extends Controller
             Environment::setKeyValue("MAIL_MAILER", "smtp");
             Environment::setKeyValue("MAIL_HOST", "smtp.hostinger.com");
             Environment::setKeyValue("MAIL_PORT", "465");
-            Environment::setKeyValue("MAIL_USERNAME", "");
-            Environment::setKeyValue("MAIL_PASSWORD", "");
+            Environment::setKeyValue("MAIL_USERNAME", "NO_VALUE");
+            Environment::setKeyValue("MAIL_PASSWORD", "NO_VALUE");
             Environment::setKeyValue("MAIL_ENCRYPTION", "tls");
-            Environment::setKeyValue("MAIL_FROM_ADDRESS", "");
-            Environment::setKeyValue("MAIL_FROM_NAME", "");
+            Environment::setKeyValue("MAIL_FROM_ADDRESS", "NO_VALUE");
+            Environment::setKeyValue("MAIL_FROM_NAME", "NO_VALUE");
 
         }
-        else if($hostname == "foxcityph.com") {
+        else if($hostname == "foxcityph.tech") {
 
             Environment::setKeyValue("DB_CONNECTION", "mysql");
             Environment::setKeyValue("DB_HOST", "185.201.9.191");
@@ -87,11 +87,11 @@ class Environment extends Controller
             Environment::setKeyValue("MAIL_MAILER", "smtp");
             Environment::setKeyValue("MAIL_HOST", "smtp.hostinger.com");
             Environment::setKeyValue("MAIL_PORT", "465");
-            Environment::setKeyValue("MAIL_USERNAME", "");
-            Environment::setKeyValue("MAIL_PASSWORD", "");
+            Environment::setKeyValue("MAIL_USERNAME", "NO_VALUE");
+            Environment::setKeyValue("MAIL_PASSWORD", "NO_VALUE");
             Environment::setKeyValue("MAIL_ENCRYPTION", "tls");
-            Environment::setKeyValue("MAIL_FROM_ADDRESS", "");
-            Environment::setKeyValue("MAIL_FROM_NAME", "");
+            Environment::setKeyValue("MAIL_FROM_ADDRESS", "NO_VALUE");
+            Environment::setKeyValue("MAIL_FROM_NAME", "NO_VALUE");
         }
         else if($hostname == "flipcard.fun") {
 
@@ -104,11 +104,11 @@ class Environment extends Controller
             Environment::setKeyValue("MAIL_MAILER", "smtp");
             Environment::setKeyValue("MAIL_HOST", "smtp.hostinger.com");
             Environment::setKeyValue("MAIL_PORT", "465");
-            Environment::setKeyValue("MAIL_USERNAME", "");
-            Environment::setKeyValue("MAIL_PASSWORD", "");
+            Environment::setKeyValue("MAIL_USERNAME", "inquiry@flipcard.fun");
+            Environment::setKeyValue("MAIL_PASSWORD", "JazzRylle_161710");
             Environment::setKeyValue("MAIL_ENCRYPTION", "tls");
-            Environment::setKeyValue("MAIL_FROM_ADDRESS", "");
-            Environment::setKeyValue("MAIL_FROM_NAME", "");
+            Environment::setKeyValue("MAIL_FROM_ADDRESS", "inquiry@flipcard.fun");
+            Environment::setKeyValue("MAIL_FROM_NAME", "Flipcard_Official");
         }
         else {
             Environment::setKeyValue("DB_CONNECTION", "mysql");
@@ -120,11 +120,11 @@ class Environment extends Controller
             Environment::setKeyValue("MAIL_MAILER", "smtp");
             Environment::setKeyValue("MAIL_HOST", "smtp.hostinger.com");
             Environment::setKeyValue("MAIL_PORT", "465");
-            Environment::setKeyValue("MAIL_USERNAME", "");
-            Environment::setKeyValue("MAIL_PASSWORD", "");
+            Environment::setKeyValue("MAIL_USERNAME", "NO_VALUE");
+            Environment::setKeyValue("MAIL_PASSWORD", "NO_VALUE");
             Environment::setKeyValue("MAIL_ENCRYPTION", "tls");
-            Environment::setKeyValue("MAIL_FROM_ADDRESS", "");
-            Environment::setKeyValue("MAIL_FROM_NAME", "");
+            Environment::setKeyValue("MAIL_FROM_ADDRESS", "NO_VALUE");
+            Environment::setKeyValue("MAIL_FROM_NAME", "NO_VALUE");
         }
     }
 
