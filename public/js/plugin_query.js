@@ -84,9 +84,9 @@
 			});
 		};
 
-		Plugin_query.getRecordPaginateWhereIn = function (table, getClm, where, whereIn, orderByClm, orderBySort, numOfRow, page, callback) {
+		Plugin_query.getRecordPaginateWhereIn = function (table, getClm, where, whereInColumn, whereInArray, orderByClm, orderBySort, numOfRow, page, callback) {
 
-			var args 	= { table: table, getClm: getClm, where: where, whereIn: whereIn, orderByClm: orderByClm, orderBySort: orderBySort, numOfRow: numOfRow, page: page };
+			var args 	= { table: table, getClm: getClm, where: where, whereInColumn: whereInColumn, whereInArray:whereInArray, orderByClm: orderByClm, orderBySort: orderBySort, numOfRow: numOfRow, page: page };
 			var uri 	= env_api + "api/plugin_query/getRowPaginateWhereIn?" + $.param(args);
 
 			if(Plugin_config_file.projects()['env'] == 'local') {

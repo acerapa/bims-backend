@@ -15,7 +15,12 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'flipcard/*', 'sanctum/csrf-cookie'],
+    'paths' => [
+        'api/*', 
+        'flipcard/*',
+        'deanlief/*',
+        'sanctum/csrf-cookie'
+    ],
 
     'allowed_methods' => ['*'],
 
