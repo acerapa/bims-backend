@@ -25,8 +25,7 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "Project\\Flipcard\\": "packages/Project/flipcard/src",
-            "Project\\Deanlief\\": "packages/Project/deanlief/src"
+            "Project\\Flipcard\\": "packages/Project/flipcard/src"
         }
     },
     "autoload-dev": {
