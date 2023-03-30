@@ -1,0 +1,11 @@
+{
+    "name": "project/flipcard",
+    "description": "Custome methods for Filpcard Project",
+    "authors": [
+        {
+            "name": "Jason Lipreso",
+            "email": "56417714+jasonlipreso@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
