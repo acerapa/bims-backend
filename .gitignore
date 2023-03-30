@@ -22,5 +22,8 @@ Homestead.json
 .phpunit.result.cache
 .env
 
+#git rm --cached -r folder_parent/folder_child
+#git add .
 app/Http/Controllers/deanlief_delete_listing
 app/Http/Controllers/deanlief_search_listing
+packages/Project/
