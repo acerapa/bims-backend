@@ -195,6 +195,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Project\Flipcard\FlipcardServiceProvider::class,
+        Project\Deanlief\DeanliefServiceProvider::class,
 
     ],
 
