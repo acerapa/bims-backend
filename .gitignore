@@ -21,6 +21,3 @@ Homestead.json
 /.vagrant
 .phpunit.result.cache
 .env
-
-app/Http/Controllers/deanlief_delete_listing
-app/Http/Controllers/deanlief_search_listing
