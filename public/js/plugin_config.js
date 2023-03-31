@@ -34,8 +34,8 @@
                 return {
                     'env': 'live',
                     'domain': 'https://deanleifproperties.com/',
-                    'env_api': 'https://deanleifproperties.com/partition-api-multi-purpose/version-1/public/',
-                    'env_api_multi_purpose': 'https://deanleifproperties.com/partition-api-multi-purpose/version-1/public/',
+                    'env_api': 'https://deanleifproperties.com/partition-api-multi-purpose/version-2/public/',
+                    'env_api_multi_purpose': 'https://deanleifproperties.com/partition-api-multi-purpose/version-2/public/',
                     'fileserver':'https://deanleifproperties.com/partition-file'
                 };
             }

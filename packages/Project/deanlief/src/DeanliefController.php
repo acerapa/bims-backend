@@ -182,6 +182,10 @@ class DeanliefController extends Controller
                     "enabled"       => true
                 ],
                 "BRKR"         => [
+                    "label"         => "Real Estate Broker",
+                    "enabled"       => true
+                ],
+                "BRAG"         => [
                     "label"         => "Real Estate Agent",
                     "enabled"       => true
                 ],
