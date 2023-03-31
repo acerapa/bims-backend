@@ -27,7 +27,8 @@
             "Database\\Seeders\\": "database/seeders/",
             "Project\\Flipcard\\": "packages/Project/flipcard/src",
             "Project\\Deanlief\\": "packages/Project/deanlief/src",
-            "Project\\CIMS\\": "packages/Project/cims/src"
+            "Project\\CIMS\\": "packages/Project/cims/src",
+            "Project\\ExploriaTravel\\": "packages/Project/exploriatravel/src"
         }
     },
     "autoload-dev": {
