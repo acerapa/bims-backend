@@ -1,0 +1,4 @@
+
+1. Manage product details
+2. Manage product photos
+3. Manage product cart

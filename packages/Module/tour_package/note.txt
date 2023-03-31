@@ -1,0 +1,5 @@
+
+1. Back-end and UI of tour
+2. Manage details
+3. Manage photos
+4. Manage booking
