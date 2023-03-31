@@ -1,0 +1,10 @@
+{
+    "name": "project/cims",
+    "authors": [
+        {
+            "name": "Jason Lipreso",
+            "email": "56417714+jasonlipreso@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}

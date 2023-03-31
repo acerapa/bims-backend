@@ -196,6 +196,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Project\Flipcard\FlipcardServiceProvider::class,
         Project\Deanlief\DeanliefServiceProvider::class,
+        Project\CIMS\CIMSServiceProvider::class,
 
     ],
 
