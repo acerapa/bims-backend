@@ -15,7 +15,7 @@ class Register extends Controller
     public static function register(Request $request) {
 
         $reference_id       = Register::reference_id();
-        $isExist_email      = \App\Http\Controllers\plugin_query\IsExist::isExist("plugin_user", [["reference_id","=",$request['email']]]);
+        $isExist_email      = \App\Http\Controllers\plugin_query\IsExist::isExist("plugin_user", [["email","=",$request['email']]]);
 
         if($isExist_email > 0) {
             return [
