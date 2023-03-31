@@ -197,6 +197,7 @@ return [
         Project\Flipcard\FlipcardServiceProvider::class,
         Project\Deanlief\DeanliefServiceProvider::class,
         Project\CIMS\CIMSServiceProvider::class,
+        Project\ExploriaTravel\ExploriaTravelServiceProvider::class,
 
     ],
 

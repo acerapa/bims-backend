@@ -19,6 +19,8 @@ return [
         'api/*', 
         'flipcard/*',
         'deanlief/*',
+        'cims/*',
+        'exploriatravel/*',
         'sanctum/csrf-cookie'
     ],
 
