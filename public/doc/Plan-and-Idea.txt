@@ -1,6 +1,8 @@
 
 
-Project based JS Library
+
+
+1. Project based JS Library
 
 Method Naming:
     SQL_ACTION.TABLE_NAME_OTHER(parameters) {}
@@ -10,5 +12,10 @@ Method Naming:
         Get.user(firstname, lastname, email, mobile) {}
         Edit.user(firstname, lastname, email, mobile) {}
         Delete.user(firstname, lastname, email, mobile) {}
+
+
+2. Create a model view for database table to UI table
+3. Table column editor - Allow direct edit from table
+4. 
 
 
