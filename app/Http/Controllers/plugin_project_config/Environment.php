@@ -112,6 +112,22 @@ class Environment extends Controller
             Environment::setKeyValue("MAIL_FROM_ADDRESS", "inquiry@flipcard.fun");
             Environment::setKeyValue("MAIL_FROM_NAME", "Flipcard_Official");
         }
+        else if($hostname == "cims.com") {
+            Environment::setKeyValue("DB_CONNECTION", "mysql");
+            Environment::setKeyValue("DB_HOST", "45.130.228.154");
+            Environment::setKeyValue("DB_PORT", "3306");
+            Environment::setKeyValue("DB_DATABASE", "u200905711_cims");
+            Environment::setKeyValue("DB_USERNAME", "u200905711_cims");
+            Environment::setKeyValue("DB_PASSWORD", "NSbWzt>Q5t");
+            Environment::setKeyValue("MAIL_MAILER", "smtp");
+            Environment::setKeyValue("MAIL_HOST", "smtp.hostinger.com");
+            Environment::setKeyValue("MAIL_PORT", "465");
+            Environment::setKeyValue("MAIL_USERNAME", "NO_VALUE");
+            Environment::setKeyValue("MAIL_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("MAIL_ENCRYPTION", "tls");
+            Environment::setKeyValue("MAIL_FROM_ADDRESS", "NO_VALUE");
+            Environment::setKeyValue("MAIL_FROM_NAME", "NO_VALUE");
+        }
         else {
             Environment::setKeyValue("DB_CONNECTION", "mysql");
             Environment::setKeyValue("DB_HOST", "45.130.228.154");
