@@ -16,7 +16,7 @@ class GetFilteredReview extends Controller
     public static function get(Request $request) {
         $sort_by = $request['sort_by'];
 
-        if($sort_by == 'recomended') {
+        if($sort_by == 'recommended') {
             return DB::table("plugin_review")
             ->where([
                 ["tag_primary", $request['tag_primary']],
@@ -27,13 +27,13 @@ class GetFilteredReview extends Controller
         else if($sort_by == 'most_recent') {
             return DB::table("plugin_review")
             ->where("tag_primary", $request['tag_primary'])
-            ->orderBy("dataid","desc")
+            ->orderBy("created_at","desc")
             ->paginate(10);
         }
         else if($sort_by == 'oldest') {
             return DB::table("plugin_review")
             ->where("tag_primary", $request['tag_primary'])
-            ->orderBy("dataid","asc")
+            ->orderBy("created_at","asc")
             ->paginate(10);
         }
         else if($sort_by == 'highest_rated') {
@@ -51,6 +51,7 @@ class GetFilteredReview extends Controller
         else {
             return DB::table("plugin_review")
             ->where("tag_primary", $request['tag_primary '])
+            ->orderBy("dataid","desc")
             ->paginate(10);
         }
     }

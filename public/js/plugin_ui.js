@@ -4,6 +4,29 @@
 	function PluginUI() {
         var Plugin_ui   = {};
 
+        Plugin_ui.populateTable = function (elem_tbl, data, callback) {
+            /**
+             * elem_tbl: class or id of the table
+             * data: paginate data from db table
+             * 
+             * set <table> setting example
+             * <table data-table="users">
+             * 
+             * 
+             * set <th> value which column will display example
+             * <th data-column='numbering' data-editable="0"> Calculated in JS
+             * <th data-column='firstname' data-editable="0"> display firstname column
+             * <th data-column='lastname' data-editable="1"> display lastname column & editable
+             * 
+             * set <tr> dataid
+             * set <tr data-id="56"> dataid to identify row id
+             * 
+             * set <td> column name and value for reference
+             * <td data-column-name="fname" data-column-value="Jason">
+             * 
+             */
+        };
+
         Plugin_ui.populateDropdown = function (elem, options, defaultVal) {
             $(elem).html('');
             $(elem).append(`<option value='0'>Select</option>`);
