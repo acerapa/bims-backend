@@ -26,7 +26,7 @@
                     'env': 'live',
                     'domain': 'https://mcrichtravel.com/',
                     'env_api': 'https://mcrichtravel.com/partition-api/v2/public/',
-                    'env_api_multi_purpose': 'https://mcrichtravel.com/partition-api-multi-purpose/version-3/public/',
+                    'env_api_multi_purpose': 'https://mcrichtravel.com/partition-api-multi-purpose/version-5/public/',
                     'fileserver':'https://mcrichtravel.com/partition-file/'
                 };
             }

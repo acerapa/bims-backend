@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
  * Get Git Info
  * api/plugin_project_config/gitInfo
  * 
+ * \App\Http\Controllers\plugin_project_config\setProjectEnv($hostname)
+ * 
  * 
  */
 
