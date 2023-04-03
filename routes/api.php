@@ -109,6 +109,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('getJoinTwoTablePaginate', [\App\Http\Controllers\plugin_query\GetJoinTwoTablePaginate::class, 'get']);
     Route::get('editMultiple', [\App\Http\Controllers\plugin_query\Edit::class, 'editMultiple']);
     Route::get('deletePermanent', [\App\Http\Controllers\plugin_query\Delete::class, 'deletePermanent']);
+    Route::get('deleteWithPassword', [\App\Http\Controllers\plugin_query\Delete::class, 'deleteWithPassword']);
     Route::get('getTableSchema/{table}', [\App\Http\Controllers\plugin_query\Scheme::class, 'getTableSchema']);
     Route::get('count', [\App\Http\Controllers\plugin_query\Count::class, 'count']);
     Route::get('sum', [\App\Http\Controllers\plugin_query\Sum::class, 'sum']);

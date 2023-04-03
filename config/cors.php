@@ -16,7 +16,7 @@ return [
     */
 
     'paths' => [
-        'api/*', 
+        'api/*',
         'flipcard/*',
         'deanlief/*',
         'cims/*',
