@@ -6,8 +6,41 @@
         var Plugin_config_file  = {};
 		var env_api 		    = window.location.origin + '/partition-api/v1/public/';
 
-        Plugin_config_file.assetsJS = function () {
-            //Automatically add the js file to project mete data
+        Plugin_config_file.attachAssets = function () {
+            const plugin_list = [
+                { name: 'plugin_auth.js', add: true },
+                { name: 'plugin_blog.js', add: true },
+                { name: 'plugin_currency.js', add: true },
+                { name: 'plugin_datetime.js', add: true },
+                { name: 'plugin_geo.js', add: true },
+                { name: 'plugin_inquiry_web_form.js', add: true },
+                { name: 'plugin_inquiry.js', add: true },
+                { name: 'plugin_json_data.js', add: true },
+                { name: 'plugin_localstorage_with_expiry.js', add: true },
+                { name: 'plugin_mailer.js', add: true },
+                { name: 'plugin_photos.js', add: true },
+                { name: 'plugin_query.js', add: true },
+                { name: 'plugin_reference_id.js', add: true },
+                { name: 'plugin_review.js', add: true },
+                { name: 'plugin_ui.js', add: true },
+                { name: 'plugin_url.js', add: true },
+                { name: 'plugin_user.js', add: true },
+                { name: 'plugin_util_object_array.js', add: true },
+                { name: 'plugin_validator.js', add: true }
+            ];
+
+            var plugin_src = env_api;
+
+            if(window.location.hostname == 'localhost') {
+                plugin_src = "http://127.0.0.1:8000/";
+            }
+
+            for(let i = 0; i < plugin_list.length; i++) {
+                var script = document.createElement("script");
+                script.src = plugin_src + 'js/' + plugin_list[i]['name'];
+                document.head.appendChild(script);
+            }
+
         };
 
         Plugin_config_file.projects = function () {
@@ -88,3 +121,7 @@
 		window.Plugin_config_file = PluginConfigFile();
 	}
 }) (window);
+
+
+Plugin_config_file.attachAssets();
+
