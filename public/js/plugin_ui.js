@@ -50,15 +50,17 @@
             }
         };
 
-        Plugin_ui.editModalDataWithoutPassword = function(text) {
+        Plugin_ui.editModalDataText = function(table, whereClm, whereVal, clmToUpdate, description, oldValue, placeholder, callbackShowLoading, callbackHideLoading, callbackReturn) {
+        
             Swal.fire({
                 title: "Editor",
-                text: text,
+                text: description,
                 input: 'text',
+                inputValue: oldValue,
                 inputAttributes: {
                     autocapitalize: 'off',
                     autocomplete: 'off',
-                    placeholder: 'Enter your password to delete'
+                    placeholder: placeholder
                 },
                 showCancelButton: true,
                 confirmButtonText: 'Delete',
@@ -66,11 +68,17 @@
             .then((result) => {
                 if (result.isConfirmed) {
                     if(result.value == '') {
-                        console.log("Update to:", result.value);
-                        //callbackReturn({ success: false, message: 'Changing with empty value is not allowed'});
+                        callbackReturn({ success: false, message: 'Changing with empty value is not allowed'});
                     }
                     else {
-                        console.log("Update to:", result.value);
+
+			            var uri 	= env_api + "api/plugin_query/editSingle?table="+ table +"&whereClm="+ whereClm +"&whereVal="+ whereVal +"&column=" + clmToUpdate + "&value=" + result.value;
+
+                        callbackShowLoading();
+                        $.get( uri, function (response) {
+                            callbackHideLoading();
+                            callbackReturn(response);
+                        });
                     }
                 }
             });
