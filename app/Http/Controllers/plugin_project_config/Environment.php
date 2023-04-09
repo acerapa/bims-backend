@@ -141,8 +141,6 @@ class Environment extends Controller
             Environment::setKeyValue("GOOGLE_PROJECT_ID", "cims-382710");
             Environment::setKeyValue("GOOGLE_MAP_API_KEY", "AIzaSyCBarUcMUAi3XsZ9j7XO415Gnn1o4fA5y0");
 
-
-
         }
         else {
 
