@@ -6,11 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-/**
- * api/plugin_chatbox/create_user?
- * 
- */
-
 class User extends Controller
 {
     public static function create(Request $request) {

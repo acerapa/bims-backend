@@ -20,6 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
   Route::group(['prefix' => 'plugin_chatbox'], function () {
     Route::get('create_user', [\App\Http\Controllers\plugin_chatbox\User::class, 'create']);
+    Route::get('create_convo', [\App\Http\Controllers\plugin_chatbox\Convo::class, 'create']);
+    Route::get('member_recepient', [\App\Http\Controllers\plugin_chatbox\Convo::class, 'addMemberRecepient']);
+    Route::get('sendText', [\App\Http\Controllers\plugin_chatbox\MessageSend::class, 'sendText']);
   });
 
   Route::group(['prefix' => 'plugin_project_config'], function () {
