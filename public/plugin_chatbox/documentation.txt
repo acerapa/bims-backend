@@ -1,0 +1,7 @@
+
+
+
+# NEW USER
+- Get details, name, email and mobile
+- Create convo
+- Tag target recepient

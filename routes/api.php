@@ -18,6 +18,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+  Route::group(['prefix' => 'plugin_chatbox'], function () {
+    Route::get('create_user', [\App\Http\Controllers\plugin_chatbox\User::class, 'create']);
+  });
+
   Route::group(['prefix' => 'plugin_project_config'], function () {
     Route::get('setProjectEnv/{hostname}', [\App\Http\Controllers\plugin_project_config\Environment::class, 'setProjectEnv']);
     Route::get('setProjectEnvAuto', [\App\Http\Controllers\plugin_project_config\Environment::class, 'setProjectEnvAuto']);
