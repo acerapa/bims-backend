@@ -6,46 +6,6 @@
         var Plugin_config_file  = {};
 		var env_api 		    = window.location.origin + '/partition-api/v1/public/';
 
-        Plugin_config_file.attachAssets = function () {
-            const plugin_list = [
-                { name: 'plugin_auth', add: true },
-                { name: 'plugin_blog', add: true },
-                { name: 'plugin_faq', add: true },
-                { name: 'plugin_currency', add: true },
-                { name: 'plugin_datetime', add: true },
-                { name: 'plugin_geo', add: true },
-                { name: 'plugin_inquiry_web_form', add: true },
-                { name: 'plugin_inquiry', add: true },
-                { name: 'plugin_json_data', add: true },
-                { name: 'plugin_localstorage_with_expiry', add: true },
-                { name: 'plugin_mailer', add: true },
-                { name: 'plugin_photos', add: true },
-                { name: 'plugin_query', add: true },
-                { name: 'plugin_reference_id', add: true },
-                { name: 'plugin_review', add: true },
-                { name: 'plugin_ui', add: true },
-                { name: 'plugin_url', add: true },
-                { name: 'plugin_user', add: true },
-                { name: 'plugin_util_object_array', add: true },
-                { name: 'plugin_validator', add: true }
-            ];
-
-            var plugin_src = env_api;
-
-            if(window.location.hostname == 'localhost') {
-                plugin_src = "http://127.0.0.1:8000/";
-            }
-
-            for(let i = 0; i < plugin_list.length; i++) {
-                if(plugin_list[i]['add']) {
-                    var script = document.createElement("script");
-                    script.src = plugin_src + 'js/' + plugin_list[i]['name'] + ".js";
-                    document.head.appendChild(script);
-                }
-            }
-
-        };
-
         Plugin_config_file.projects = function () {
             const hostname = window.location.hostname;
             if((hostname == 'localhost') || (hostname == '127.0.0.1')) {
@@ -126,5 +86,4 @@
 }) (window);
 
 
-Plugin_config_file.attachAssets();
 

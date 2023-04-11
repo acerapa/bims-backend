@@ -50,12 +50,12 @@
             }
         };
 
-        Plugin_ui.editModalDataText = function(table, whereClm, whereVal, clmToUpdate, description, oldValue, placeholder, callbackShowLoading, callbackHideLoading, callbackReturn) {
+        Plugin_ui.editModalDataTextArea = function(table, whereClm, whereVal, clmToUpdate, description, oldValue, placeholder, callbackShowLoading, callbackHideLoading, callbackReturn) {
         
             Swal.fire({
                 title: "Editor",
                 text: description,
-                input: 'text',
+                input: 'textarea',
                 inputValue: oldValue,
                 inputAttributes: {
                     autocapitalize: 'off',
@@ -63,7 +63,7 @@
                     placeholder: placeholder
                 },
                 showCancelButton: true,
-                confirmButtonText: 'Delete',
+                confirmButtonText: 'OK',
             })
             .then((result) => {
                 if (result.isConfirmed) {
@@ -82,10 +82,61 @@
                     }
                 }
             });
-        },
+        };
 
-        Plugin_ui.deleteModalWithoutPassword = function (title, text, table, whereArray, user_refid, callbackShowLoading, callbackHideLoading, callbackReturn) {
-            /** Need to update when use */
+        Plugin_ui.editModalDataText = function(table, whereClm, whereVal, clmToUpdate, description, oldValue, placeholder, callbackShowLoading, callbackHideLoading, callbackReturn) {
+        
+            Swal.fire({
+                title: "Editor",
+                text: description,
+                input: 'text',
+                inputValue: oldValue,
+                inputAttributes: {
+                    autocapitalize: 'off',
+                    autocomplete: 'off',
+                    placeholder: placeholder
+                },
+                showCancelButton: true,
+                confirmButtonText: 'OK',
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    if(result.value == '') {
+                        callbackReturn({ success: false, message: 'Changing with empty value is not allowed'});
+                    }
+                    else {
+
+			            var uri 	= env_api + "api/plugin_query/editSingle?table="+ table +"&whereClm="+ whereClm +"&whereVal="+ whereVal +"&column=" + clmToUpdate + "&value=" + result.value;
+
+                        callbackShowLoading();
+                        $.get( uri, function (response) {
+                            callbackHideLoading();
+                            callbackReturn(response);
+                        });
+                    }
+                }
+            });
+        };
+
+        Plugin_ui.deleteModalWithoutPassword = function (title, text, table, whereArray, callbackShowLoading, callbackHideLoading, callbackReturn) {
+            Swal.fire({
+                title: title,
+                text: text,
+                showCancelButton: true,
+                confirmButtonText: 'Delete'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var args = {
+                        table: table,
+                        where: whereArray
+                    };
+                    callbackShowLoading();
+                    $.get( env_api + "api/plugin_query/deletePermanent?" + $.param(args), function (response) {
+                        callbackHideLoading();
+                        callbackReturn(response);
+                    });
+                }
+            })
         };
 
         Plugin_ui.deleteModalWithPassword = function (title, text, table, whereArray, user_refid, callbackShowLoading, callbackHideLoading, callbackReturn) {

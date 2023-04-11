@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\DB;
 class FAQ extends Controller
 {
     public static function get(Request $request) {
-        return DB::table("plugin_faq")->select("reference_id","question","answer")->get();
+        return DB::table("plugin_faq")->select("dataid","reference_id","question","answer")->get();
     }
 }
