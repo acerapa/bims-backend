@@ -24,10 +24,42 @@ var args = {
 		console.log(response);
 	});
 
+
+  var args = {
+    table: 'user_login',
+    where: where,
+    column: 'name',
+    value: ''
+  };
+
+  $.get( domain + "api/plugin_query/editSingle?" + $.param(args), function (response) {
+		console.log(response);
+	});
+
 */
 
 class Edit extends Controller
 {
+  public static function editSingle(Request $request) {
+    $updated = DB::table($request["table"])
+    ->where($request["whereClm"], $request['whereVal'])
+    ->update([
+      $request['column'] => $request['value']
+    ]);
+    if($updated) {
+      return [
+        "success" => true,
+        "message" => "Successfully updated"
+      ];
+    }
+    else {
+      return [
+        "success" => false,
+        "message" => "Fail to update, please try again later."
+      ];
+    }
+  }
+
   public static function editMultiple(Request $request) {
 
     $editColumn         = $request['update'];

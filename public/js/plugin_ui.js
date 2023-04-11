@@ -2,30 +2,9 @@
 (function (window) {
 	'use strict'
 	function PluginUI() {
-        var Plugin_ui   = {};
 
-        Plugin_ui.populateTable = function (elem_tbl, data, callback) {
-            /**
-             * elem_tbl: class or id of the table
-             * data: paginate data from db table
-             * 
-             * set <table> setting example
-             * <table data-table="users">
-             * 
-             * 
-             * set <th> value which column will display example
-             * <th data-column='numbering' data-editable="0"> Calculated in JS
-             * <th data-column='firstname' data-editable="0"> display firstname column
-             * <th data-column='lastname' data-editable="1"> display lastname column & editable
-             * 
-             * set <tr> dataid
-             * set <tr data-id="56"> dataid to identify row id
-             * 
-             * set <td> column name and value for reference
-             * <td data-column-name="fname" data-column-value="Jason">
-             * 
-             */
-        };
+        var Plugin_ui       = {};
+        var env_api 		= Plugin_config_file.projects()['env_api_multi_purpose'];
 
         Plugin_ui.populateDropdown = function (elem, options, defaultVal) {
             $(elem).html('');
@@ -69,6 +48,130 @@
             else {
                 $(elem).prop("disabled", false).val(text).css({'opacity': 1, 'cursor':'pointer'});
             }
+        };
+
+        Plugin_ui.editModalDataTextArea = function(table, whereClm, whereVal, clmToUpdate, description, oldValue, placeholder, callbackShowLoading, callbackHideLoading, callbackReturn) {
+        
+            Swal.fire({
+                title: "Editor",
+                text: description,
+                input: 'textarea',
+                inputValue: oldValue,
+                inputAttributes: {
+                    autocapitalize: 'off',
+                    autocomplete: 'off',
+                    placeholder: placeholder
+                },
+                showCancelButton: true,
+                confirmButtonText: 'OK',
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    if(result.value == '') {
+                        callbackReturn({ success: false, message: 'Changing with empty value is not allowed'});
+                    }
+                    else {
+
+			            var uri 	= env_api + "api/plugin_query/editSingle?table="+ table +"&whereClm="+ whereClm +"&whereVal="+ whereVal +"&column=" + clmToUpdate + "&value=" + result.value;
+
+                        callbackShowLoading();
+                        $.get( uri, function (response) {
+                            callbackHideLoading();
+                            callbackReturn(response);
+                        });
+                    }
+                }
+            });
+        };
+
+        Plugin_ui.editModalDataText = function(table, whereClm, whereVal, clmToUpdate, description, oldValue, placeholder, callbackShowLoading, callbackHideLoading, callbackReturn) {
+        
+            Swal.fire({
+                title: "Editor",
+                text: description,
+                input: 'text',
+                inputValue: oldValue,
+                inputAttributes: {
+                    autocapitalize: 'off',
+                    autocomplete: 'off',
+                    placeholder: placeholder
+                },
+                showCancelButton: true,
+                confirmButtonText: 'OK',
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    if(result.value == '') {
+                        callbackReturn({ success: false, message: 'Changing with empty value is not allowed'});
+                    }
+                    else {
+
+			            var uri 	= env_api + "api/plugin_query/editSingle?table="+ table +"&whereClm="+ whereClm +"&whereVal="+ whereVal +"&column=" + clmToUpdate + "&value=" + result.value;
+
+                        callbackShowLoading();
+                        $.get( uri, function (response) {
+                            callbackHideLoading();
+                            callbackReturn(response);
+                        });
+                    }
+                }
+            });
+        };
+
+        Plugin_ui.deleteModalWithoutPassword = function (title, text, table, whereArray, callbackShowLoading, callbackHideLoading, callbackReturn) {
+            Swal.fire({
+                title: title,
+                text: text,
+                showCancelButton: true,
+                confirmButtonText: 'Delete'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var args = {
+                        table: table,
+                        where: whereArray
+                    };
+                    callbackShowLoading();
+                    $.get( env_api + "api/plugin_query/deletePermanent?" + $.param(args), function (response) {
+                        callbackHideLoading();
+                        callbackReturn(response);
+                    });
+                }
+            })
+        };
+
+        Plugin_ui.deleteModalWithPassword = function (title, text, table, whereArray, user_refid, callbackShowLoading, callbackHideLoading, callbackReturn) {
+            Swal.fire({
+                title: title,
+                text: text,
+                input: 'password',
+                inputAttributes: {
+                    autocapitalize: 'off',
+                    autocomplete: 'off',
+                    placeholder: 'Enter your password to delete'
+                },
+                showCancelButton: true,
+                confirmButtonText: 'Delete',
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    if(result.value == '') {
+                        callbackReturn({ success: false, message: 'Password is required'});
+                    }
+                    else {
+                        var args = {
+                            table: table,
+                            where: whereArray,
+                            user_refid: user_refid,
+                            password: result.value
+                        };
+                        callbackShowLoading();
+                        $.get( env_api + "api/plugin_query/deleteWithPassword?" + $.param(args), function (response) {
+                            callbackHideLoading();
+                            callbackReturn(response);
+                        });
+                    }
+                }
+            });
         };
 
         return Plugin_ui;

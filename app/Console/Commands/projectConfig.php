@@ -41,6 +41,9 @@ class projectConfig extends Command
         else if($project == 'foxcity') {
             \App\Http\Controllers\plugin_project_config\Environment::setProjectEnv("foxcityph.com");
         }
+        else if($project == 'cims') {
+            \App\Http\Controllers\plugin_project_config\Environment::setProjectEnv("cims.com");
+        }
         else {
             \App\Http\Controllers\plugin_project_config\Environment::setProjectEnv("local");
         }

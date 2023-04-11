@@ -51,7 +51,16 @@
         };
 
         Plugin_geo.allActiveBarangay = function (fetch_local, city_code, callback) {
-            
+            const local = localStorage.getItem("allActiveBarangay-" + city_code);
+            if(local && fetch_local) {
+                callback(JSON.parse(local));
+            }
+            else {
+                $.get( Plugin_config_file.projects()['env_api'] + "api/plugin_geography/allActiveBarangay/" + city_code, function (response) {
+                    localStorage.setItem("allActiveBarangay-" + city_code, JSON.stringify(response));
+                    callback(response);
+                });
+            }
         };
 
         Plugin_geo.allActiveCityWithProvice = function (fetch_local, callback) {

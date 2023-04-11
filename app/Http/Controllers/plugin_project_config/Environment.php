@@ -45,12 +45,14 @@ class Environment extends Controller
     public static function setProjectEnv($hostname) {
 
         if($hostname == "mcrichtravel.com") {
+
             Environment::setKeyValue("DB_CONNECTION", "mysql");
             Environment::setKeyValue("DB_HOST", "82.180.152.1");
             Environment::setKeyValue("DB_PORT", "3306");
             Environment::setKeyValue("DB_DATABASE", "u604418523_mcrich");
             Environment::setKeyValue("DB_USERNAME", "u604418523_mcrich");
             Environment::setKeyValue("DB_PASSWORD", "&U4rVLqP");
+
             Environment::setKeyValue("MAIL_MAILER", "smtp");
             Environment::setKeyValue("MAIL_HOST", "smtp.hostinger.com");
             Environment::setKeyValue("MAIL_PORT", "465");
@@ -60,14 +62,20 @@ class Environment extends Controller
             Environment::setKeyValue("MAIL_FROM_ADDRESS", "operator@mcrichtravel.com");
             Environment::setKeyValue("MAIL_FROM_NAME", "Mcrich_Operator_Official");
 
+            Environment::setKeyValue("GOOGLE_PROJECT_NUMBER", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_PROJECT_ID", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_MAP_API_KEY", "NO_VALUE");
+
         }
         else if($hostname == "deanleifproperties.com") {
+            
             Environment::setKeyValue("DB_CONNECTION", "mysql");
             Environment::setKeyValue("DB_HOST", "82.180.152.1");
             Environment::setKeyValue("DB_PORT", "3306");
             Environment::setKeyValue("DB_DATABASE", "u604418523_deanlief");
             Environment::setKeyValue("DB_USERNAME", "u604418523_fc_main_dev");
             Environment::setKeyValue("DB_PASSWORD", "?AYcGCBKcl6");
+
             Environment::setKeyValue("MAIL_MAILER", "smtp");
             Environment::setKeyValue("MAIL_HOST", "smtp.hostinger.com");
             Environment::setKeyValue("MAIL_PORT", "465");
@@ -76,6 +84,10 @@ class Environment extends Controller
             Environment::setKeyValue("MAIL_ENCRYPTION", "tls");
             Environment::setKeyValue("MAIL_FROM_ADDRESS", "NO_VALUE");
             Environment::setKeyValue("MAIL_FROM_NAME", "NO_VALUE");
+
+            Environment::setKeyValue("GOOGLE_PROJECT_NUMBER", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_PROJECT_ID", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_MAP_API_KEY", "NO_VALUE");
 
         }
         else if($hostname == "foxcityph.tech") {
@@ -86,6 +98,7 @@ class Environment extends Controller
             Environment::setKeyValue("DB_DATABASE", "foxc_foxcity");
             Environment::setKeyValue("DB_USERNAME", "foxc_foxcity");
             Environment::setKeyValue("DB_PASSWORD", "ovy2hcHxx22uLwqe");
+
             Environment::setKeyValue("MAIL_MAILER", "smtp");
             Environment::setKeyValue("MAIL_HOST", "smtp.hostinger.com");
             Environment::setKeyValue("MAIL_PORT", "465");
@@ -94,6 +107,10 @@ class Environment extends Controller
             Environment::setKeyValue("MAIL_ENCRYPTION", "tls");
             Environment::setKeyValue("MAIL_FROM_ADDRESS", "NO_VALUE");
             Environment::setKeyValue("MAIL_FROM_NAME", "NO_VALUE");
+
+            Environment::setKeyValue("GOOGLE_PROJECT_NUMBER", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_PROJECT_ID", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_MAP_API_KEY", "NO_VALUE");
         }
         else if($hostname == "flipcard.fun") {
 
@@ -103,6 +120,7 @@ class Environment extends Controller
             Environment::setKeyValue("DB_DATABASE", "u200905711_clipcard");
             Environment::setKeyValue("DB_USERNAME", "u200905711_clipcard");
             Environment::setKeyValue("DB_PASSWORD", "!e7Pj3IQvF");
+            
             Environment::setKeyValue("MAIL_MAILER", "smtp");
             Environment::setKeyValue("MAIL_HOST", "smtp.hostinger.com");
             Environment::setKeyValue("MAIL_PORT", "465");
@@ -111,14 +129,21 @@ class Environment extends Controller
             Environment::setKeyValue("MAIL_ENCRYPTION", "tls");
             Environment::setKeyValue("MAIL_FROM_ADDRESS", "inquiry@flipcard.fun");
             Environment::setKeyValue("MAIL_FROM_NAME", "Flipcard_Official");
+
+            Environment::setKeyValue("GOOGLE_PROJECT_NUMBER", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_PROJECT_ID", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_MAP_API_KEY", "NO_VALUE");
+
         }
-        else {
+        else if($hostname == "cims.com") {
+            
             Environment::setKeyValue("DB_CONNECTION", "mysql");
             Environment::setKeyValue("DB_HOST", "45.130.228.154");
             Environment::setKeyValue("DB_PORT", "3306");
-            Environment::setKeyValue("DB_DATABASE", "u200905711_multipurpose");
-            Environment::setKeyValue("DB_USERNAME", "u200905711_multipurpose");
-            Environment::setKeyValue("DB_PASSWORD", ":5zT*x![yM");
+            Environment::setKeyValue("DB_DATABASE", "u200905711_cims");
+            Environment::setKeyValue("DB_USERNAME", "u200905711_cims");
+            Environment::setKeyValue("DB_PASSWORD", "NSbWzt>Q5t");
+            
             Environment::setKeyValue("MAIL_MAILER", "smtp");
             Environment::setKeyValue("MAIL_HOST", "smtp.hostinger.com");
             Environment::setKeyValue("MAIL_PORT", "465");
@@ -127,6 +152,34 @@ class Environment extends Controller
             Environment::setKeyValue("MAIL_ENCRYPTION", "tls");
             Environment::setKeyValue("MAIL_FROM_ADDRESS", "NO_VALUE");
             Environment::setKeyValue("MAIL_FROM_NAME", "NO_VALUE");
+
+            Environment::setKeyValue("GOOGLE_PROJECT_NUMBER", "386384297859");
+            Environment::setKeyValue("GOOGLE_PROJECT_ID", "cims-382710");
+            Environment::setKeyValue("GOOGLE_MAP_API_KEY", "AIzaSyCBarUcMUAi3XsZ9j7XO415Gnn1o4fA5y0");
+
+        }
+        else {
+
+            Environment::setKeyValue("DB_CONNECTION", "mysql");
+            Environment::setKeyValue("DB_HOST", "45.130.228.154");
+            Environment::setKeyValue("DB_PORT", "3306");
+            Environment::setKeyValue("DB_DATABASE", "u200905711_multipurpose");
+            Environment::setKeyValue("DB_USERNAME", "u200905711_multipurpose");
+            Environment::setKeyValue("DB_PASSWORD", ":5zT*x![yM");
+
+            Environment::setKeyValue("MAIL_MAILER", "smtp");
+            Environment::setKeyValue("MAIL_HOST", "smtp.hostinger.com");
+            Environment::setKeyValue("MAIL_PORT", "465");
+            Environment::setKeyValue("MAIL_USERNAME", "NO_VALUE");
+            Environment::setKeyValue("MAIL_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("MAIL_ENCRYPTION", "tls");
+            Environment::setKeyValue("MAIL_FROM_ADDRESS", "NO_VALUE");
+            Environment::setKeyValue("MAIL_FROM_NAME", "NO_VALUE");
+
+            Environment::setKeyValue("GOOGLE_PROJECT_NUMBER", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_PROJECT_ID", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_MAP_API_KEY", "NO_VALUE");
+
         }
     }
 

@@ -13,33 +13,32 @@ use Illuminate\Support\Facades\DB;
 class GetProfile extends Controller
 {
     public static function get($user_refid) {
-        $profile    = DB::table("plugin_user")
-                    ->select("reference_id","firstname","lastname","address","mobile","email","photo","access","status")
-                    ->where("reference_id", $user_refid)
-                    ->get();
 
+        $profile    = DB::table("plugin_user")->select("reference_id","firstname","lastname","address","mobile","email","photo","access","status")->where("reference_id", $user_refid)->get();
+        
         if(count($profile) == 0) {
             return [
-                "success"   => false,
-                "profile"   => []
+                "success"           => false,
+                "profile"           => [],
+                "social_media"      => [],
+                "theme"             => [],
+                "searches"          => []
             ];
         }
         else {
-            $social_media   = DB::table("plugin_user_social_media")
-                            ->where("user_refid", $user_refid)
-                            ->get();
 
-            if(count($social_media) == 0) {
-                $social_media = [];
-            }
-            else {
-                $social_media = $social_media[0];
-            }
+            $social_media   = DB::table("plugin_user_social_media")->where("user_refid", $user_refid)->get();
+            $theme          = [];
+            $searches       = [];
+
+            if(count($social_media) > 0) { $social_media = $social_media[0]; }
 
             return [
-                "success"       => true,
-                "profile"       => $profile[0],
-                "social_media"  => $social_media
+                "success"           => true,
+                "profile"           => $profile[0],
+                "social_media"      => $social_media,
+                "theme"             => $theme,
+                "searches"          => $searches
             ];
         }
     }

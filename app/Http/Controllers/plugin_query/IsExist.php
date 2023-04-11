@@ -20,6 +20,7 @@ $.get( domain + "api/plugin_query/isDataExist?" + $.param(args), function (respo
 });
 
 \App\Http\Controllers\plugin_query\IsExist::isExist($table, $whereArray);
+\App\Http\Controllers\plugin_query\IsExist::isExist("table", [['column','=','value']]);
 
 */
 

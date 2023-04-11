@@ -16,12 +16,14 @@ return [
     */
 
     'paths' => [
-        'api/*', 
+        'api/*',
         'flipcard/*',
         'deanlief/*',
         'cims/*',
         'exploriatravel/*',
-        'sanctum/csrf-cookie'
+        'sanctum/csrf-cookie',
+
+        'plugin_chatbox/*'
     ],
 
     'allowed_methods' => ['*'],

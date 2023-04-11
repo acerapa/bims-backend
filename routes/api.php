@@ -18,6 +18,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+  Route::group(['prefix' => 'plugin_faq'], function () {
+    Route::get('get', [\App\Http\Controllers\plugin_faq\FAQ::class, 'get']);
+  });
+
+  Route::group(['prefix' => 'plugin_chatbox'], function () {
+    Route::get('create_user', [\App\Http\Controllers\plugin_chatbox\User::class, 'create']);
+    Route::get('create_convo', [\App\Http\Controllers\plugin_chatbox\Convo::class, 'create']);
+    Route::get('member_recepient', [\App\Http\Controllers\plugin_chatbox\Convo::class, 'addMemberRecepient']);
+    Route::get('sendText', [\App\Http\Controllers\plugin_chatbox\MessageSend::class, 'sendText']);
+  });
+
   Route::group(['prefix' => 'plugin_project_config'], function () {
     Route::get('setProjectEnv/{hostname}', [\App\Http\Controllers\plugin_project_config\Environment::class, 'setProjectEnv']);
     Route::get('setProjectEnvAuto', [\App\Http\Controllers\plugin_project_config\Environment::class, 'setProjectEnvAuto']);
@@ -107,8 +118,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('getRowBasic/{table}/{getColumn}/{whereColumn}/{whereValue}', [\App\Http\Controllers\plugin_query\GetRowBasic::class, 'get']);
     Route::get('getRowMultiWhere', [\App\Http\Controllers\plugin_query\GetRowMultiWhere::class, 'get']);
     Route::get('getJoinTwoTablePaginate', [\App\Http\Controllers\plugin_query\GetJoinTwoTablePaginate::class, 'get']);
+    Route::get('editSingle', [\App\Http\Controllers\plugin_query\Edit::class, 'editSingle']);
     Route::get('editMultiple', [\App\Http\Controllers\plugin_query\Edit::class, 'editMultiple']);
     Route::get('deletePermanent', [\App\Http\Controllers\plugin_query\Delete::class, 'deletePermanent']);
+    Route::get('deleteWithPassword', [\App\Http\Controllers\plugin_query\Delete::class, 'deleteWithPassword']);
     Route::get('getTableSchema/{table}', [\App\Http\Controllers\plugin_query\Scheme::class, 'getTableSchema']);
     Route::get('count', [\App\Http\Controllers\plugin_query\Count::class, 'count']);
     Route::get('sum', [\App\Http\Controllers\plugin_query\Sum::class, 'sum']);
@@ -118,6 +131,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('changePassword', [\App\Http\Controllers\plugin_user\ChangePassword::class, 'change']);
     Route::get('getProfile/{user_refid}', [\App\Http\Controllers\plugin_user\GetProfile::class, 'get']);
     Route::get('register', [\App\Http\Controllers\plugin_user\Register::class, 'register']);
+    Route::get('setTheme/{user_refid}/{theme}', [\App\Http\Controllers\plugin_user\Personalize::class, 'setTheme']);
   });
 
   

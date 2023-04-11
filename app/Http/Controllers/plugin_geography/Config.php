@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
  * plugin_geography/allProvince/01
  * plugin_geography/allProvince/all
  * plugin_geography/allCity/0128
+ * plugin_geography/allActiveBarangay/city_code
  * 
  */
 

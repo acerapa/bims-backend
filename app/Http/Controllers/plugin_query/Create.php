@@ -18,7 +18,7 @@ PLUGIN USAGE
     }
   };
   
-  $.get( domain + "query/insertGetId?" + $.param(args), function (response) {
+  $.get( domain + "plugin_query/insertGetId?" + $.param(args), function (response) {
     console.log(response);
   });
 
@@ -29,6 +29,7 @@ class Create extends Controller
   public static function insertGetId(Request $request) {
 
     $data = DB::table($request["table"])->insertGetId($request['column']);
+    
     if($data) {
         return [
             "success"   => true,
