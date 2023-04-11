@@ -18,6 +18,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+  Route::group(['prefix' => 'plugin_faq'], function () {
+    Route::get('get', [\App\Http\Controllers\plugin_faq\FAQ::class, 'get']);
+  });
+
   Route::group(['prefix' => 'plugin_chatbox'], function () {
     Route::get('create_user', [\App\Http\Controllers\plugin_chatbox\User::class, 'create']);
     Route::get('create_convo', [\App\Http\Controllers\plugin_chatbox\Convo::class, 'create']);

@@ -8,25 +8,26 @@
 
         Plugin_config_file.attachAssets = function () {
             const plugin_list = [
-                { name: 'plugin_auth.js', add: true },
-                { name: 'plugin_blog.js', add: true },
-                { name: 'plugin_currency.js', add: true },
-                { name: 'plugin_datetime.js', add: true },
-                { name: 'plugin_geo.js', add: true },
-                { name: 'plugin_inquiry_web_form.js', add: true },
-                { name: 'plugin_inquiry.js', add: true },
-                { name: 'plugin_json_data.js', add: true },
-                { name: 'plugin_localstorage_with_expiry.js', add: true },
-                { name: 'plugin_mailer.js', add: true },
-                { name: 'plugin_photos.js', add: true },
-                { name: 'plugin_query.js', add: true },
-                { name: 'plugin_reference_id.js', add: true },
-                { name: 'plugin_review.js', add: true },
-                { name: 'plugin_ui.js', add: true },
-                { name: 'plugin_url.js', add: true },
-                { name: 'plugin_user.js', add: true },
-                { name: 'plugin_util_object_array.js', add: true },
-                { name: 'plugin_validator.js', add: true }
+                { name: 'plugin_auth', add: true },
+                { name: 'plugin_blog', add: true },
+                { name: 'plugin_faq', add: true },
+                { name: 'plugin_currency', add: true },
+                { name: 'plugin_datetime', add: true },
+                { name: 'plugin_geo', add: true },
+                { name: 'plugin_inquiry_web_form', add: true },
+                { name: 'plugin_inquiry', add: true },
+                { name: 'plugin_json_data', add: true },
+                { name: 'plugin_localstorage_with_expiry', add: true },
+                { name: 'plugin_mailer', add: true },
+                { name: 'plugin_photos', add: true },
+                { name: 'plugin_query', add: true },
+                { name: 'plugin_reference_id', add: true },
+                { name: 'plugin_review', add: true },
+                { name: 'plugin_ui', add: true },
+                { name: 'plugin_url', add: true },
+                { name: 'plugin_user', add: true },
+                { name: 'plugin_util_object_array', add: true },
+                { name: 'plugin_validator', add: true }
             ];
 
             var plugin_src = env_api;
@@ -36,9 +37,11 @@
             }
 
             for(let i = 0; i < plugin_list.length; i++) {
-                var script = document.createElement("script");
-                script.src = plugin_src + 'js/' + plugin_list[i]['name'];
-                document.head.appendChild(script);
+                if(plugin_list[i]['add']) {
+                    var script = document.createElement("script");
+                    script.src = plugin_src + 'js/' + plugin_list[i]['name'] + ".js";
+                    document.head.appendChild(script);
+                }
             }
 
         };
