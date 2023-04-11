@@ -62,6 +62,10 @@ class Environment extends Controller
             Environment::setKeyValue("MAIL_FROM_ADDRESS", "operator@mcrichtravel.com");
             Environment::setKeyValue("MAIL_FROM_NAME", "Mcrich_Operator_Official");
 
+            Environment::setKeyValue("GOOGLE_PROJECT_NUMBER", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_PROJECT_ID", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_MAP_API_KEY", "NO_VALUE");
+
         }
         else if($hostname == "deanleifproperties.com") {
             
@@ -81,6 +85,10 @@ class Environment extends Controller
             Environment::setKeyValue("MAIL_FROM_ADDRESS", "NO_VALUE");
             Environment::setKeyValue("MAIL_FROM_NAME", "NO_VALUE");
 
+            Environment::setKeyValue("GOOGLE_PROJECT_NUMBER", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_PROJECT_ID", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_MAP_API_KEY", "NO_VALUE");
+
         }
         else if($hostname == "foxcityph.tech") {
 
@@ -99,6 +107,10 @@ class Environment extends Controller
             Environment::setKeyValue("MAIL_ENCRYPTION", "tls");
             Environment::setKeyValue("MAIL_FROM_ADDRESS", "NO_VALUE");
             Environment::setKeyValue("MAIL_FROM_NAME", "NO_VALUE");
+
+            Environment::setKeyValue("GOOGLE_PROJECT_NUMBER", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_PROJECT_ID", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_MAP_API_KEY", "NO_VALUE");
         }
         else if($hostname == "flipcard.fun") {
 
@@ -117,6 +129,10 @@ class Environment extends Controller
             Environment::setKeyValue("MAIL_ENCRYPTION", "tls");
             Environment::setKeyValue("MAIL_FROM_ADDRESS", "inquiry@flipcard.fun");
             Environment::setKeyValue("MAIL_FROM_NAME", "Flipcard_Official");
+
+            Environment::setKeyValue("GOOGLE_PROJECT_NUMBER", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_PROJECT_ID", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_MAP_API_KEY", "NO_VALUE");
 
         }
         else if($hostname == "cims.com") {
@@ -159,6 +175,10 @@ class Environment extends Controller
             Environment::setKeyValue("MAIL_ENCRYPTION", "tls");
             Environment::setKeyValue("MAIL_FROM_ADDRESS", "NO_VALUE");
             Environment::setKeyValue("MAIL_FROM_NAME", "NO_VALUE");
+
+            Environment::setKeyValue("GOOGLE_PROJECT_NUMBER", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_PROJECT_ID", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_MAP_API_KEY", "NO_VALUE");
 
         }
     }
