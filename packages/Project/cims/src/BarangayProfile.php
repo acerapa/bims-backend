@@ -22,7 +22,20 @@ class BarangayProfile extends Controller
         return [
             "user"          => [
                 "profile"           => BarangayProfile::getUser($user_refid),
-                "social_media"      => []
+                "profile_setting"   => [],
+                "social_media"      => [],
+                "notification"      => [],
+                "message"           => [
+                    "convo_list"        => [],
+                    "convo_setting"     => [],
+                    "contacts"          => []
+                ],
+            ],
+            "dashboard"     => [
+                "population"            => BarangayProfile::countPopulation($brgy_code),
+                "household"             => BarangayProfile::countHousehold($brgy_code),
+                "announcement"          => 789,
+                "blotter"               => 012
             ],
             "city"          => [
                 "profile"           =>  BarangayProfile::getCity($city_code),
@@ -35,6 +48,14 @@ class BarangayProfile extends Controller
                 "household_list"    => BarangayProfile::getHouseholdList($brgy_code)
             ],
         ];
+    }
+
+    public static function countPopulation($brgy_code) {
+        return DB::table("cims_user_location")->where([["status","=","1"],["brgy_code","=",$brgy_code]])->count();
+    }
+
+    public static function countHousehold($brgy_code) {
+        return DB::table("cims_household")->where([["status","=","1"],["brgy_code","=",$brgy_code]])->count();
     }
 
     public static function getHouseholdList($brgy_code) {
