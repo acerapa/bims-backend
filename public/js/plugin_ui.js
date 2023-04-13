@@ -118,6 +118,10 @@
             });
         };
 
+        Plugin_ui.addRecordModalSingleColumn = function (title, text, table, callbackShowLoading, callbackHideLoading, callbackReturn) {
+            
+        };
+
         Plugin_ui.deleteModalWithoutPassword = function (title, text, table, whereArray, callbackShowLoading, callbackHideLoading, callbackReturn) {
             Swal.fire({
                 title: title,

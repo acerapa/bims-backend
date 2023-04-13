@@ -45,9 +45,26 @@ class BarangayProfile extends Controller
                 "profile"           => BarangayProfile::getBrgy($brgy_code),
                 "purok_list"        => BarangayProfile::getPurokList($brgy_code),
                 "sitio_list"        => BarangayProfile::getSitioList($brgy_code),
-                "household_list"    => BarangayProfile::getHouseholdList($brgy_code)
+                "household_list"    => BarangayProfile::getHouseholdList($brgy_code),
+                "incident_rep_type" => BarangayProfile::incidentReportType($city_code, $brgy_code),
             ],
         ];
+    }
+
+    public static function incidentReportType($city_code, $brgy_code) {
+        return DB::table("cims_brgy_incident_report_type")
+        ->select("reference_id", "name")
+        ->where([
+            ["city_code", $city_code],
+            ["brgy_code", $brgy_code]
+        ])
+        ->orWhere(function ($query) {
+            return $query
+                ->where("city_code","all")
+                ->where("brgy_code","all");
+        })
+        ->orderBy("name", "asc")
+        ->get();
     }
 
     public static function countPopulation($brgy_code) {
