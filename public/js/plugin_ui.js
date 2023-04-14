@@ -119,7 +119,38 @@
         };
 
         Plugin_ui.addRecordModalSingleColumn = function (title, text, table, callbackShowLoading, callbackHideLoading, callbackReturn) {
-            
+            Swal.fire({
+                title: title,
+                text: text,
+                input: 'text',
+                inputAttributes: {
+                    autocapitalize: 'off',
+                    autocomplete: 'off',
+                },
+                showCancelButton: true,
+                confirmButtonText: 'OK',
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    if(result.value == '') {
+                        callbackReturn({ success: false, message: 'Password is required'});
+                    }
+                    else {
+                        var args = {
+                            table: table,
+                            column: {
+                                first_name: '',
+                            }
+                        };
+                        
+                        callbackShowLoading();
+                        $.get( env_api + "plugin_query/insertGetId?" + $.param(args), function (response) {
+                            callbackHideLoading();
+                            console.log(response);
+                        });
+                    }
+                }
+            });
         };
 
         Plugin_ui.deleteModalWithoutPassword = function (title, text, table, whereArray, callbackShowLoading, callbackHideLoading, callbackReturn) {

@@ -158,6 +158,40 @@ class Environment extends Controller
             Environment::setKeyValue("GOOGLE_MAP_API_KEY", "AIzaSyCBarUcMUAi3XsZ9j7XO415Gnn1o4fA5y0");
 
         }
+        else if($hostname == "cims.com") {
+            
+            /*
+            Environment::setKeyValue("DB_CONNECTION", "mysql");
+            Environment::setKeyValue("DB_HOST", "45.130.228.154");
+            Environment::setKeyValue("DB_PORT", "3306");
+            Environment::setKeyValue("DB_DATABASE", "u200905711_cims");
+            Environment::setKeyValue("DB_USERNAME", "u200905711_cims");
+            Environment::setKeyValue("DB_PASSWORD", "NSbWzt>Q5t");
+            */
+
+            /** www.mis-inayagan-naga.tech */
+            
+            Environment::setKeyValue("DB_CONNECTION", "mysql");
+            Environment::setKeyValue("DB_HOST", "45.130.228.154");
+            Environment::setKeyValue("DB_PORT", "3306");
+            Environment::setKeyValue("DB_DATABASE", "u200905711_jl_cims");
+            Environment::setKeyValue("DB_USERNAME", "u200905711_jl_cims");
+            Environment::setKeyValue("DB_PASSWORD", "NSbWzt>Q5t");
+            
+            Environment::setKeyValue("MAIL_MAILER", "smtp");
+            Environment::setKeyValue("MAIL_HOST", "smtp.hostinger.com");
+            Environment::setKeyValue("MAIL_PORT", "465");
+            Environment::setKeyValue("MAIL_USERNAME", "NO_VALUE");
+            Environment::setKeyValue("MAIL_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("MAIL_ENCRYPTION", "tls");
+            Environment::setKeyValue("MAIL_FROM_ADDRESS", "NO_VALUE");
+            Environment::setKeyValue("MAIL_FROM_NAME", "NO_VALUE");
+
+            Environment::setKeyValue("GOOGLE_PROJECT_NUMBER", "386384297859");
+            Environment::setKeyValue("GOOGLE_PROJECT_ID", "cims-382710");
+            Environment::setKeyValue("GOOGLE_MAP_API_KEY", "AIzaSyCBarUcMUAi3XsZ9j7XO415Gnn1o4fA5y0");
+
+        }
         else {
 
             Environment::setKeyValue("DB_CONNECTION", "mysql");
