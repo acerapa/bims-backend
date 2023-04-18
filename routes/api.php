@@ -18,6 +18,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+  Route::group(['prefix' => 'plugin_gps'], function () {
+    Route::get('log_position', [\App\Http\Controllers\plugin_gps\LogPosition::class, 'log']);
+    Route::get('get_last_position', [\App\Http\Controllers\plugin_gps\GetPosition::class, 'getLastPosition']);
+  });
+
   Route::group(['prefix' => 'plugin_faq'], function () {
     Route::get('get', [\App\Http\Controllers\plugin_faq\FAQ::class, 'get']);
   });

@@ -8,6 +8,16 @@ use Illuminate\Support\Facades\DB;
 
 class Authentication extends Controller
 {
+    public static function accessStaffBarangay(Request $request) {
+        return DB::table("cims_access")->insert([
+            "user_refid"    => $request['user_refid'],
+            "city_code"     => $request['city_code'],
+            "brgy_code"     => $request['brgy_code'],
+            "create_at"     => date("Y-m-d h:i:s"),
+            "created_by"    => $request['created_by']
+        ]);
+    }
+    
     public static function cityHall(Request $request) {
         return $request;
     }
