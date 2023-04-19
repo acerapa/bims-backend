@@ -22,7 +22,20 @@ class BarangayProfile extends Controller
         return [
             "user"          => [
                 "profile"           => BarangayProfile::getUser($user_refid),
-                "social_media"      => []
+                "profile_setting"   => [],
+                "social_media"      => [],
+                "notification"      => [],
+                "message"           => [
+                    "convo_list"        => [],
+                    "convo_setting"     => [],
+                    "contacts"          => []
+                ],
+            ],
+            "dashboard"     => [
+                "population"            => BarangayProfile::countPopulation($brgy_code),
+                "household"             => BarangayProfile::countHousehold($brgy_code),
+                "announcement"          => 789,
+                "blotter"               => 012
             ],
             "city"          => [
                 "profile"           =>  BarangayProfile::getCity($city_code),
@@ -32,9 +45,34 @@ class BarangayProfile extends Controller
                 "profile"           => BarangayProfile::getBrgy($brgy_code),
                 "purok_list"        => BarangayProfile::getPurokList($brgy_code),
                 "sitio_list"        => BarangayProfile::getSitioList($brgy_code),
-                "household_list"    => BarangayProfile::getHouseholdList($brgy_code)
+                "household_list"    => BarangayProfile::getHouseholdList($brgy_code),
+                "incident_rep_type" => BarangayProfile::incidentReportType($city_code, $brgy_code),
             ],
         ];
+    }
+
+    public static function incidentReportType($city_code, $brgy_code) {
+        return DB::table("cims_brgy_incident_report_type")
+        ->select("reference_id", "name")
+        ->where([
+            ["city_code", $city_code],
+            ["brgy_code", $brgy_code]
+        ])
+        ->orWhere(function ($query) {
+            return $query
+                ->where("city_code","all")
+                ->where("brgy_code","all");
+        })
+        ->orderBy("name", "asc")
+        ->get();
+    }
+
+    public static function countPopulation($brgy_code) {
+        return DB::table("cims_user_location")->where([["status","=","1"],["brgy_code","=",$brgy_code]])->count();
+    }
+
+    public static function countHousehold($brgy_code) {
+        return DB::table("cims_household")->where([["status","=","1"],["brgy_code","=",$brgy_code]])->count();
     }
 
     public static function getHouseholdList($brgy_code) {

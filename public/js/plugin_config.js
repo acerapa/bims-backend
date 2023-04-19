@@ -26,6 +26,15 @@
                     'fileserver':'https://mcrichtravel.com/partition-file/'
                 };
             }
+            else if(hostname == 'mis-inayagan-naga.tech') {
+                return {
+                    'env': 'live',
+                    'domain': 'https://mis-inayagan-naga.tech/',
+                    'env_api': 'https://mis-inayagan-naga.tech/partition-api-multi-purpose/version-1/public/',
+                    'env_api_multi_purpose': 'https://mis-inayagan-naga.tech/partition-api-multi-purpose/version-1/public/',
+                    'fileserver':'https://mis-inayagan-naga.tech/partition-file/'
+                };
+            }
             else if(hostname == 'deanleifproperties.com') {
                 return {
                     'env': 'live',

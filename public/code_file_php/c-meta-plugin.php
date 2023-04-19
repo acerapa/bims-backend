@@ -23,6 +23,7 @@
         "plugin_geo",
         "plugin_inquiry_web_form",
         "plugin_inquiry",
+        "plugin_gps",
         "plugin_json_data",
         "plugin_localstorage_with_expiry",
         "plugin_mailer",

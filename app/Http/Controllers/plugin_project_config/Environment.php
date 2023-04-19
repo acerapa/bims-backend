@@ -137,11 +137,22 @@ class Environment extends Controller
         }
         else if($hostname == "cims.com") {
             
+            /*
             Environment::setKeyValue("DB_CONNECTION", "mysql");
             Environment::setKeyValue("DB_HOST", "45.130.228.154");
             Environment::setKeyValue("DB_PORT", "3306");
             Environment::setKeyValue("DB_DATABASE", "u200905711_cims");
             Environment::setKeyValue("DB_USERNAME", "u200905711_cims");
+            Environment::setKeyValue("DB_PASSWORD", "NSbWzt>Q5t");
+            */
+
+            /** www.mis-inayagan-naga.tech */
+            
+            Environment::setKeyValue("DB_CONNECTION", "mysql");
+            Environment::setKeyValue("DB_HOST", "45.130.228.154");
+            Environment::setKeyValue("DB_PORT", "3306");
+            Environment::setKeyValue("DB_DATABASE", "u200905711_jl_cims");
+            Environment::setKeyValue("DB_USERNAME", "u200905711_jl_cims");
             Environment::setKeyValue("DB_PASSWORD", "NSbWzt>Q5t");
             
             Environment::setKeyValue("MAIL_MAILER", "smtp");
