@@ -1,14 +1,15 @@
 
-/**
+/*******************************************************************************************
+        DATABASE TABLE STRUCTURE
+********************************************************************************************
+        obj_type:
+                USR: Users
+                VHC: Vehicle in any type
+                MBL: Mobile device
+                PCP: Personal computer 
 
-obj_type:
-        USR: Users
-        VHC: Vehicle in any type
-        MBL: Mobile device
-        PCP: Personal computer 
-
-obj_refid:
-        - The tagged reference id of the tracked user
+        obj_refid:
+                - The tagged reference id of the tracked user
 */
 
 CREATE TABLE `plugin_gps` (
