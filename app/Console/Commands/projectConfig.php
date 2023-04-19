@@ -39,7 +39,7 @@ class projectConfig extends Command
             \App\Http\Controllers\plugin_project_config\Environment::setProjectEnv("mcrichtravel.com");
         }
         else if($project == 'foxcity') {
-            \App\Http\Controllers\plugin_project_config\Environment::setProjectEnv("foxcityph.com");
+            \App\Http\Controllers\plugin_project_config\Environment::setProjectEnv("foxcityph.tech");
         }
         else if($project == 'cims') {
             \App\Http\Controllers\plugin_project_config\Environment::setProjectEnv("cims.com");
