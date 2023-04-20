@@ -19,9 +19,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
   Route::group(['prefix' => 'plugin_conversion'], function () {
+    Route::get('hash_algos', [\App\Http\Controllers\plugin_conversion\HashEncode::class, 'hash_algos']);
+    Route::get('hash_convert/{algo}/{string}', [\App\Http\Controllers\plugin_conversion\HashEncode::class, 'encode']);
+    Route::get('string_to_base64_encode/{string}', [\App\Http\Controllers\plugin_conversion\StringToBase64Encode::class, 'encode']);
     Route::get('string_to_base64_decode/{string}', [\App\Http\Controllers\plugin_conversion\StringToBase64Decode::class, 'decode']);
-    Route::get('string_to_base64_encode/{string}', [\App\Http\Controllers\plugin_conversion\StringToBase64Encode::class, 'encode']);
-    Route::get('string_to_base64_encode/{string}', [\App\Http\Controllers\plugin_conversion\StringToBase64Encode::class, 'encode']);
   });
 
   Route::group(['prefix' => 'plugin_gps'], function () {

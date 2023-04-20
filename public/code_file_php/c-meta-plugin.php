@@ -15,6 +15,7 @@
   
     $laravel_plugins  = [
         "plugin_config",
+        "plugin_conversion",
         "plugin_auth",
         "plugin_blog",
         "plugin_faq",
