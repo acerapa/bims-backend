@@ -18,6 +18,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+  Route::group(['prefix' => 'plugin_conversion'], function () {
+    Route::get('string_to_base64_decode/{string}', [\App\Http\Controllers\plugin_conversion\StringToBase64Decode::class, 'decode']);
+    Route::get('string_to_base64_encode/{string}', [\App\Http\Controllers\plugin_conversion\StringToBase64Encode::class, 'encode']);
+    Route::get('string_to_base64_encode/{string}', [\App\Http\Controllers\plugin_conversion\StringToBase64Encode::class, 'encode']);
+  });
+
   Route::group(['prefix' => 'plugin_gps'], function () {
     Route::get('log_position', [\App\Http\Controllers\plugin_gps\LogPosition::class, 'log']);
     Route::get('get_last_position', [\App\Http\Controllers\plugin_gps\GetPosition::class, 'getLastPosition']);
