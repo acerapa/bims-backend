@@ -18,6 +18,23 @@ class HashEncode extends Controller
     }
 
     public static function encode($algo, $string) {
-        return hash('md5', $string);
+        try {
+            return [
+                "success"   => true,
+                "message"   => "Converted successfully",
+                "algo"      => $algo,
+                "string"    => $string,
+                "result"    => hash($algo, $string)
+            ];
+        }
+        catch (Exception $e) {
+            return [
+                "success"   => false,
+                "message"   => $e->getMessage(),
+                "algo"      => $algo,
+                "string"    => $string,
+                "result"    => null
+            ];
+        }
     }
 }

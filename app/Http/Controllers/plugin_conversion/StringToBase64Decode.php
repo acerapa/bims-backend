@@ -12,6 +12,21 @@ use Illuminate\Http\Request;
 class StringToBase64Decode extends Controller
 {
     public static function decode($string) {
-        return base64_decode($string, false);
+        try {
+            return [
+                "success"   => true,
+                "message"   => "Converted successfully",
+                "string"    => $string,
+                "result"    => base64_decode($string)
+            ];
+        }
+        catch (Exception $e) {
+            return [
+                "success"   => false,
+                "message"   => $e->getMessage(),
+                "string"    => $string,
+                "result"    => null
+            ];
+        }
     }
 }

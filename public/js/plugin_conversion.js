@@ -18,7 +18,7 @@
             });
         };
 
-        Plugin_convert.stringToBase64Encode = function (string, callback) {
+        Plugin_convert.stringToBase64Decode = function (string, callback) {
             $.get( env_api + "api/plugin_conversion/string_to_base64_decode/" + string, function (response) {
                 callback(response);
             });

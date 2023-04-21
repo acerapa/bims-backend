@@ -6,7 +6,9 @@
  * 
  */
 
-    if(gethostname() == 'localhost') {
+ 
+
+    if(gethostname() == 'DESKTOP-5DLRDVA') {
         $laravel_hostname = "http://127.0.0.1:8000/";
     }
     else {
