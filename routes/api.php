@@ -18,6 +18,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+  Route::group(['prefix' => 'plugin_paynamics'], function () {
+    Route::get('send', [\App\Http\Controllers\plugin_paynamics\PaymentRequest::class, 'send']);
+  });
+
   Route::group(['prefix' => 'plugin_conversion'], function () {
     Route::get('hash_algos', [\App\Http\Controllers\plugin_conversion\HashEncode::class, 'hash_algos']);
     Route::get('hash_convert/{algo}/{string}', [\App\Http\Controllers\plugin_conversion\HashEncode::class, 'encode']);

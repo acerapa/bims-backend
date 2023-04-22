@@ -75,6 +75,10 @@ class Environment extends Controller
             Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_USERNAME", "mcrich5ja1");
             Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_PASSWORD", "5ja1oOyOROFH");
 
+            Environment::setKeyValue("PAYNAMICS_NOTIF_URL", "https://mcrichtravel.com/payment-notification.php");
+            Environment::setKeyValue("PAYNAMICS_RESPONSE_URL", "https://mcrichtravel.com/payment-success.php");
+            Environment::setKeyValue("PAYNAMICS_CANCEL_URL", "https://mcrichtravel.com/payment-cancelled.php");
+
         }
         else if($hostname == "deanleifproperties.com") {
             
