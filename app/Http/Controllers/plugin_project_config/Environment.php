@@ -74,10 +74,11 @@ class Environment extends Controller
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_PASSWORD", "y07L75r4Kc7h");
             Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_USERNAME", "mcrich5ja1");
             Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_PASSWORD", "5ja1oOyOROFH");
-
             Environment::setKeyValue("PAYNAMICS_NOTIF_URL", "https://mcrichtravel.com/payment-notification.php");
             Environment::setKeyValue("PAYNAMICS_RESPONSE_URL", "https://mcrichtravel.com/payment-success.php");
             Environment::setKeyValue("PAYNAMICS_CANCEL_URL", "https://mcrichtravel.com/payment-cancelled.php");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_LOGO", "https://mcrichtravel.com/images/logo-100x100.png");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_TAC", "https://mcrichtravel.com/terms-and-conditions");
 
         }
         else if($hostname == "deanleifproperties.com") {
@@ -110,6 +111,11 @@ class Environment extends Controller
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_PASSWORD", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_USERNAME", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_NOTIF_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_RESPONSE_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_CANCEL_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_LOGO", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_TAC", "NO_VALUE");
 
         }
         else if($hostname == "foxcityph.tech") {
@@ -142,6 +148,12 @@ class Environment extends Controller
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_PASSWORD", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_USERNAME", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_NOTIF_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_RESPONSE_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_CANCEL_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_LOGO", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_TAC", "NO_VALUE");
+
         }
         else if($hostname == "flipcard.fun") {
 
@@ -173,6 +185,11 @@ class Environment extends Controller
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_PASSWORD", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_USERNAME", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_NOTIF_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_RESPONSE_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_CANCEL_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_LOGO", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_TAC", "NO_VALUE");
 
         }
         else if($hostname == "cims.com") {
@@ -205,6 +222,11 @@ class Environment extends Controller
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_PASSWORD", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_USERNAME", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_NOTIF_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_RESPONSE_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_CANCEL_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_LOGO", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_TAC", "NO_VALUE");
 
         }
         else {
@@ -237,6 +259,11 @@ class Environment extends Controller
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_PASSWORD", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_USERNAME", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_NOTIF_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_RESPONSE_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_CANCEL_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_LOGO", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_TAC", "NO_VALUE");
 
         }
     }

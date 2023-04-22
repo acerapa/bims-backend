@@ -15,17 +15,15 @@ class PaymentRequest extends Controller
         $headers                = array("Authorization:Basic=". hash("sha512", $account_hash),"Content-Type:application/json");
         $pmethod                = "wallet";
         $pchannel               = "";
-        $payment_action         = "";
-        $collection_method      = "";
-        $amount                 = "";
-        $currency               = "";
-        $mlogo_url              = "";
-        $mtac_url               = "";
-        $payment_notif_status   = "";
-        $payment_notif_channel  = "";
-
-        $trans_signature = env("PAYNAMICS_MERCHANT_ID") . date("YMDhms") . env("PAYNAMICS_NOTIF_URL") . env("PAYNAMICS_RESPONSE_URL") . env("PAYNAMICS_CANCEL_URL")
-            . $user_token .
+        $payment_action         = "transfer";
+        $collection_method      = "single_pay";
+        $amount                 = 176.98;
+        $currency               = "php";
+        $mlogo_url              = env("PAYNAMICS_MERCHANT_LOGO");
+        $mtac_url               = env("PAYNAMICS_MERCHANT_TAC");
+        $payment_notif_status   = 4;
+        $payment_notif_channel  = 1;
+        $trans_signature        = env("PAYNAMICS_MERCHANT_ID") . date("YMDhms") . env("PAYNAMICS_NOTIF_URL") . env("PAYNAMICS_RESPONSE_URL") . env("PAYNAMICS_CANCEL_URL") . $user_token . $pmethod . $pchannel . $payment_action . $collection_method . $amount . $currency . $mlogo_url . $mtac_url . $payment_notif_status . $payment_notif_channel;
 
         $transaction = [
             "merchant_id"                           => env("PAYNAMICS_MERCHANT_ID"),
@@ -34,37 +32,46 @@ class PaymentRequest extends Controller
             "response_url"                          => env("PAYNAMICS_RESPONSE_URL"),
             "cancel_url"                            => env("PAYNAMICS_CANCEL_URL"),
             "user_token"                            => $user_token,
-            "pmethod"                               => "wallet",
-            "pchannel"                              => "",
-            "payment_action"                        => "transfer",
-            "collection_method"                     => "single_pay",
-            "amount"                                => 176.98,
-            "currency"                              => "PHP",
-            "mlogo_url"                             => "https://mcrichtravel.com/images/logo-100x100.png",
-            "mtac_url"                              => "https://mcrichtravel.com/terms-and-conditions",
-            "payment_notification_status"           => 4,
-            "payment_notification_channel"          => 1,
+            "pmethod"                               => $pmethod,
+            "pchannel"                              => $pchannel,
+            "payment_action"                        => $payment_action,
+            "collection_method"                     => $collection_method,
+            "amount"                                => $amount,
+            "currency"                              => $currency,
+            "mlogo_url"                             => $mlogo_url,
+            "mtac_url"                              => $mtac_url,
+            "payment_notification_status"           => $payment_notif_status,
+            "payment_notification_channel"          => $payment_notif_channel,
             "signature"                             => hash("sha512", $trans_signature),
         ];
 
+        $fname      = "Jason";
+        $lname      = "Lipreso";
+        $mname      = "Barsalis";
+        $email      = "jasonlipreso@gmail.com";
+        $phone      = "N/A";
+        $mobile     = "+639353152023";
+        $dob        = "1994-02-17";
+        $customer_signature = $fname . $lname . $mname . $email . $phone . $mobile . $dob;
+
         $customer_info = [
-            "fname"             => "",
-            "lname"             => "",
-            "mname"             => "",
-            "email"             => "",
-            "phone"             => "",
-            "mobile"            => "",
-            "dob"               => "",
-            "signature"         => "",
+            "fname"             => $fname,
+            "lname"             => $lname,
+            "mname"             => $mname,
+            "email"             => $email,
+            "phone"             => $phone,
+            "mobile"            => $mobile,
+            "dob"               => $dob,
+            "signature"         => hash("sha512", $customer_signature),
         ];
 
         $billing_info = [
-            "billing_address1"         => "",
-            "billing_address2"         => "",
-            "billing_city"         => "",
-            "billing_state"         => "",
-            "billing_country"         => "",
-            "billing_zip"         => "",
+            "billing_address1"          => "Apid Cantabaco, Toledo City, Cebu",
+            "billing_address2"          => "Lawaan III, City of Talisay, Cebu",
+            "billing_city"              => "Toledo",
+            "billing_state"             => "Cebu",
+            "billing_country"           => "Philippines",
+            "billing_zip"               => "6038",
         ];
 
         $payload = [
@@ -93,6 +100,10 @@ class PaymentRequest extends Controller
             "value"                     => ""
         ];
 
+        return $payload;
+
+        
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, true);
@@ -104,5 +115,6 @@ class PaymentRequest extends Controller
         curl_close($ch);
 
         return $result;
+        
     }
 }
