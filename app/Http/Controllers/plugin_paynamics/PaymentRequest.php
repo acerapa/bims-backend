@@ -5,16 +5,22 @@ namespace App\Http\Controllers\plugin_paynamics;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+/**
+ * https://mcrichtravel.com/partition-api-multi-purpose/version-6/public/api/plugin_paynamics/send
+ * 
+ */
+
 class PaymentRequest extends Controller
 {
     public static function send() {
 
         $user_token             = "USR-" . date("YMDhms") . "-". date("YMDhms");
-        $url                    = env("PAYNAMICS_END_POINT_URL");
+        $merchant_key           = env("PAYNAMICS_MERCHANT_KEY");
+        $url                    = "https://payin.payserv.net/paygate/transactions"; // env("PAYNAMICS_END_POINT_URL");
         $account_hash           = env("PAYNAMICS_BASIC_AUTH_USERNAME") . ":" . env("PAYNAMICS_BASIC_AUTH_PASSWORD");
         $headers                = array("Authorization:Basic=". hash("sha512", $account_hash),"Content-Type:application/json");
         $pmethod                = "wallet";
-        $pchannel               = "";
+        $pchannel               = "gc";
         $payment_action         = "transfer";
         $collection_method      = "single_pay";
         $amount                 = 176.98;
@@ -23,11 +29,13 @@ class PaymentRequest extends Controller
         $mtac_url               = env("PAYNAMICS_MERCHANT_TAC");
         $payment_notif_status   = 4;
         $payment_notif_channel  = 1;
-        $trans_signature        = env("PAYNAMICS_MERCHANT_ID") . date("YMDhms") . env("PAYNAMICS_NOTIF_URL") . env("PAYNAMICS_RESPONSE_URL") . env("PAYNAMICS_CANCEL_URL") . $user_token . $pmethod . $pchannel . $payment_action . $collection_method . $amount . $currency . $mlogo_url . $mtac_url . $payment_notif_status . $payment_notif_channel;
+        $trans_signature        = env("PAYNAMICS_MERCHANT_ID") . date("YMDhms") . env("PAYNAMICS_NOTIF_URL") . env("PAYNAMICS_RESPONSE_URL") . env("PAYNAMICS_CANCEL_URL") 
+            . $user_token . $pmethod . $pchannel . $payment_action . $collection_method . $amount . $currency . $mlogo_url . $mtac_url . $payment_notif_status 
+            . $payment_notif_channel;
 
         $transaction = [
             "merchant_id"                           => env("PAYNAMICS_MERCHANT_ID"),
-            "request_id"                            => date("YMDhms"),
+            "request_id"                            => "TRN" . date("Ymdhis"),
             "notification_url"                      => env("PAYNAMICS_NOTIF_URL"),
             "response_url"                          => env("PAYNAMICS_RESPONSE_URL"),
             "cancel_url"                            => env("PAYNAMICS_CANCEL_URL"),
@@ -42,7 +50,7 @@ class PaymentRequest extends Controller
             "mtac_url"                              => $mtac_url,
             "payment_notification_status"           => $payment_notif_status,
             "payment_notification_channel"          => $payment_notif_channel,
-            "signature"                             => hash("sha512", $trans_signature),
+            "signature"                             => hash("sha512", $trans_signature . $merchant_key)
         ];
 
         $fname      = "Jason";
@@ -78,7 +86,7 @@ class PaymentRequest extends Controller
             "transaction"               => $transaction,
             "customer_info"             => $customer_info,
             "billing_info"              => $billing_info,
-
+            /*
             "client_ip"                 => "",
             "device_identifier"         => "",
             "device_information"        => "",
@@ -98,12 +106,10 @@ class PaymentRequest extends Controller
             "field"                     => "",
             "label"                     => "",
             "value"                     => ""
+            */
         ];
 
-        return $payload;
-
-        
-
+    
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, true);
@@ -113,7 +119,6 @@ class PaymentRequest extends Controller
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
         $result = curl_exec($ch);
         curl_close($ch);
-
         return $result;
         
     }

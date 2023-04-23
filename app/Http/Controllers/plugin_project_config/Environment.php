@@ -69,6 +69,7 @@ class Environment extends Controller
             Environment::setKeyValue("PAYNAMICS_MERCHANT_ID", "0000001703230B451534");
             Environment::setKeyValue("PAYNAMICS_MERCHANT_KEY", "BB0B48519749896540B274CDCA2F94C4");
             Environment::setKeyValue("PAYNAMICS_END_POINT_URL", "https://payin.payserv.net/paygate/transactions/");
+            Environment::setKeyValue("PAYNAMICS_TEST_API", "https://testpti.payserv.net/Paygate/ccservice.asmx?WSDL");
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_URL", "https://ptidashboard.payserv.net/signin");
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_USERNAME", "mcrich");
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_PASSWORD", "y07L75r4Kc7h");
@@ -106,6 +107,7 @@ class Environment extends Controller
             Environment::setKeyValue("PAYNAMICS_MERCHANT_ID", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_MERCHANT_KEY", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_END_POINT_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_TEST_API", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_URL", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_USERNAME", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_PASSWORD", "NO_VALUE");
@@ -143,6 +145,7 @@ class Environment extends Controller
             Environment::setKeyValue("PAYNAMICS_MERCHANT_ID", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_MERCHANT_KEY", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_END_POINT_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_TEST_API", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_URL", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_USERNAME", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_PASSWORD", "NO_VALUE");
@@ -180,6 +183,7 @@ class Environment extends Controller
             Environment::setKeyValue("PAYNAMICS_MERCHANT_ID", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_MERCHANT_KEY", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_END_POINT_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_TEST_API", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_URL", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_USERNAME", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_PASSWORD", "NO_VALUE");
@@ -217,6 +221,7 @@ class Environment extends Controller
             Environment::setKeyValue("PAYNAMICS_MERCHANT_ID", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_MERCHANT_KEY", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_END_POINT_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_TEST_API", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_URL", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_USERNAME", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_PASSWORD", "NO_VALUE");
@@ -254,6 +259,7 @@ class Environment extends Controller
             Environment::setKeyValue("PAYNAMICS_MERCHANT_ID", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_MERCHANT_KEY", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_END_POINT_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_TEST_API", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_URL", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_USERNAME", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_DASHBOARD_PASSWORD", "NO_VALUE");

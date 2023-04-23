@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
   Route::group(['prefix' => 'plugin_paynamics'], function () {
     Route::get('send', [\App\Http\Controllers\plugin_paynamics\PaymentRequest::class, 'send']);
+    Route::get('sale_post', [\App\Http\Controllers\plugin_paynamics\PaymentSale::class, 'post']);
   });
 
   Route::group(['prefix' => 'plugin_conversion'], function () {
