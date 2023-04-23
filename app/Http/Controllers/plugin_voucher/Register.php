@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\plugin_product;
+namespace App\Http\Controllers\plugin_voucher;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

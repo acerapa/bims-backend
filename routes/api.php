@@ -18,6 +18,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+  Route::group(['prefix' => 'plugin_paynamics'], function () {
+    Route::get('send', [\App\Http\Controllers\plugin_paynamics\PaymentRequest::class, 'send']);
+    Route::get('sale_post', [\App\Http\Controllers\plugin_paynamics\PaymentSale::class, 'post']);
+  });
+
+  Route::group(['prefix' => 'plugin_conversion'], function () {
+    Route::get('hash_algos', [\App\Http\Controllers\plugin_conversion\HashEncode::class, 'hash_algos']);
+    Route::get('hash_convert/{algo}/{string}', [\App\Http\Controllers\plugin_conversion\HashEncode::class, 'encode']);
+    Route::get('string_to_base64_encode/{string}', [\App\Http\Controllers\plugin_conversion\StringToBase64Encode::class, 'encode']);
+    Route::get('string_to_base64_decode/{string}', [\App\Http\Controllers\plugin_conversion\StringToBase64Decode::class, 'decode']);
+  });
+
   Route::group(['prefix' => 'plugin_gps'], function () {
     Route::get('log_position', [\App\Http\Controllers\plugin_gps\LogPosition::class, 'log']);
     Route::get('get_last_position', [\App\Http\Controllers\plugin_gps\GetPosition::class, 'getLastPosition']);

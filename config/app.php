@@ -198,6 +198,7 @@ return [
         Project\Deanlief\DeanliefServiceProvider::class,
         Project\CIMS\CIMSServiceProvider::class,
         Project\ExploriaTravel\ExploriaTravelServiceProvider::class,
+        Artisaninweb\SoapWrapper\ServiceProvider::class,
 
     ],
 
@@ -214,6 +215,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'SoapWrapper' => Artisaninweb\SoapWrapper\Facade\SoapWrapper::class,
     ])->toArray(),
 
 ];

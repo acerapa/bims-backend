@@ -66,6 +66,21 @@ class Environment extends Controller
             Environment::setKeyValue("GOOGLE_PROJECT_ID", "NO_VALUE");
             Environment::setKeyValue("GOOGLE_MAP_API_KEY", "NO_VALUE");
 
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_ID", "0000001703230B451534");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_KEY", "BB0B48519749896540B274CDCA2F94C4");
+            Environment::setKeyValue("PAYNAMICS_END_POINT_URL", "https://payin.payserv.net/paygate/transactions/");
+            Environment::setKeyValue("PAYNAMICS_TEST_API", "https://testpti.payserv.net/Paygate/ccservice.asmx?WSDL");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_URL", "https://ptidashboard.payserv.net/signin");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_USERNAME", "mcrich");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_PASSWORD", "y07L75r4Kc7h");
+            Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_USERNAME", "mcrich5ja1");
+            Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_PASSWORD", "5ja1oOyOROFH");
+            Environment::setKeyValue("PAYNAMICS_NOTIF_URL", "https://mcrichtravel.com/payment-notification.php");
+            Environment::setKeyValue("PAYNAMICS_RESPONSE_URL", "https://mcrichtravel.com/payment-success.php");
+            Environment::setKeyValue("PAYNAMICS_CANCEL_URL", "https://mcrichtravel.com/payment-cancelled.php");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_LOGO", "https://mcrichtravel.com/images/logo-100x100.png");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_TAC", "https://mcrichtravel.com/terms-and-conditions");
+
         }
         else if($hostname == "deanleifproperties.com") {
             
@@ -89,6 +104,21 @@ class Environment extends Controller
             Environment::setKeyValue("GOOGLE_PROJECT_ID", "NO_VALUE");
             Environment::setKeyValue("GOOGLE_MAP_API_KEY", "NO_VALUE");
 
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_ID", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_KEY", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_END_POINT_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_TEST_API", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_USERNAME", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_USERNAME", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_NOTIF_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_RESPONSE_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_CANCEL_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_LOGO", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_TAC", "NO_VALUE");
+
         }
         else if($hostname == "foxcityph.tech") {
 
@@ -111,6 +141,22 @@ class Environment extends Controller
             Environment::setKeyValue("GOOGLE_PROJECT_NUMBER", "NO_VALUE");
             Environment::setKeyValue("GOOGLE_PROJECT_ID", "NO_VALUE");
             Environment::setKeyValue("GOOGLE_MAP_API_KEY", "NO_VALUE");
+
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_ID", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_KEY", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_END_POINT_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_TEST_API", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_USERNAME", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_USERNAME", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_NOTIF_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_RESPONSE_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_CANCEL_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_LOGO", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_TAC", "NO_VALUE");
+
         }
         else if($hostname == "flipcard.fun") {
 
@@ -134,19 +180,23 @@ class Environment extends Controller
             Environment::setKeyValue("GOOGLE_PROJECT_ID", "NO_VALUE");
             Environment::setKeyValue("GOOGLE_MAP_API_KEY", "NO_VALUE");
 
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_ID", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_KEY", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_END_POINT_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_TEST_API", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_USERNAME", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_USERNAME", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_NOTIF_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_RESPONSE_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_CANCEL_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_LOGO", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_TAC", "NO_VALUE");
+
         }
         else if($hostname == "cims.com") {
-            
-            /*
-            Environment::setKeyValue("DB_CONNECTION", "mysql");
-            Environment::setKeyValue("DB_HOST", "45.130.228.154");
-            Environment::setKeyValue("DB_PORT", "3306");
-            Environment::setKeyValue("DB_DATABASE", "u200905711_cims");
-            Environment::setKeyValue("DB_USERNAME", "u200905711_cims");
-            Environment::setKeyValue("DB_PASSWORD", "NSbWzt>Q5t");
-            */
-
-            /** www.mis-inayagan-naga.tech */
             
             Environment::setKeyValue("DB_CONNECTION", "mysql");
             Environment::setKeyValue("DB_HOST", "45.130.228.154");
@@ -167,6 +217,21 @@ class Environment extends Controller
             Environment::setKeyValue("GOOGLE_PROJECT_NUMBER", "386384297859");
             Environment::setKeyValue("GOOGLE_PROJECT_ID", "cims-382710");
             Environment::setKeyValue("GOOGLE_MAP_API_KEY", "AIzaSyCBarUcMUAi3XsZ9j7XO415Gnn1o4fA5y0");
+
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_ID", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_KEY", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_END_POINT_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_TEST_API", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_USERNAME", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_USERNAME", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_NOTIF_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_RESPONSE_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_CANCEL_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_LOGO", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_TAC", "NO_VALUE");
 
         }
         else {
@@ -190,6 +255,21 @@ class Environment extends Controller
             Environment::setKeyValue("GOOGLE_PROJECT_NUMBER", "NO_VALUE");
             Environment::setKeyValue("GOOGLE_PROJECT_ID", "NO_VALUE");
             Environment::setKeyValue("GOOGLE_MAP_API_KEY", "NO_VALUE");
+
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_ID", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_KEY", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_END_POINT_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_TEST_API", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_USERNAME", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_USERNAME", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_NOTIF_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_RESPONSE_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_CANCEL_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_LOGO", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_TAC", "NO_VALUE");
 
         }
     }
