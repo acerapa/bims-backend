@@ -12,7 +12,7 @@
             });
         };
 
-        Plugin_convert.hashAlgos = function (algo, string, callback) {
+        Plugin_convert.hashConvert = function (algo, string, callback) {
             $.get( env_api + "api/plugin_conversion/hash_convert/" + algo + "/" + string, function (response) {
                 callback(response);
             });
