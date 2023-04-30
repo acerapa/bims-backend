@@ -62,6 +62,15 @@
                     'fileserver':'https://flipcard.fun/fileserver/'
                 };
             }
+            else if(hostname == 'hashcalculator.tech') {
+                return {
+                    'env': 'live',
+                    'domain': 'https://hashcalculator.tech/',
+                    'env_api': 'https://hashcalculator.tech/',
+                    'env_api_multi_purpose': 'https://hashcalculator.tech/partition-api-multi-purpose/version-1/public/',
+                    'fileserver':'https://hashcalculator.tech/fileserver/'
+                };
+            }
             else {
                 return {
                     'env': 'local',
