@@ -1,0 +1,14 @@
+1. Create the folder.
+2. Create src folder inside
+3. RUN: composer init
+4. Open composer.json
+5. Add the package under autoload.psr-4
+6. Go back to root dir [laravel/]
+7. RUN: composer dump-autoload
+8. Create package service provider RUN: php artisan make:provider FoxcityServiceProvider
+9. Copy the Service Provider inside src folder
+10. Change the namespace to Project/Foxcity
+11. Open config/app.php and add the providers
+12. Add route sample
+13. Open FoxcityServiceProvider.php and add boot() include __DIR__ . '/routes.php';
+14. Test now! If it work add Controllers
