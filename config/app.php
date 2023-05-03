@@ -198,6 +198,7 @@ return [
         Project\Deanlief\DeanliefServiceProvider::class,
         Project\CIMS\CIMSServiceProvider::class,
         Project\ExploriaTravel\ExploriaTravelServiceProvider::class,
+        Project\Foxcity\FoxcityServiceProvider::class,
         Artisaninweb\SoapWrapper\ServiceProvider::class,
 
     ],
