@@ -1,7 +1,5 @@
 <?php
 
     Route::group(['prefix' => 'foxcity'], function () {
-        Route::get('test', function () {
-            echo "Test";
-        });
+        Route::get("init",[Project\Foxcity\Init::class, 'fetch']);
     });
