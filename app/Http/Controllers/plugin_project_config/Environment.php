@@ -122,12 +122,29 @@ class Environment extends Controller
         }
         else if($hostname == "foxcityph.tech") {
 
+            /***********************************************
+             * Nation Wide Database:
+             ***********************************************
+             *      Host: 185.201.9.191
+             *      Database Name: foxc_shop_national
+             *      User Name: foxc_foxc_nw_161710
+             *      Password: bDr2JwoKu@4M77jh
+             * 
+             ***********************************************
+             * Local Database:
+             ***********************************************
+             *      Host: 185.201.9.191
+             *      Database Name: foxc_foxcity
+             *      User Name: foxc_foxcity
+             *      Password: ovy2hcHxx22uLwqe
+             */
+
             Environment::setKeyValue("DB_CONNECTION", "mysql");
             Environment::setKeyValue("DB_HOST", "185.201.9.191");
             Environment::setKeyValue("DB_PORT", "3306");
-            Environment::setKeyValue("DB_DATABASE", "foxc_foxcity");
-            Environment::setKeyValue("DB_USERNAME", "foxc_foxcity");
-            Environment::setKeyValue("DB_PASSWORD", "ovy2hcHxx22uLwqe");
+            Environment::setKeyValue("DB_DATABASE", "foxc_shop_national");
+            Environment::setKeyValue("DB_USERNAME", "foxc_foxc_nw_161710");
+            Environment::setKeyValue("DB_PASSWORD", "bDr2JwoKu@4M77jh");
 
             Environment::setKeyValue("MAIL_MAILER", "smtp");
             Environment::setKeyValue("MAIL_HOST", "smtp.hostinger.com");
