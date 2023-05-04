@@ -30,7 +30,7 @@
             "Project\\Deanlief\\": "packages/Project/deanlief/src",
             "Project\\CIMS\\": "packages/Project/cims/src",
             "Project\\ExploriaTravel\\": "packages/Project/exploriatravel/src",
-            "Project\\Foxcity\\": "packages/Project/foxcity/src"
+            "Project\\Foxcity\\": "packages/Project/foxcity_nation_wide/src"
         }
     },
     "autoload-dev": {
