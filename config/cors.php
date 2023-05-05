@@ -21,6 +21,7 @@ return [
         'deanlief/*',
         'cims/*',
         'exploriatravel/*',
+        'foxcity/*',
         'sanctum/csrf-cookie',
 
         'plugin_chatbox/*'
