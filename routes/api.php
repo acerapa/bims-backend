@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
   Route::group(['prefix' => 'plugin_store'], function () {
-    Route::get('fetchStoreProfile/{store_refid}', [\App\Http\Controllers\plugin_store\FetchStoreProfile::class, 'get']);
+    
   });
 
   Route::group(['prefix' => 'plugin_paynamics'], function () {

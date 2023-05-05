@@ -7,24 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
- * plugin_store/fetchStoreProfile/STR-05042023044205-QEN
- * 
- * \App\Http\Controllers\plugin_store\FetchStoreProfile::get($store_refid);
+ * \App\Http\Controllers\plugin_store\FetchStoreHeader::get($store_refid);
  * 
  */
 
-class FetchStoreProfile extends Controller
+class FetchStoreHeader extends Controller
 {
     public static function get($store_refid) {
-        return [
-            "header"    => FetchStoreProfile::header($store_refid),
-            "menu"      => null,
-            "product"   => null,
-            "branches"  => null
-        ];
-    }
-
-    public static function header($store_refid) {
         $data = DB::table("plugin_store")
         ->where([
             ["reference_id", $store_refid]
