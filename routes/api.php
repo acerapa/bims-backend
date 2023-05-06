@@ -22,6 +22,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     
   });
 
+  Route::group(['prefix' => 'plugin_product'], function () {
+    Route::get('create_init', [\App\Http\Controllers\plugin_product\Create::class, 'init']);
+    Route::get('create_details', [\App\Http\Controllers\plugin_product\Create::class, 'details']);
+  });
+
   Route::group(['prefix' => 'plugin_paynamics'], function () {
     Route::get('gcash', [\App\Http\Controllers\plugin_paynamics\PaymentGCash::class, 'send']);
     Route::get('send', [\App\Http\Controllers\plugin_paynamics\PaymentRequest::class, 'send']);

@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 
 /**
  * foxcity/init
+ * \Project\Foxcity\Init::global_category();
+ * \Project\Foxcity\Init::recomended_store();
  * 
  */
 

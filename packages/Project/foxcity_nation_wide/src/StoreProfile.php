@@ -16,10 +16,10 @@ class StoreProfile extends Controller
         $store_refid = $request['store_refid'];
 
         return [
-            "header"    => StoreProfile::header($store_refid),
-            "category"  => StoreProfile::category($store_refid),
-            "product"   => null,
-            "branches"  => null
+            "header"            => StoreProfile::header($store_refid),
+            "category_store"    => StoreProfile::category($store_refid),
+            "category_global"   => \Project\Foxcity\Init::global_category(),
+            "branches"          => null
         ];
     }
 
