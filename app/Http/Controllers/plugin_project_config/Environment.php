@@ -157,7 +157,7 @@ class Environment extends Controller
 
             Environment::setKeyValue("GOOGLE_PROJECT_NUMBER", "NO_VALUE");
             Environment::setKeyValue("GOOGLE_PROJECT_ID", "NO_VALUE");
-            Environment::setKeyValue("GOOGLE_MAP_API_KEY", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_MAP_API_KEY", "AIzaSyD6LoE8AK-28QW-LTWtTSx68Alum0ft94g");
 
             Environment::setKeyValue("PAYNAMICS_MERCHANT_ID", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_MERCHANT_KEY", "NO_VALUE");
@@ -271,7 +271,7 @@ class Environment extends Controller
 
             Environment::setKeyValue("GOOGLE_PROJECT_NUMBER", "NO_VALUE");
             Environment::setKeyValue("GOOGLE_PROJECT_ID", "NO_VALUE");
-            Environment::setKeyValue("GOOGLE_MAP_API_KEY", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_MAP_API_KEY", "AIzaSyD6LoE8AK-28QW-LTWtTSx68Alum0ft94g");
 
             Environment::setKeyValue("PAYNAMICS_MERCHANT_ID", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_MERCHANT_KEY", "NO_VALUE");

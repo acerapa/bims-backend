@@ -14,8 +14,8 @@ class Config extends Controller
 {
     public static function var() {
         return [
-            "based_delivery_fee"    => 49,
-            "next_km_charges"       => 10
+            "first_km_rate"         => 49,
+            "next_km_rate"          => 10
         ];
     }
 }

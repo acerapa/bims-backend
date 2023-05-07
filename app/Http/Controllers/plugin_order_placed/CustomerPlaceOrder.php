@@ -24,6 +24,7 @@ class CustomerPlaceOrder extends Controller
 
         $store_profile              = \App\Http\Controllers\plugin_store\FetchStoreHeader::get($store_refid);
         $cart_items                 = \App\Http\Controllers\plugin_order_item\FetchItems::get($user_refid, $store_refid, 0);
+        $matrix_distance            = \App\Http\Controllers\plugin_gps\MatrixDistance::getDistance("11.173259194540984,123.73126137252197", "11.1999448,123.740596");
         $user_address               = null;
 
         if($store_profile == null) {
@@ -44,16 +45,46 @@ class CustomerPlaceOrder extends Controller
                 "message"           => "You don't have item in your cart yet."
             ];
         }
+        else if($matrix_distance['status'] !== 'OK') {
+            return [
+                "success"           => false,
+                "message"           => "Customer address is invalid for distance calculation."
+            ];
+        }
+        else if($matrix_distance['rows'][0]['elements'][0]['status'] == 'NOT_FOUND') {
+            return [
+                "success"           => false,
+                "message"           => "Customer address was not found"
+            ];
+        }
         else {
+
+            $dis_meter      = $matrix_distance['rows'][0]['elements'][0]['distance']['value'];
+            $dis_klmtr      = round(($dis_meter / 1000), 1, PHP_ROUND_HALF_DOWN);
+            
+            $first_km_rate  = \App\Http\Controllers\plugin_order_placed\Config::var()['first_km_rate'];
+            $next_km_rate   = \App\Http\Controllers\plugin_order_placed\Config::var()['next_km_rate'];
+
+            if($dis_klmtr <= 1) {
+                $del_fee    = $first_km_rate;
+            }
+            else{
+                $a          = $dis_klmtr - 1;
+                $b          = $a * $next_km_rate;
+                $del_fee    = $first_km_rate + $b;
+            }
+
+            $total          = $cart_items['grand_total'] + $del_fee;
 
             $placed = DB::table("plugin_order_placed")->insert([
                 "reference_id"          => $reference_id,
                 "store_refid"           => $store_refid,
                 "user_refid"            => $user_refid,
                 "user_address_refid"    => $user_address_refid,
-                "delivery_fee"          => 0,
-                "distance"              => 0,
-                "total"                 => $cart_items['grand_total'],
+                "delivery_fee"          => $del_fee,
+                "distance_matrix"       => json_encode($matrix_distance),
+                "distance"              => $dis_klmtr,
+                "total"                 => $total,
                 "convo_refid"           => $convo_refid,
                 "created_at"            => date("Y-m-d h:i:s"),
                 "status"                => 1
@@ -63,6 +94,7 @@ class CustomerPlaceOrder extends Controller
 
                 /**
                  * Notify store staff for new order
+                 * Update item status to 1
                  */
 
                 return [
