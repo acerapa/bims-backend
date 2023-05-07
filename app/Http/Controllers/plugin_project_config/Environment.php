@@ -251,6 +251,44 @@ class Environment extends Controller
             Environment::setKeyValue("PAYNAMICS_MERCHANT_TAC", "NO_VALUE");
 
         }
+        else if($hostname == "multistoreapp.tech") {
+            
+            Environment::setKeyValue("DB_CONNECTION", "mysql");
+            Environment::setKeyValue("DB_HOST", "185.201.9.191");
+            Environment::setKeyValue("DB_PORT", "3306");
+            Environment::setKeyValue("DB_DATABASE", "foxc_multi_store_app");
+            Environment::setKeyValue("DB_USERNAME", "foxc_multi_store_app");
+            Environment::setKeyValue("DB_PASSWORD", "ILqGfq2#t31doxD^");
+            
+            Environment::setKeyValue("MAIL_MAILER", "smtp");
+            Environment::setKeyValue("MAIL_HOST", "smtp.hostinger.com");
+            Environment::setKeyValue("MAIL_PORT", "465");
+            Environment::setKeyValue("MAIL_USERNAME", "NO_VALUE");
+            Environment::setKeyValue("MAIL_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("MAIL_ENCRYPTION", "tls");
+            Environment::setKeyValue("MAIL_FROM_ADDRESS", "NO_VALUE");
+            Environment::setKeyValue("MAIL_FROM_NAME", "NO_VALUE");
+
+            Environment::setKeyValue("GOOGLE_PROJECT_NUMBER", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_PROJECT_ID", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_MAP_API_KEY", "NO_VALUE");
+
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_ID", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_KEY", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_END_POINT_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_TEST_API", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_USERNAME", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_USERNAME", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_NOTIF_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_RESPONSE_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_CANCEL_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_LOGO", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_TAC", "NO_VALUE");
+
+        }
         else {
 
             Environment::setKeyValue("DB_CONNECTION", "mysql");
