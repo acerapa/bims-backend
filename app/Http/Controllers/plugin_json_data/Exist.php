@@ -11,12 +11,23 @@ use Carbon\Carbon;
 /**
  * Check if has JSON data [MINUTE] ago.
  * 
+ * \App\Http\Controllers\plugin_json_data\Exist::JSONExist("foxcity_nation_wide/filename.json");
  * \App\Http\Controllers\plugin_json_data\Exist::exist($store_path, $menute);
  * 
  */
 
 class Exist extends Controller
 {
+  public static function JSONExist($file_path) {
+    $folder_data = "public/".$file_path;
+    if (Storage::exists($folder_data)) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
   public static function exist($filename, $menute) {
     $folder_data = "public/plugin_json_data/".$filename;
     if (Storage::exists($folder_data)) {
