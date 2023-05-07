@@ -1,0 +1,11 @@
+{
+    "name": "project/multistoreapp",
+    "description": "App for Multi Store App",
+    "authors": [
+        {
+            "name": "Jason Lipreso",
+            "email": "56417714+jasonlipreso@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}

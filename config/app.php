@@ -199,6 +199,7 @@ return [
         Project\CIMS\CIMSServiceProvider::class,
         Project\ExploriaTravel\ExploriaTravelServiceProvider::class,
         Project\Foxcity\FoxcityServiceProvider::class,
+        Project\MultiStoreApp\MultiStoreAppServiceProvider::class,
         Artisaninweb\SoapWrapper\ServiceProvider::class,
 
     ],
