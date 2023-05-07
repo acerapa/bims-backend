@@ -19,7 +19,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
   Route::group(['prefix' => 'plugin_store'], function () {
-    
+      
+  });
+
+  Route::group(['prefix' => 'plugin_order_item'], function () {
+    Route::get('add', [\App\Http\Controllers\plugin_order_item\Add::class, 'add']);
   });
 
   Route::group(['prefix' => 'plugin_product'], function () {
