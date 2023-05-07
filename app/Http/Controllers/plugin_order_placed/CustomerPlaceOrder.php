@@ -92,14 +92,13 @@ class CustomerPlaceOrder extends Controller
 
             if($placed) {
 
-                /**
-                 * Notify store staff for new order
-                 * Update item status to 1
-                 */
+                $UpdateItems            = \App\Http\Controllers\plugin_order_item\EditItemPlaced::edit($reference_id, $user_refid, $store_refid);
+                $NotifyStoreStaff       = null; //TO DO
 
                 return [
                     "success"           => true,
-                    "message"           => "Order successfully placed"
+                    "message"           => "Order successfully placed",
+                    "item_placed"       => $UpdateItems
                 ];
             }
             else {
