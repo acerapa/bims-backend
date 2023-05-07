@@ -26,6 +26,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('add', [\App\Http\Controllers\plugin_order_item\Add::class, 'add']);
   });
 
+  Route::group(['prefix' => 'plugin_order_placed'], function () {
+    Route::get('place', [\App\Http\Controllers\plugin_order_placed\CustomerPlaceOrder::class, 'place']);
+  });
+
   Route::group(['prefix' => 'plugin_product'], function () {
     Route::get('create_init', [\App\Http\Controllers\plugin_product\Create::class, 'init']);
     Route::get('create_details', [\App\Http\Controllers\plugin_product\Create::class, 'details']);
