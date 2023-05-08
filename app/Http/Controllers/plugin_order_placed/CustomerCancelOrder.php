@@ -42,10 +42,7 @@ class CustomerCancelOrder extends Controller
             else {
 
                 $cancelled = DB::table("plugin_order_placed")
-                ->where([
-                    ["reference_id", $reference_id],
-                    ["status", 1]
-                ])
+                ->where("reference_id", $reference_id)
                 ->update([
                     "status"    => 2
                 ]);
@@ -54,18 +51,20 @@ class CustomerCancelOrder extends Controller
 
                     /**
                      * Notify store staff
-                     * Update item status
                      */
 
+                    $cancel_item = \App\Http\Controllers\plugin_order_item\EditItemPlaced::updateStatus($reference_id, 2);
+
                     return [
-                        "success"   => true,
-                        "message"   => "Successfully posted"
+                        "success"       => true,
+                        "cancel_item"   => $cancel_item,
+                        "message"       => "Successfully posted"
                     ];
                 }
                 else {
                     return [
-                        "success"   => false,
-                        "message"   => "Cancel request denied"
+                        "success"       => false,
+                        "message"       => "Cancel request denied"
                     ];
                 }
 
