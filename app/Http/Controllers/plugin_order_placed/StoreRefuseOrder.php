@@ -53,6 +53,7 @@ class StoreRefuseOrder extends Controller
 
                     /**
                      * Notify store staff
+                     * Notify customer
                      */
 
                     $cancel_item = \App\Http\Controllers\plugin_order_item\EditItemPlaced::updateStatus($reference_id, 5);

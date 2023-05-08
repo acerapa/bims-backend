@@ -8,8 +8,13 @@ use Illuminate\Support\Facades\DB;
 
 /**
  * 
- * api/plugin_product/create_init?store_refid=&created_by=
+ * api/plugin_product/create_init?store_refid=&created_by=\
+ * -Create initial data
+ * 
  * api/plugin_product/create_details?product_refid=&store_SKU=&store_menu_refid=&name=&description=&category_global_refid=
+ * - Complete the initial data
+ * 
+ * 
  * 
  */
 
@@ -51,7 +56,6 @@ class Create extends Controller
             "description"               => $request['description'],
             "category_global_refid"     => $request['category_global_refid'],
             "subcategory_global_refid"  => $request['subcategory_global_refid'],
-            "created_at"                => date("Y-m-d h:i:s"),
             "created_by"                => $request['created_by'],
             "status"                    => 0
         ]);

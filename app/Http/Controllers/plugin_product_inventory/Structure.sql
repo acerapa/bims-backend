@@ -1,12 +1,12 @@
 /*******************************************************************************************
         DATABASE TABLE STRUCTURE
-*******************************************************************************************/
+********************************************************************************************
 
-
-/*
-plugin_product.category_global_refid
-        - Category available around the system
-        - GCT: Data Identifier
+        plugin_product_inventory.inv_type
+          QI: New quantity entry
+          QO: Quantity deducted
+          
+          
 */
 
 
@@ -15,7 +15,7 @@ plugin_product.category_global_refid
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 08, 2023 at 11:20 AM
+-- Generation Time: May 08, 2023 at 11:44 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.3.33
 
@@ -36,24 +36,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `plugin_product`
+-- Table structure for table `plugin_product_inventory`
 --
 
-CREATE TABLE `plugin_product` (
+CREATE TABLE `plugin_product_inventory` (
   `dataid` int(10) NOT NULL,
-  `reference_id` varchar(22) DEFAULT NULL,
-  `store_refid` varchar(22) DEFAULT NULL,
-  `store_SKU` varchar(60) DEFAULT NULL,
-  `store_menu_refid` varchar(22) DEFAULT NULL,
-  `name` text DEFAULT NULL,
-  `description` text DEFAULT NULL,
-  `category_global_refid` varchar(22) DEFAULT NULL,
-  `subcategory_global_refid` varchar(22) DEFAULT NULL,
-  `sharable` int(3) NOT NULL DEFAULT 0,
-  `available` int(3) NOT NULL DEFAULT 0,
-  `created_at` datetime DEFAULT current_timestamp(),
+  `product_refid` varchar(22) DEFAULT NULL,
+  `inv_type` varchar(10) DEFAULT NULL,
+  `quantity_inp` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `quantity_old` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `quantity_new` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `created_by` varchar(22) DEFAULT NULL,
-  `status` int(3) DEFAULT 1
+  `status` int(3) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -61,9 +56,9 @@ CREATE TABLE `plugin_product` (
 --
 
 --
--- Indexes for table `plugin_product`
+-- Indexes for table `plugin_product_inventory`
 --
-ALTER TABLE `plugin_product`
+ALTER TABLE `plugin_product_inventory`
   ADD PRIMARY KEY (`dataid`);
 
 --
@@ -71,9 +66,9 @@ ALTER TABLE `plugin_product`
 --
 
 --
--- AUTO_INCREMENT for table `plugin_product`
+-- AUTO_INCREMENT for table `plugin_product_inventory`
 --
-ALTER TABLE `plugin_product`
+ALTER TABLE `plugin_product_inventory`
   MODIFY `dataid` int(10) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
