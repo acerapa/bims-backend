@@ -9,7 +9,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 07, 2023 at 06:43 AM
+-- Generation Time: May 07, 2023 at 02:35 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.3.33
 
@@ -40,6 +40,7 @@ CREATE TABLE `plugin_order_placed` (
   `user_refid` varchar(22) DEFAULT NULL,
   `user_address_refid` varchar(22) DEFAULT NULL,
   `delivery_fee` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `distance_matrix` text DEFAULT NULL,
   `distance` decimal(10,2) NOT NULL DEFAULT 0.00,
   `total` decimal(10,2) NOT NULL DEFAULT 0.00,
   `store_seen` datetime DEFAULT NULL,

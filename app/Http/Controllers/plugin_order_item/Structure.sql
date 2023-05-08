@@ -11,7 +11,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 07, 2023 at 05:40 AM
+-- Generation Time: May 07, 2023 at 02:36 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.3.33
 
@@ -45,11 +45,12 @@ CREATE TABLE `plugin_order_item` (
   `quantity` decimal(10,2) NOT NULL DEFAULT 0.00,
   `price` decimal(10,2) NOT NULL DEFAULT 0.00,
   `total` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `variant_object` text DEFAULT NULL,
-  `variant_total` decimal(10,2) DEFAULT 0.00,
+  `variant_refid` varchar(22) DEFAULT NULL,
   `add_ons_array` text DEFAULT NULL,
   `add_ons_total` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `grand_total` decimal(10,2) NOT NULL DEFAULT 0.00
+  `grand_total` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `status` varchar(3) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

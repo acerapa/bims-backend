@@ -6,15 +6,20 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 /**
- * 
+ * multistoreapp/init/user_refid
  * 
  */
 
 class Init extends Controller
 {
-    public static function get($user_refid) {
+    public static function getInitial() {
         return [
-            "stores"        => Init::stores(),
+            "stores"        => Init::stores()
+        ];
+    }
+
+    public static function getInitUser($user_refid) {
+        return [
             "mycart"        => Init::mycart(),
             "order_status"  => Init::order_status(),
             "user_profile"  => Init::user_profile()
