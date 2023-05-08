@@ -43,13 +43,15 @@ class StoreAcceptOrder extends Controller
                 $cancelled = DB::table("plugin_order_placed")
                 ->where("reference_id", $reference_id)
                 ->update([
-                    "status"    => 4
+                    "store_accepted"    => date("Y-m-d h:i:s"),
+                    "status"            => 4
                 ]);
 
                 if($cancelled) {
 
                     /**
                      * Notify store staff
+                     * Notify customer
                      */
 
                     $cancel_item = \App\Http\Controllers\plugin_order_item\EditItemPlaced::updateStatus($reference_id, 4);

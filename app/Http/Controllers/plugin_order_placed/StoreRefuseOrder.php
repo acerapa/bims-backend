@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 /**
  * NOTE: Not yet tested
- * api/plugin_order_item/storeRefuseOrder?reference_id=
+ * api/plugin_order_item/storeRefuseOrder?reference_id=&reason=
  */
 
 class StoreRefuseOrder extends Controller
@@ -16,6 +16,7 @@ class StoreRefuseOrder extends Controller
     public static function refuse(Request $request) {
 
         $reference_id   = $request['reference_id'];
+        $reason         = $request['reason'];
         $header         = \App\Http\Controllers\plugin_order_placed\FetchOrder::header($reference_id);
 
         if(count($header) > 0) {
@@ -43,7 +44,9 @@ class StoreRefuseOrder extends Controller
                 $cancelled = DB::table("plugin_order_placed")
                 ->where("reference_id", $reference_id)
                 ->update([
-                    "status"    => 5
+                    "store_refused"         => date("Y-m-d h:i:s"),
+                    "store_refused_reason"  => $reason,
+                    "status"                => 5
                 ]);
 
                 if($cancelled) {
