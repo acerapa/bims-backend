@@ -4,6 +4,10 @@
         plugin_order_item.status
           0: Newly added to the cart
           1: Placed items
+          2: Cancelled by customer
+          3: Seen by store
+          4: Accepted by store
+          5: Refused by store
 */
 
 -- phpMyAdmin SQL Dump
@@ -11,7 +15,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 07, 2023 at 02:36 PM
+-- Generation Time: May 08, 2023 at 06:50 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.3.33
 
@@ -50,7 +54,7 @@ CREATE TABLE `plugin_order_item` (
   `add_ons_total` decimal(10,2) NOT NULL DEFAULT 0.00,
   `grand_total` decimal(10,2) NOT NULL DEFAULT 0.00,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `status` varchar(3) NOT NULL DEFAULT '0'
+  `status` int(3) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

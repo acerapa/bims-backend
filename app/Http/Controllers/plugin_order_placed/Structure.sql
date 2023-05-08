@@ -1,7 +1,14 @@
 /*******************************************************************************************
         DATABASE TABLE STRUCTURE
 ********************************************************************************************
-        
+
+        plugin_order_placed.status
+          1: Newly posted
+          2: Cancelled by customer
+          3: Seen by store
+          4: Accepted by store
+          5: Refused by store
+          
 */
 
 -- phpMyAdmin SQL Dump
