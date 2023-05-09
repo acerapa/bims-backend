@@ -3,8 +3,8 @@
 ********************************************************************************************
 
         plugin_product_inventory.inv_type
-          QI: New quantity entry
-          QO: Quantity deducted
+          SI: Stock In
+          SO: Stock Out
           
           
 */
