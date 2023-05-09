@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\DB;
  * api/plugin_product/create_details?product_refid=&store_SKU=&store_menu_refid=&name=&description=&category_global_refid=
  * - Complete the initial data
  * 
- * 
- * 
  */
 
 class Create extends Controller
@@ -74,4 +72,5 @@ class Create extends Controller
             ];
         }
     }
+
 }
