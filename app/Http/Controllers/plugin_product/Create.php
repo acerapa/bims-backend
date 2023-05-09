@@ -45,8 +45,9 @@ class Create extends Controller
     
     public static function details(Request $request) {
 
-        $create = DB::table("plugin_product")->update([
-            "reference_id"              => $request['product_refid'],
+        $create = DB::table("plugin_product")
+        ->where("reference_id", $request['product_refid'])
+        ->update([
             "store_refid"               => $request['store_refid'],
             "store_SKU"                 => $request['store_SKU'],
             "store_menu_refid"          => $request['store_menu_refid'],
@@ -68,7 +69,7 @@ class Create extends Controller
         else {
             return [
                 "success"           => false,
-                "message"           => "Successfully created"
+                "message"           => "Unable to save details"
             ];
         }
     }

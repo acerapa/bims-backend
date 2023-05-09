@@ -18,7 +18,7 @@ class StoreProfile extends Controller
         return [
             "header"            => StoreProfile::header($store_refid),
             "category_store"    => StoreProfile::category($store_refid),
-            "category_global"   => \Project\Foxcity\Init::global_category(),
+            "category_global"   => StoreProfile::global_category(),
             "branches"          => null
         ];
     }
@@ -48,6 +48,21 @@ class StoreProfile extends Controller
         }
         else {
             $data = \App\Http\Controllers\plugin_store_menu_group\Fetch::getAll($store_refid);
+            \App\Http\Controllers\plugin_json_data\Create::createJSON($file_path, $data);
+            return $data;
+        }
+    }
+
+    public static function global_category() {
+        
+        $file_path      = "foxcity_nation_wide/global_category.json";
+        $json_exist     = \App\Http\Controllers\plugin_json_data\Exist::JSONExist($file_path);
+        
+        if($json_exist) {
+            return \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
+        }
+        else {
+            $data = \App\Http\Controllers\plugin_product_category_global\Fetch::all();
             \App\Http\Controllers\plugin_json_data\Create::createJSON($file_path, $data);
             return $data;
         }
