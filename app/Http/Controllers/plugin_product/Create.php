@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
  * api/plugin_product/create_init?store_refid=&created_by=\
  * -Create initial data
  * 
- * api/plugin_product/create_details?product_refid=&store_SKU=&store_menu_refid=&name=&description=&category_global_refid=&subcategory_global_refid=
+ * api/plugin_product/create_details?product_refid=&store_SKU=&store_menu_refid=&name=&description=&category_global_refid=&subcategory_global_refid=&sharable=&available=&stock=&created_by=
  * - Complete the initial data
  * 
  */
@@ -82,6 +82,7 @@ class Create extends Controller
         if($create) {
 
             $stock = \App\Http\Controllers\plugin_product_stock\Create::initialStock($request['product_refid'], $request['stock'], $request['created_by']);
+            $price = \App\Http\Controllers\plugin_product_pricing\Create::init($request['product_refid'], $request['created_by']);
             
             return [
                 "success"           => true,
