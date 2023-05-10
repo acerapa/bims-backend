@@ -200,6 +200,7 @@ return [
         Project\ExploriaTravel\ExploriaTravelServiceProvider::class,
         Project\Foxcity\FoxcityServiceProvider::class,
         Project\MultiStoreApp\MultiStoreAppServiceProvider::class,
+        Project\DencentCare\DencentCareServiceProvider::class,
         Artisaninweb\SoapWrapper\ServiceProvider::class,
 
     ],
