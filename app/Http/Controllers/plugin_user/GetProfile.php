@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\DB;
 class GetProfile extends Controller
 {
     public static function header($user_refid) {
-        return DB::table("plugin_user")->where("reference_id", $user_refid)->get();
+        return DB::table("plugin_user")
+        ->select("reference_id","firstname","lastname","middlename","mobile","email","photo")
+        ->where("reference_id", $user_refid)
+        ->get();
     }
 
     public static function get($user_refid) {
