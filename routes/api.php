@@ -45,6 +45,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('create_details', [\App\Http\Controllers\plugin_product\Create::class, 'details']);
   });
 
+  Route::group(['prefix' => 'plugin_product_addons'], function () {
+    Route::get('create', [\App\Http\Controllers\plugin_product_addons\Create::class, 'create']);
+    Route::get('allByStore/{store_refid}', [\App\Http\Controllers\plugin_product_addons\Fetch::class, 'allByStore']);
+    Route::get('delete', [\App\Http\Controllers\plugin_product_addons\Delete::class, 'delete']);
+  });
+
   Route::group(['prefix' => 'plugin_paynamics'], function () {
     Route::get('gcash', [\App\Http\Controllers\plugin_paynamics\PaymentGCash::class, 'send']);
     Route::get('send', [\App\Http\Controllers\plugin_paynamics\PaymentRequest::class, 'send']);
