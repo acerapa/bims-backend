@@ -51,6 +51,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('delete', [\App\Http\Controllers\plugin_product_addons\Delete::class, 'delete']);
   });
 
+  Route::group(['prefix' => 'plugin_product_pricing'], function () {
+    Route::get('setPriceSingle', [\App\Http\Controllers\plugin_product_pricing\SetPriceSingle::class, 'set']);
+    Route::get('setPriceVariant', [\App\Http\Controllers\plugin_product_pricing\SetPriceVariant::class, 'set']);
+  });
+
   Route::group(['prefix' => 'plugin_paynamics'], function () {
     Route::get('gcash', [\App\Http\Controllers\plugin_paynamics\PaymentGCash::class, 'send']);
     Route::get('send', [\App\Http\Controllers\plugin_paynamics\PaymentRequest::class, 'send']);
