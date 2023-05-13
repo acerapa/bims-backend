@@ -201,7 +201,7 @@ class Environment extends Controller
             Environment::setKeyValue("FTP_SERVER_HOSTNAME_1", "185.201.9.191");
             Environment::setKeyValue("FTP_SERVER_USERNAME_1", "admin_foxcity");
             Environment::setKeyValue("FTP_SERVER_PASSWORD_1", "\"FyDCGjynEt#yv8wG\"");
-            Environment::setKeyValue("FTP_SERVER_ROOR_DIR_1", "public_html/fileserver-nation-wide/");
+            Environment::setKeyValue("FTP_SERVER_ROOR_DIR_1", "\"public_html/fileserver-nation-wide/\"");
             Environment::setKeyValue("FTP_SERVER_HOSTLINK_1", "\"https://www.foxcityph.tech/fileserver-nation-wide/\"");
 
             Environment::setKeyValue("FTP_SERVER_HOSTNAME_2", "NO_VALUE");
