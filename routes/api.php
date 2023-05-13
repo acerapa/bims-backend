@@ -151,6 +151,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('removeTag/{photo_refid}/{tagged}', [\App\Http\Controllers\plugin_photo\Photos::class, 'removeTag']);
     Route::get('delete/{photo_refid}', [\App\Http\Controllers\plugin_photo\Photos::class, 'delete']);
     Route::get('photoTagging/{photo_refid}/{package_refid}/{created_by}', [\App\Http\Controllers\plugin_photo\Photos::class, 'photoTagging']);
+    Route::post('upload', [\App\Http\Controllers\plugin_photo\Upload::class, 'upload']);
   });
   
   Route::group(['prefix' => 'plugin_email_pass_auth_otp'], function () {
