@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 /**
  * plugin_product_addons/allByStore/store_refid
+ * \App\Http\Controllers\plugin_product_addons\Fetch::allByStore($store_refid);
  */
 
 class Fetch extends Controller

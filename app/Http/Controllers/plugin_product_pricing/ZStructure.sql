@@ -34,13 +34,12 @@
 
 */
 
-
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 12, 2023 at 08:27 AM
+-- Generation Time: May 13, 2023 at 03:15 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.3.33
 
@@ -70,23 +69,12 @@ CREATE TABLE `plugin_product_pricing` (
   `price` decimal(10,2) DEFAULT 0.00,
   `price_variants` text DEFAULT NULL,
   `price_type` varchar(3) DEFAULT NULL,
-  `addons` text DEFAULT NULL,
+  `addons` text DEFAULT '[]',
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `created_by` varchar(22) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `plugin_product_pricing`
---
 
-INSERT INTO `plugin_product_pricing` (`dataid`, `product_refid`, `price`, `price_variants`, `price_type`, `addons`, `created_at`, `created_by`) VALUES
-(1, 'PRD-05102023024701-NKA', '0.00', NULL, NULL, NULL, '2023-05-10 14:47:43', 'USR-033121093459-TCS');
-
---
--- Indexes for dumped tables
---
-
---
 -- Indexes for table `plugin_product_pricing`
 --
 ALTER TABLE `plugin_product_pricing`

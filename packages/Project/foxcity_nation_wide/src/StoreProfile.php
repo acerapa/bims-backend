@@ -13,56 +13,22 @@ class StoreProfile extends Controller
 {
     public static function get(Request $request) {
     
-        $store_refid = $request['store_refid'];
-
-        return [
-            "header"            => StoreProfile::header($store_refid),
-            "category_store"    => StoreProfile::category($store_refid),
-            "category_global"   => StoreProfile::global_category(),
-            "branches"          => null
-        ];
-    }
-
-    public static function header($store_refid) {
-
-        $file_path      = "foxcity_nation_wide/store_header_" . $store_refid .".json";
+        $store_refid    = $request['store_refid'];
+        $json_memory    = $request['json_memory'];
+        $file_path      = "foxcity_nation_wide/store_profile/". $store_refid .".json";
         $json_exist     = \App\Http\Controllers\plugin_json_data\Exist::JSONExist($file_path);
-        
-        if($json_exist) {
+
+        if(($json_exist) && ($json_memory == '1')) {
             return \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
         }
         else {
-            $data = \App\Http\Controllers\plugin_store\FetchStoreHeader::get($store_refid);
-            \App\Http\Controllers\plugin_json_data\Create::createJSON($file_path, $data);
-            return $data;
-        }
-    }
-
-    public static function category($store_refid) {
-
-        $file_path      = "foxcity_nation_wide/store_category_" . $store_refid .".json";
-        $json_exist     = \App\Http\Controllers\plugin_json_data\Exist::JSONExist($file_path);
-        
-        if($json_exist) {
-            return \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
-        }
-        else {
-            $data = \App\Http\Controllers\plugin_store_menu_group\Fetch::getAll($store_refid);
-            \App\Http\Controllers\plugin_json_data\Create::createJSON($file_path, $data);
-            return $data;
-        }
-    }
-
-    public static function global_category() {
-        
-        $file_path      = "foxcity_nation_wide/global_category.json";
-        $json_exist     = \App\Http\Controllers\plugin_json_data\Exist::JSONExist($file_path);
-        
-        if($json_exist) {
-            return \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
-        }
-        else {
-            $data = \App\Http\Controllers\plugin_product_category_global\Fetch::all();
+            $data = [
+                "header"            => \App\Http\Controllers\plugin_store\FetchStoreHeader::get($store_refid),
+                "category_store"    => \App\Http\Controllers\plugin_store_menu_group\Fetch::getAll($store_refid),
+                "category_global"   => \App\Http\Controllers\plugin_product_category_global\Fetch::all(),
+                "branches"          => null,
+                "addons"            => \App\Http\Controllers\plugin_product_addons\Fetch::allByStore($store_refid)
+            ];
             \App\Http\Controllers\plugin_json_data\Create::createJSON($file_path, $data);
             return $data;
         }
