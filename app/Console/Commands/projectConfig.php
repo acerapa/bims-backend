@@ -44,6 +44,9 @@ class projectConfig extends Command
         else if($project == 'cims') {
             \App\Http\Controllers\plugin_project_config\Environment::setProjectEnv("cims.com");
         }
+        else if($project == 'multistoreapp') {
+            \App\Http\Controllers\plugin_project_config\Environment::setProjectEnv("multistoreapp.tech");
+        }
         else {
             \App\Http\Controllers\plugin_project_config\Environment::setProjectEnv("local");
         }

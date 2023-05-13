@@ -81,6 +81,18 @@ class Environment extends Controller
             Environment::setKeyValue("PAYNAMICS_MERCHANT_LOGO", "https://mcrichtravel.com/images/logo-100x100.png");
             Environment::setKeyValue("PAYNAMICS_MERCHANT_TAC", "https://mcrichtravel.com/terms-and-conditions");
 
+            Environment::setKeyValue("FTP_SERVER_HOSTNAME_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_USERNAME_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_PASSWORD_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_ROOR_DIR_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_HOSTLINK_1", "NO_VALUE");
+
+            Environment::setKeyValue("FTP_SERVER_HOSTNAME_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_USERNAME_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_PASSWORD_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_ROOR_DIR_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_HOSTLINK_2", "NO_VALUE");
+
         }
         else if($hostname == "deanleifproperties.com") {
             
@@ -118,6 +130,18 @@ class Environment extends Controller
             Environment::setKeyValue("PAYNAMICS_CANCEL_URL", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_MERCHANT_LOGO", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_MERCHANT_TAC", "NO_VALUE");
+
+            Environment::setKeyValue("FTP_SERVER_HOSTNAME_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_USERNAME_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_PASSWORD_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_ROOR_DIR_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_HOSTLINK_1", "NO_VALUE");
+
+            Environment::setKeyValue("FTP_SERVER_HOSTNAME_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_USERNAME_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_PASSWORD_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_ROOR_DIR_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_HOSTLINK_2", "NO_VALUE");
 
         }
         else if($hostname == "foxcityph.tech") {
@@ -157,7 +181,7 @@ class Environment extends Controller
 
             Environment::setKeyValue("GOOGLE_PROJECT_NUMBER", "NO_VALUE");
             Environment::setKeyValue("GOOGLE_PROJECT_ID", "NO_VALUE");
-            Environment::setKeyValue("GOOGLE_MAP_API_KEY", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_MAP_API_KEY", "AIzaSyD6LoE8AK-28QW-LTWtTSx68Alum0ft94g");
 
             Environment::setKeyValue("PAYNAMICS_MERCHANT_ID", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_MERCHANT_KEY", "NO_VALUE");
@@ -173,6 +197,19 @@ class Environment extends Controller
             Environment::setKeyValue("PAYNAMICS_CANCEL_URL", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_MERCHANT_LOGO", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_MERCHANT_TAC", "NO_VALUE");
+
+            Environment::setKeyValue("FTP_SERVER_HOSTNAME_1", "185.201.9.191");
+            Environment::setKeyValue("FTP_SERVER_USERNAME_1", "admin_foxcity");
+            Environment::setKeyValue("FTP_SERVER_PASSWORD_1", "\"FyDCGjynEt#yv8wG\"");
+            Environment::setKeyValue("FTP_SERVER_ROOR_DIR_1", "\"public_html/fileserver-nation-wide/\"");
+            Environment::setKeyValue("FTP_SERVER_HOSTLINK_1", "\"https://www.foxcityph.tech/fileserver-nation-wide/\"");
+
+            Environment::setKeyValue("FTP_SERVER_HOSTNAME_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_USERNAME_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_PASSWORD_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_ROOR_DIR_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_HOSTLINK_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_HOSTLINK_2", "NO_VALUE");
 
         }
         else if($hostname == "flipcard.fun") {
@@ -212,6 +249,18 @@ class Environment extends Controller
             Environment::setKeyValue("PAYNAMICS_MERCHANT_LOGO", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_MERCHANT_TAC", "NO_VALUE");
 
+            Environment::setKeyValue("FTP_SERVER_HOSTNAME_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_USERNAME_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_PASSWORD_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_ROOR_DIR_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_HOSTLINK_1", "NO_VALUE");
+
+            Environment::setKeyValue("FTP_SERVER_HOSTNAME_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_USERNAME_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_PASSWORD_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_ROOR_DIR_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_HOSTLINK_2", "NO_VALUE");
+
         }
         else if($hostname == "cims.com") {
             
@@ -250,6 +299,68 @@ class Environment extends Controller
             Environment::setKeyValue("PAYNAMICS_MERCHANT_LOGO", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_MERCHANT_TAC", "NO_VALUE");
 
+            Environment::setKeyValue("FTP_SERVER_HOSTNAME_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_USERNAME_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_PASSWORD_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_ROOR_DIR_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_HOSTLINK_1", "NO_VALUE");
+
+            Environment::setKeyValue("FTP_SERVER_HOSTNAME_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_USERNAME_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_PASSWORD_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_ROOR_DIR_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_HOSTLINK_2", "NO_VALUE");
+
+        }
+        else if($hostname == "multistoreapp.tech") {
+            
+            Environment::setKeyValue("DB_CONNECTION", "mysql");
+            Environment::setKeyValue("DB_HOST", "185.201.9.191");
+            Environment::setKeyValue("DB_PORT", "3306");
+            Environment::setKeyValue("DB_DATABASE", "foxc_multi_store_app");
+            Environment::setKeyValue("DB_USERNAME", "foxc_multi_store_app");
+            Environment::setKeyValue("DB_PASSWORD", "ILqGfq2#t31doxD^");
+            
+            Environment::setKeyValue("MAIL_MAILER", "smtp");
+            Environment::setKeyValue("MAIL_HOST", "smtp.hostinger.com");
+            Environment::setKeyValue("MAIL_PORT", "465");
+            Environment::setKeyValue("MAIL_USERNAME", "NO_VALUE");
+            Environment::setKeyValue("MAIL_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("MAIL_ENCRYPTION", "tls");
+            Environment::setKeyValue("MAIL_FROM_ADDRESS", "NO_VALUE");
+            Environment::setKeyValue("MAIL_FROM_NAME", "NO_VALUE");
+
+            Environment::setKeyValue("GOOGLE_PROJECT_NUMBER", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_PROJECT_ID", "NO_VALUE");
+            Environment::setKeyValue("GOOGLE_MAP_API_KEY", "AIzaSyD6LoE8AK-28QW-LTWtTSx68Alum0ft94g");
+
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_ID", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_KEY", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_END_POINT_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_TEST_API", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_USERNAME", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_DASHBOARD_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_USERNAME", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_BASIC_AUTH_PASSWORD", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_NOTIF_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_RESPONSE_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_CANCEL_URL", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_LOGO", "NO_VALUE");
+            Environment::setKeyValue("PAYNAMICS_MERCHANT_TAC", "NO_VALUE");
+
+            Environment::setKeyValue("FTP_SERVER_HOSTNAME_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_USERNAME_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_PASSWORD_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_ROOR_DIR_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_HOSTLINK_1", "NO_VALUE");
+
+            Environment::setKeyValue("FTP_SERVER_HOSTNAME_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_USERNAME_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_PASSWORD_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_ROOR_DIR_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_HOSTLINK_2", "NO_VALUE");
+
         }
         else {
 
@@ -287,6 +398,18 @@ class Environment extends Controller
             Environment::setKeyValue("PAYNAMICS_CANCEL_URL", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_MERCHANT_LOGO", "NO_VALUE");
             Environment::setKeyValue("PAYNAMICS_MERCHANT_TAC", "NO_VALUE");
+
+            Environment::setKeyValue("FTP_SERVER_HOSTNAME_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_USERNAME_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_PASSWORD_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_ROOR_DIR_1", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_HOSTLINK_1", "NO_VALUE");
+
+            Environment::setKeyValue("FTP_SERVER_HOSTNAME_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_USERNAME_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_PASSWORD_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_ROOR_DIR_2", "NO_VALUE");
+            Environment::setKeyValue("FTP_SERVER_HOSTLINK_2", "NO_VALUE");
 
         }
     }

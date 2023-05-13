@@ -18,13 +18,42 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+  Route::group(['prefix' => 'plugin_back_up'], function () {
+    Route::get('table_list', [\App\Http\Controllers\plugin_back_up\Data::class, 'table_list']);
+    Route::get('table_data', [\App\Http\Controllers\plugin_back_up\Data::class, 'table_data']);
+  });
+
   Route::group(['prefix' => 'plugin_store'], function () {
-    
+      
+  });
+
+  Route::group(['prefix' => 'plugin_order_item'], function () {
+    Route::get('add', [\App\Http\Controllers\plugin_order_item\Add::class, 'add']);
+    Route::get('remove', [\App\Http\Controllers\plugin_order_item\Remove::class, 'remove']);
+    Route::get('customerCancelOrder', [\App\Http\Controllers\plugin_order_item\CustomerCancelOrder::class, 'cancel']);
+    Route::get('storeAcceptOrder', [\App\Http\Controllers\plugin_order_item\StoreAcceptOrder::class, 'accept']);
+    Route::get('storeRefuseOrder', [\App\Http\Controllers\plugin_order_item\StoreRefuseOrder::class, 'refuse']);
+    Route::get('storeSeenOrder', [\App\Http\Controllers\plugin_order_item\StoreSeenOrder::class, 'seen']);
+  });
+
+  Route::group(['prefix' => 'plugin_order_placed'], function () {
+    Route::get('place', [\App\Http\Controllers\plugin_order_placed\CustomerPlaceOrder::class, 'place']);
   });
 
   Route::group(['prefix' => 'plugin_product'], function () {
     Route::get('create_init', [\App\Http\Controllers\plugin_product\Create::class, 'init']);
     Route::get('create_details', [\App\Http\Controllers\plugin_product\Create::class, 'details']);
+  });
+
+  Route::group(['prefix' => 'plugin_product_addons'], function () {
+    Route::get('create', [\App\Http\Controllers\plugin_product_addons\Create::class, 'create']);
+    Route::get('allByStore/{store_refid}', [\App\Http\Controllers\plugin_product_addons\Fetch::class, 'allByStore']);
+    Route::get('delete', [\App\Http\Controllers\plugin_product_addons\Delete::class, 'delete']);
+  });
+
+  Route::group(['prefix' => 'plugin_product_pricing'], function () {
+    Route::get('setPriceSingle', [\App\Http\Controllers\plugin_product_pricing\SetPriceSingle::class, 'set']);
+    Route::get('setPriceVariant', [\App\Http\Controllers\plugin_product_pricing\SetPriceVariant::class, 'set']);
   });
 
   Route::group(['prefix' => 'plugin_paynamics'], function () {
@@ -122,6 +151,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('removeTag/{photo_refid}/{tagged}', [\App\Http\Controllers\plugin_photo\Photos::class, 'removeTag']);
     Route::get('delete/{photo_refid}', [\App\Http\Controllers\plugin_photo\Photos::class, 'delete']);
     Route::get('photoTagging/{photo_refid}/{package_refid}/{created_by}', [\App\Http\Controllers\plugin_photo\Photos::class, 'photoTagging']);
+    Route::post('upload', [\App\Http\Controllers\plugin_photo\Upload::class, 'upload']);
+    Route::get('delete_photo', [\App\Http\Controllers\plugin_photo\Delete::class, 'delete']);
   });
   
   Route::group(['prefix' => 'plugin_email_pass_auth_otp'], function () {

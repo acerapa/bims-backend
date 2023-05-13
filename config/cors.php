@@ -23,6 +23,7 @@ return [
         'exploriatravel/*',
         'foxcity/*',
         'multistoreapp/*',
+        'dencentcare/*',
         'sanctum/csrf-cookie',
         'plugin_chatbox/*'
     ],

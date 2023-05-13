@@ -9,91 +9,74 @@ plugin_product.category_global_refid
         - GCT: Data Identifier
 */
 
+
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: May 08, 2023 at 11:20 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.3.33
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `foxc_shop_national`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `plugin_product`
+--
+
 CREATE TABLE `plugin_product` (
   `dataid` int(10) NOT NULL,
   `reference_id` varchar(22) DEFAULT NULL,
+  `store_refid` varchar(22) DEFAULT NULL,
+  `store_SKU` varchar(60) DEFAULT NULL,
+  `store_menu_refid` varchar(22) DEFAULT NULL,
   `name` text DEFAULT NULL,
   `description` text DEFAULT NULL,
   `category_global_refid` varchar(22) DEFAULT NULL,
-  `category_menu_refid` varchar(22) NOT NULL,
+  `subcategory_global_refid` varchar(22) DEFAULT NULL,
+  `sharable` int(3) NOT NULL DEFAULT 0,
+  `available` int(3) NOT NULL DEFAULT 0,
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` varchar(22) DEFAULT NULL,
   `status` int(3) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `plugin_product_category_global` (
-  `dataid` int(10) NOT NULL,
-  `reference_id` varchar(22) DEFAULT NULL,
-  `name` varchar(100) NOT NULL,
-  `description` text DEFAULT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `created_by` varchar(22) DEFAULT NULL,
-  `status` int(3) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+-- Indexes for dumped tables
+--
 
-CREATE TABLE `plugin_product_category_store` (
-  `dataid` int(10) NOT NULL,
-  `reference_id` varchar(22) DEFAULT NULL,
-  `store_refid` varchar(22) DEFAULT NULL,
-  `name` varchar(100) NOT NULL,
-  `description` text DEFAULT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `created_by` varchar(22) DEFAULT NULL,
-  `status` int(3) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+-- Indexes for table `plugin_product`
+--
+ALTER TABLE `plugin_product`
+  ADD PRIMARY KEY (`dataid`);
 
-CREATE TABLE `plugin_product_discount` (
-  `dataid` int(10) NOT NULL,
-  `reference_id` varchar(22) DEFAULT NULL,
-  `name` varchar(100) DEFAULT NULL,
-  `description` text DEFAULT NULL,
-  `discount_percent` decimal(10,2) DEFAULT 0.00,
-  `start_at` datetime DEFAULT NULL,
-  `end_at` datetime DEFAULT NULL,
-  `status` int(3) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+-- AUTO_INCREMENT for dumped tables
+--
 
-CREATE TABLE `plugin_product_inventory` (
-  `dataid` int(10) NOT NULL,
-  `quantity` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `remarks` text DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `created_by` varchar(22) DEFAULT NULL,
-  `status` int(3) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+-- AUTO_INCREMENT for table `plugin_product`
+--
+ALTER TABLE `plugin_product`
+  MODIFY `dataid` int(10) NOT NULL AUTO_INCREMENT;
+COMMIT;
 
-CREATE TABLE `plugin_product_order_item` (
-  `dataid` int(10) NOT NULL,
-  `user_refid` varchar(22) DEFAULT NULL,
-  `order_refid` varchar(22) DEFAULT NULL,
-  `price` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `quantity` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `status` int(3) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE `plugin_product_order_placed` (
-  `dataid` int(10) NOT NULL,
-  `reference_id` varchar(22) DEFAULT NULL,
-  `user_refid` varchar(22) DEFAULT NULL,
-  `store_refid` varchar(22) DEFAULT NULL,
-  `payment_id` varchar(22) DEFAULT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `created_by` varchar(22) DEFAULT NULL,
-  `status` int(3) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-ALTER TABLE `plugin_product` ADD PRIMARY KEY (`dataid`);
-ALTER TABLE `plugin_product_category_global` ADD PRIMARY KEY (`dataid`);
-ALTER TABLE `plugin_product_category_store` ADD PRIMARY KEY (`dataid`);
-ALTER TABLE `plugin_product_discount` ADD PRIMARY KEY (`dataid`);
-ALTER TABLE `plugin_product_inventory` ADD PRIMARY KEY (`dataid`);
-ALTER TABLE `plugin_product_order_item` ADD PRIMARY KEY (`dataid`);
-ALTER TABLE `plugin_product_order_placed` ADD PRIMARY KEY (`dataid`);
-ALTER TABLE `plugin_product` MODIFY `dataid` int(10) NOT NULL AUTO_INCREMENT;
-ALTER TABLE `plugin_product_category_global` MODIFY `dataid` int(10) NOT NULL AUTO_INCREMENT;
-ALTER TABLE `plugin_product_category_store` MODIFY `dataid` int(10) NOT NULL AUTO_INCREMENT;
-ALTER TABLE `plugin_product_inventory` MODIFY `dataid` int(10) NOT NULL AUTO_INCREMENT;
-ALTER TABLE `plugin_product_order_item` MODIFY `dataid` int(10) NOT NULL AUTO_INCREMENT;
-ALTER TABLE `plugin_product_order_placed` MODIFY `dataid` int(10) NOT NULL AUTO_INCREMENT;
-
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

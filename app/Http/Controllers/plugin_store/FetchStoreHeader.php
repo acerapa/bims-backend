@@ -24,17 +24,18 @@ class FetchStoreHeader extends Controller
             $list = [];
             foreach($data as $column) {
                 $list = [
-                    "reference_id"          => $column->reference_id,
-                    "name"                  => $column->name,
-                    "description"           => $column->description,
-                    "photo_refid_logo"      => json_decode($column->photo_refid_logo),
-                    "photo_refid_cover"     => json_decode($column->photo_refid_cover),
-                    "address"               => $column->address,
-                    "geo_lat"               => floatval($column->geo_lat),
-                    "geo_lng"               => floatval($column->geo_lng),
-                    "review_score"          => floatval($column->review_score),
-                    "followers"             => floatval($column->followers),
-                    "open"                  => $column->open
+                    "reference_id"              => $column->reference_id,
+                    "name"                      => $column->name,
+                    "description"               => $column->description,
+                    "photo_refid_logo"          => json_decode($column->photo_refid_logo),
+                    "photo_refid_cover"         => json_decode($column->photo_refid_cover),
+                    "address"                   => $column->address,
+                    "geo_lat"                   => floatval($column->geo_lat),
+                    "geo_lng"                   => floatval($column->geo_lng),
+                    "order_cost_service_fee"    => floatval($column->order_cost_service_fee),
+                    "review_score"              => floatval($column->review_score),
+                    "followers"                 => floatval($column->followers),
+                    "open"                      => $column->open
                 ];
             }
             return $list;

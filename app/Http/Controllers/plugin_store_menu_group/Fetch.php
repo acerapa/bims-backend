@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 class Fetch extends Controller
 {
     public static function getAll($store_refid) {
-        return DB::table("plugin_store_category")
+        return DB::table("plugin_store_menu_group")
         ->select("reference_id", "store_refid","name","status")
         ->where([
             ["store_refid", $store_refid],
