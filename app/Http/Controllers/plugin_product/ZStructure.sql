@@ -9,13 +9,12 @@ plugin_product.category_global_refid
         - GCT: Data Identifier
 */
 
-
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 08, 2023 at 11:20 AM
+-- Generation Time: May 13, 2023 at 03:16 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.3.33
 
@@ -57,10 +56,6 @@ CREATE TABLE `plugin_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Indexes for dumped tables
---
-
---
 -- Indexes for table `plugin_product`
 --
 ALTER TABLE `plugin_product`
@@ -74,7 +69,7 @@ ALTER TABLE `plugin_product`
 -- AUTO_INCREMENT for table `plugin_product`
 --
 ALTER TABLE `plugin_product`
-  MODIFY `dataid` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `dataid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

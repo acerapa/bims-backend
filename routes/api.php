@@ -43,6 +43,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
   Route::group(['prefix' => 'plugin_product'], function () {
     Route::get('create_init', [\App\Http\Controllers\plugin_product\Create::class, 'init']);
     Route::get('create_details', [\App\Http\Controllers\plugin_product\Create::class, 'details']);
+    Route::get('productProfile', [\App\Http\Controllers\plugin_product\ProductProfile::class, 'get']);
   });
 
   Route::group(['prefix' => 'plugin_product_addons'], function () {
@@ -54,6 +55,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
   Route::group(['prefix' => 'plugin_product_pricing'], function () {
     Route::get('setPriceSingle', [\App\Http\Controllers\plugin_product_pricing\SetPriceSingle::class, 'set']);
     Route::get('setPriceVariant', [\App\Http\Controllers\plugin_product_pricing\SetPriceVariant::class, 'set']);
+    Route::get('setAddons', [\App\Http\Controllers\plugin_product_pricing\SetAddons::class, 'set']);
   });
 
   Route::group(['prefix' => 'plugin_paynamics'], function () {
