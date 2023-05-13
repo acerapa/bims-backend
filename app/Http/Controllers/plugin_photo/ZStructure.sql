@@ -27,6 +27,6 @@ CREATE TABLE `plugin_photo_tagging` (
 
 ALTER TABLE `plugin_photo` ADD PRIMARY KEY (`dataid`);
 ALTER TABLE `plugin_photo_tagging` ADD PRIMARY KEY (`dataid`);
-ALTER TABLE `plugin_photo` MODIFY `dataid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-ALTER TABLE `plugin_photo_tagging` MODIFY `dataid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `plugin_photo` MODIFY `dataid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+ALTER TABLE `plugin_photo_tagging` MODIFY `dataid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
