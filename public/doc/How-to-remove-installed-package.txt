@@ -1,0 +1,8 @@
+https://stackoverflow.com/questions/23126562/how-can-i-remove-a-package-from-laravel-using-php-composer
+
+Remove the declaration from file composer.json (in the "require" section)
+**Remove Service Provider from file config/app.php (reference in the "providers" array)
+Remove any class aliases from file config/app.php
+Remove any references to the package from your code :-)
+Run composer update vendor/package-name. This will remove the package folder from the vendor folder and will rebuild the Composer autoloading map.
+Manually delete the published files 
