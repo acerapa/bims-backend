@@ -6,13 +6,21 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 /**
- * foxcity/storeProfile?store_refid=STR-05042023044205-QEN
+ * foxcity/storeProfile?json_memory=0&store_refid=STR-05042023044205-QEN
+ * \Project\Foxcity\StoreProfile::method([
+ *      "store_refid"   => $store_refid,
+ *      "json_memory"   => 0
+ * ]);
  */
 
 class StoreProfile extends Controller
 {
     public static function get(Request $request) {
-    
+        return StoreProfile::method($request);
+    }
+
+    public static function method($request) {
+        
         $store_refid    = $request['store_refid'];
         $json_memory    = $request['json_memory'];
         $file_path      = "foxcity_nation_wide/store_profile/". $store_refid .".json";
