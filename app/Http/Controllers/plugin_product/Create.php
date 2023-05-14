@@ -34,8 +34,7 @@ class Create extends Controller
     
             if($create) {
 
-                $stock = \App\Http\Controllers\plugin_product_stock\Create::initialStock($reference_id, 0, $request['created_by']);
-                $price = \App\Http\Controllers\plugin_product_pricing\Create::init($reference_id, $request['created_by']);
+                \App\Http\Controllers\plugin_product_pricing\Create::init($reference_id, $request['created_by']);
 
                 return [
                     "success"           => true,
@@ -91,18 +90,18 @@ class Create extends Controller
 
             if($request['price_type'] == 'SP') {
                 \App\Http\Controllers\plugin_product_pricing\SetPriceSingle::method([
-                    "product_refid" => $product_refid,
+                    "product_refid" => $request['product_refid'],
                     "price"         => 0
                 ]);
             }
             else if($request['price_type'] == 'VP') {
                 \App\Http\Controllers\plugin_product_pricing\SetPriceVariant::method([
-                    "product_refid" => $product_refid,
+                    "product_refid" => $request['product_refid'],
                     "variants"      => null
                 ]);
             }
             else {
-                
+                \App\Http\Controllers\plugin_product_pricing\Create::init($reference_id, $request['created_by']);
             }
             
             return [

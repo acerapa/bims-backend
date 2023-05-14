@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
- * foxcity/storeProfile?json_memory=1&store_refid=STR-05042023044205-QEN
- * 
+ *  plugin_product/productProfile?json_memory=0&product_refid=PRD-05102023024701-NKA
  */
 
 class ProductProfile extends Controller
@@ -30,7 +29,8 @@ class ProductProfile extends Controller
                 "header"    => ProductProfile::header($product_refid),
                 "photos"    => ProductProfile::photos($product_refid),
                 "pricing"   => ProductProfile::pricing($product_refid),
-                "stock"     => ProductProfile::stock($product_refid)
+                "stock"     => ProductProfile::stock($product_refid),
+                "hostlink"  => env("FTP_SERVER_HOSTLINK_1")
             ];
 
             \App\Http\Controllers\plugin_json_data\Create::createJSON($file_path, $data);
