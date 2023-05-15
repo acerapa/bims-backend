@@ -7,14 +7,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
- * plugin_product/masterlistByStore?store_refid=STR-05042023044205-QEN&page=2
+ * plugin_product/allByRating?page=1
+ * \App\Http\Controllers\plugin_product\Recommended::allByRatingMethod(["page" => 1]);
  */
 
-class Masterlist extends Controller
+class Recommended extends Controller
 {
-    public static function byStore(Request $request) {
-        $store_refid = $request['store_refid'];
-        $data = DB::table("plugin_product")
+    public static function allByRating(Request $request) {
+        return Recommended::allByRatingMethod($request);
+    }
+
+    public static function allByRatingMethod($request) {
+        $data =  DB::table("plugin_product")
         ->select(
             "reference_id as product_refid",
             "store_refid",
@@ -30,14 +34,13 @@ class Masterlist extends Controller
             "created_by",
             "status")
         ->where([
-            ["store_refid", $store_refid],
             ["status", 1]
         ])
         ->orderBy("name","ASC")
         ->paginate(10)->toArray();
 
         $data_list = $data['data'];
-        
+
         $temp = [];
         foreach($data_list as $item) {
             $temp[] = [
@@ -45,7 +48,7 @@ class Masterlist extends Controller
                 "photos"    => \App\Http\Controllers\plugin_product\ProductProfile::photos($item->product_refid),
                 "stock"     => \App\Http\Controllers\plugin_product\ProductProfile::stock($item->product_refid),
                 "pricing"   => \App\Http\Controllers\plugin_product\ProductProfile::pricing($item->product_refid),
-                "sold"      => \App\Http\Controllers\plugin_product\ProductProfile::sold($item->product_refid),
+                "sold"      => \App\Http\Controllers\plugin_product\ProductProfile::sold($item->product_refid)
             ];
         }
 

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
  * \App\Http\Controllers\plugin_product\ProductProfile::ProductProfile::photos($product_refid);
  * \App\Http\Controllers\plugin_product\ProductProfile::ProductProfile::pricing($product_refid);
  * \App\Http\Controllers\plugin_product\ProductProfile::ProductProfile::stock($product_refid);
+ * \App\Http\Controllers\plugin_product\ProductProfile::ProductProfile::sold($product_refid);
  */
 
 class ProductProfile extends Controller
@@ -33,6 +34,7 @@ class ProductProfile extends Controller
                 "photos"    => ProductProfile::photos($product_refid),
                 "pricing"   => ProductProfile::pricing($product_refid),
                 "stock"     => ProductProfile::stock($product_refid),
+                "sold"      => ProductProfile::sold($product_refid),
                 "hostlink"  => env("FTP_SERVER_HOSTLINK_1")
             ];
 
@@ -108,5 +110,9 @@ class ProductProfile extends Controller
         else {
             return null;
         }
+    }
+
+    public static function sold($product_refid) {
+        return rand(0, 1000);
     }
 }
