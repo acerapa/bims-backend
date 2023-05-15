@@ -23,8 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('table_data', [\App\Http\Controllers\plugin_back_up\Data::class, 'table_data']);
   });
 
-  Route::group(['prefix' => 'plugin_store'], function () {
-      
+  Route::group(['prefix' => 'plugin_follow'], function () {
+    Route::get('follow', [\App\Http\Controllers\plugin_follow\Follow::class, 'follow']);
+    Route::get('unfollow', [\App\Http\Controllers\plugin_follow\Unfollow::class, 'unfollow']);
   });
 
   Route::group(['prefix' => 'plugin_order_item'], function () {
