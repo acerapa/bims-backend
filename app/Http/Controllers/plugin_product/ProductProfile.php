@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
- *  plugin_product/productProfile?json_memory=0&product_refid=PRD-05102023024701-NKA
+ * plugin_product/productProfile?json_memory=0&product_refid=PRD-05102023024701-NKA
+ * \App\Http\Controllers\plugin_product\ProductProfile::ProductProfile::photos($product_refid);
+ * \App\Http\Controllers\plugin_product\ProductProfile::ProductProfile::pricing($product_refid);
+ * \App\Http\Controllers\plugin_product\ProductProfile::ProductProfile::stock($product_refid);
  */
 
 class ProductProfile extends Controller
@@ -60,7 +63,7 @@ class ProductProfile extends Controller
 
     public static function pricing($product_refid) {
         $data = DB::table("plugin_product_pricing")
-        ->select("price","price_variants","price_type","addons")
+        ->select("price","price_less","price_variants","price_type","addons")
         ->where("product_refid", $product_refid)
         ->get();
         if(count($data) > 0) {
@@ -77,6 +80,7 @@ class ProductProfile extends Controller
 
             return [
                 "price"             => floatval($data[0]->price),
+                "price_less"        => floatval($data[0]->price_less),
                 "price_variants"    => $price_variants,
                 "price_type"        => $data[0]->price_type,
                 "addons"            => $addons

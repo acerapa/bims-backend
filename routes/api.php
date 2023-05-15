@@ -44,6 +44,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('create_init', [\App\Http\Controllers\plugin_product\Create::class, 'init']);
     Route::get('create_details', [\App\Http\Controllers\plugin_product\Create::class, 'details']);
     Route::get('productProfile', [\App\Http\Controllers\plugin_product\ProductProfile::class, 'get']);
+    Route::get('masterlistByStore', [\App\Http\Controllers\plugin_product\Masterlist::class, 'byStore']);
   });
 
   Route::group(['prefix' => 'plugin_product_addons'], function () {

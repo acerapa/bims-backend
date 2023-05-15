@@ -28,6 +28,7 @@ class SetPriceVariant extends Controller
         ->update([
             "price_variants"    => $request['variants'],
             "price"             => 0,
+            "price_less"        => 0,
             "price_type"        => 'VP'
         ]);
 
