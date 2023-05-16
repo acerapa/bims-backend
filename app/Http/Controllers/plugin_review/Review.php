@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 class Review extends Controller
 {
   public static function getScore($tag_primary) {
+    
     $sum    = DB::table("plugin_review")->where("tag_primary", $tag_primary)->sum("score");
     $sum    = floatval($sum);
     $count  = DB::table("plugin_review")->where("tag_primary", $tag_primary)->count();

@@ -18,6 +18,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+  Route::group(['prefix' => 'plugin_utility'], function () {
+    Route::get('createRefID/{identifier}', [\App\Http\Controllers\plugin_utility\CreateReferenceNo::class, 'create']);
+  });
+
   Route::group(['prefix' => 'plugin_back_up'], function () {
     Route::get('table_list', [\App\Http\Controllers\plugin_back_up\Data::class, 'table_list']);
     Route::get('table_data', [\App\Http\Controllers\plugin_back_up\Data::class, 'table_data']);
