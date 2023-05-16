@@ -15,7 +15,7 @@ class Summary extends Controller
 {
     public static function get($memory_json, $product_refid) {
 
-        $file_path      = "plugin_product_review/summary/". $product_refid .".json";
+        $file_path      = "plugin_product_review/". $product_refid .".json";
         $json_exist     = \App\Http\Controllers\plugin_json_data\Exist::JSONExist($file_path);
         
         if(($json_exist) && ($memory_json == 1)) {

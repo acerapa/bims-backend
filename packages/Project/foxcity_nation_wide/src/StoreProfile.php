@@ -35,7 +35,7 @@ class StoreProfile extends Controller
 
             $data = [
                 "header"            => $header,
-                "category_store"    => \App\Http\Controllers\plugin_store_menu_group\Fetch::getAll($store_refid),
+                "category_store"    => \App\Http\Controllers\plugin_store_menu_group\Fetch::getAll(1, $store_refid),
                 "category_global"   => \App\Http\Controllers\plugin_product_category_global\Fetch::all(),
                 "branches"          => null,
                 "addons"            => \App\Http\Controllers\plugin_product_addons\Fetch::allByStore($store_refid),
