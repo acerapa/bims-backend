@@ -53,6 +53,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('allByRating', [\App\Http\Controllers\plugin_product\Recommended::class, 'allByRating']);
   });
 
+  Route::group(['prefix' => 'plugin_product_review'], function () {
+    Route::get('create', [\App\Http\Controllers\plugin_product_review\Create::class, 'create']);
+    Route::get('fetch', [\App\Http\Controllers\plugin_product_review\Fetch::class, 'fetch']);
+  });
+
   Route::group(['prefix' => 'plugin_product_addons'], function () {
     Route::get('create', [\App\Http\Controllers\plugin_product_addons\Create::class, 'create']);
     Route::get('allByStore/{store_refid}', [\App\Http\Controllers\plugin_product_addons\Fetch::class, 'allByStore']);
