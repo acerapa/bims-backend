@@ -30,6 +30,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
   Route::group(['prefix' => 'plugin_store_menu_group'], function () {
     Route::get('create', [\App\Http\Controllers\plugin_store_menu_group\Create::class, 'create']);
     Route::get('delete', [\App\Http\Controllers\plugin_store_menu_group\Delete::class, 'delete']);
+    Route::get('rename', [\App\Http\Controllers\plugin_store_menu_group\Rename::class, 'rename']);
   });
 
   Route::group(['prefix' => 'plugin_follow'], function () {
