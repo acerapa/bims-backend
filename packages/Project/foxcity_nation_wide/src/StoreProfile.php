@@ -38,7 +38,7 @@ class StoreProfile extends Controller
                 "category_store"    => \App\Http\Controllers\plugin_store_menu_group\Fetch::getAll(1, $store_refid),
                 "category_global"   => \App\Http\Controllers\plugin_product_category_global\Fetch::all(),
                 "branches"          => null,
-                "addons"            => \App\Http\Controllers\plugin_product_addons\Fetch::allByStore($store_refid),
+                "addons"            => \App\Http\Controllers\plugin_product_addons\Fetch::allByStore(1, $store_refid),
                 "followers"         => [
                     "number"            => $header['followers'],
                     "string"            => \App\Http\Controllers\plugin_utility\NumberAbbreviation::shorten($header['followers'])
