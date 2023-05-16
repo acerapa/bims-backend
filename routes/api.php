@@ -27,6 +27,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('table_data', [\App\Http\Controllers\plugin_back_up\Data::class, 'table_data']);
   });
 
+  Route::group(['prefix' => 'plugin_store_menu_group'], function () {
+    Route::get('create', [\App\Http\Controllers\plugin_store_menu_group\Create::class, 'create']);
+    Route::get('delete', [\App\Http\Controllers\plugin_store_menu_group\Delete::class, 'delete']);
+  });
+
   Route::group(['prefix' => 'plugin_follow'], function () {
     Route::get('follow', [\App\Http\Controllers\plugin_follow\Follow::class, 'follow']);
     Route::get('unfollow', [\App\Http\Controllers\plugin_follow\Unfollow::class, 'unfollow']);
