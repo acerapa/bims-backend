@@ -201,7 +201,6 @@ return [
         Project\Foxcity\FoxcityServiceProvider::class,
         Project\MultiStoreApp\MultiStoreAppServiceProvider::class,
         Project\DencentCare\DencentCareServiceProvider::class,
-        Artisaninweb\SoapWrapper\ServiceProvider::class,
 
     ],
 
@@ -218,7 +217,6 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
-        'SoapWrapper' => Artisaninweb\SoapWrapper\Facade\SoapWrapper::class,
     ])->toArray(),
 
 ];

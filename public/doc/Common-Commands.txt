@@ -1,0 +1,6 @@
+
+To clear cache
+- php artisan cache:clear 
+
+To clear cache using Redis Server
+- php artisan cache:clear --store redis

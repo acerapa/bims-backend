@@ -18,13 +18,24 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+  Route::group(['prefix' => 'plugin_utility'], function () {
+    Route::get('createRefID/{identifier}', [\App\Http\Controllers\plugin_utility\CreateReferenceNo::class, 'create']);
+  });
+
   Route::group(['prefix' => 'plugin_back_up'], function () {
     Route::get('table_list', [\App\Http\Controllers\plugin_back_up\Data::class, 'table_list']);
     Route::get('table_data', [\App\Http\Controllers\plugin_back_up\Data::class, 'table_data']);
   });
 
-  Route::group(['prefix' => 'plugin_store'], function () {
-      
+  Route::group(['prefix' => 'plugin_store_menu_group'], function () {
+    Route::get('create', [\App\Http\Controllers\plugin_store_menu_group\Create::class, 'create']);
+    Route::get('delete', [\App\Http\Controllers\plugin_store_menu_group\Delete::class, 'delete']);
+    Route::get('rename', [\App\Http\Controllers\plugin_store_menu_group\Rename::class, 'rename']);
+  });
+
+  Route::group(['prefix' => 'plugin_follow'], function () {
+    Route::get('follow', [\App\Http\Controllers\plugin_follow\Follow::class, 'follow']);
+    Route::get('unfollow', [\App\Http\Controllers\plugin_follow\Unfollow::class, 'unfollow']);
   });
 
   Route::group(['prefix' => 'plugin_order_item'], function () {
@@ -44,6 +55,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('create_init', [\App\Http\Controllers\plugin_product\Create::class, 'init']);
     Route::get('create_details', [\App\Http\Controllers\plugin_product\Create::class, 'details']);
     Route::get('productProfile', [\App\Http\Controllers\plugin_product\ProductProfile::class, 'get']);
+    Route::get('masterlistByStore', [\App\Http\Controllers\plugin_product\Masterlist::class, 'byStore']);
+    Route::get('allByRating', [\App\Http\Controllers\plugin_product\Recommended::class, 'allByRating']);
+  });
+
+  Route::group(['prefix' => 'plugin_product_review'], function () {
+    Route::get('create', [\App\Http\Controllers\plugin_product_review\Create::class, 'create']);
+    Route::get('fetch', [\App\Http\Controllers\plugin_product_review\Fetch::class, 'fetch']);
   });
 
   Route::group(['prefix' => 'plugin_product_addons'], function () {

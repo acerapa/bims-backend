@@ -37,6 +37,10 @@ class FetchRecomendedStore extends Controller
                     "geo_lat"               => floatval($store->geo_lat),
                     "geo_lng"               => floatval($store->geo_lng),
                     "review_score"          => floatval($store->review_score),
+                    "followers"             => [
+                        "number"                => $store->followers,
+                        "string"                => \App\Http\Controllers\plugin_utility\NumberAbbreviation::shorten($store->followers)
+                    ],
                     "open"                  => $store->open
                 ];
             }
@@ -72,6 +76,10 @@ class FetchRecomendedStore extends Controller
                     "geo_lat"               => floatval($store->geo_lat),
                     "geo_lng"               => floatval($store->geo_lng),
                     "review_score"          => floatval($store->review_score),
+                    "followers"             => [
+                        "number"                => $store->followers,
+                        "string"                => \App\Http\Controllers\plugin_utility\NumberAbbreviation::shorten($store->followers)
+                    ],
                     "open"                  => $store->open
                 ];
             }

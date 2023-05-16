@@ -7,8 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
- * foxcity/storeProfile?json_memory=1&store_refid=STR-05042023044205-QEN
- * 
+ * plugin_product/productProfile?json_memory=0&product_refid=PRD-05102023024701-NKA
+ * \App\Http\Controllers\plugin_product\ProductProfile::ProductProfile::photos($product_refid);
+ * \App\Http\Controllers\plugin_product\ProductProfile::ProductProfile::pricing($product_refid);
+ * \App\Http\Controllers\plugin_product\ProductProfile::ProductProfile::stock($product_refid);
+ * \App\Http\Controllers\plugin_product\ProductProfile::ProductProfile::sold($product_refid);
  */
 
 class ProductProfile extends Controller
@@ -30,7 +33,9 @@ class ProductProfile extends Controller
                 "header"    => ProductProfile::header($product_refid),
                 "photos"    => ProductProfile::photos($product_refid),
                 "pricing"   => ProductProfile::pricing($product_refid),
-                "stock"     => ProductProfile::stock($product_refid)
+                "stock"     => ProductProfile::stock($product_refid),
+                "sold"      => ProductProfile::sold($product_refid),
+                "hostlink"  => env("FTP_SERVER_HOSTLINK_1")
             ];
 
             \App\Http\Controllers\plugin_json_data\Create::createJSON($file_path, $data);
@@ -60,7 +65,7 @@ class ProductProfile extends Controller
 
     public static function pricing($product_refid) {
         $data = DB::table("plugin_product_pricing")
-        ->select("price","price_variants","price_type","addons")
+        ->select("price","price_less","price_variants","price_type","addons")
         ->where("product_refid", $product_refid)
         ->get();
         if(count($data) > 0) {
@@ -77,6 +82,7 @@ class ProductProfile extends Controller
 
             return [
                 "price"             => floatval($data[0]->price),
+                "price_less"        => floatval($data[0]->price_less),
                 "price_variants"    => $price_variants,
                 "price_type"        => $data[0]->price_type,
                 "addons"            => $addons
@@ -104,5 +110,9 @@ class ProductProfile extends Controller
         else {
             return null;
         }
+    }
+
+    public static function sold($product_refid) {
+        return rand(0, 1000);
     }
 }

@@ -81,7 +81,8 @@ class Upload extends Controller
                 "remote_path"	=> null,
                 "ext"           => null,
                 "size"          => 0,
-                "upload_list"   => []
+                "upload_list"   => [],
+                "hostlink"      => $hostlink
             ];
         }
         ftp_close($ftpcon);

@@ -33,8 +33,12 @@ class Create extends Controller
             ]);
     
             if($create) {
+
+                \App\Http\Controllers\plugin_product_pricing\Create::init($reference_id, $request['created_by']);
+
                 return [
                     "success"           => true,
+                    "draft"             => false,
                     "product_refid"     => $reference_id,
                     "message"           => "Successfully created"
                 ];
@@ -49,6 +53,7 @@ class Create extends Controller
         else {
             return [
                 "success"           => true,
+                "draft"             => true,
                 "product_refid"     => $getDraft[0]->reference_id,
                 "message"           => "From draft record"
             ];
@@ -81,8 +86,23 @@ class Create extends Controller
 
         if($create) {
 
-            $stock = \App\Http\Controllers\plugin_product_stock\Create::initialStock($request['product_refid'], $request['stock'], $request['created_by']);
-            $price = \App\Http\Controllers\plugin_product_pricing\Create::init($request['product_refid'], $request['created_by']);
+            $stock      = \App\Http\Controllers\plugin_product_stock\Create::create($request['product_refid'], 'SI', $request['stock'], 0, $request['created_by']);
+
+            if($request['price_type'] == 'SP') {
+                \App\Http\Controllers\plugin_product_pricing\SetPriceSingle::method([
+                    "product_refid" => $request['product_refid'],
+                    "price"         => 0
+                ]);
+            }
+            else if($request['price_type'] == 'VP') {
+                \App\Http\Controllers\plugin_product_pricing\SetPriceVariant::method([
+                    "product_refid" => $request['product_refid'],
+                    "variants"      => null
+                ]);
+            }
+            else {
+                \App\Http\Controllers\plugin_product_pricing\Create::init($reference_id, $request['created_by']);
+            }
             
             return [
                 "success"           => true,

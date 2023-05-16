@@ -19,9 +19,10 @@ class Init extends Controller
             "global_banner"     => Init::global_banner(),
             "global_category"   => Init::global_category(),
             "recomended_store"  => Init::recomended_store(),
-            "popular_product"   => null,
+            "popular_page_1"    => \App\Http\Controllers\plugin_product\Recommended::allByRatingMethod(["page", 1]),
             "notification"      => null,
-            "message"           => null
+            "message"           => null,
+            "hostlink"          => env("FTP_SERVER_HOSTLINK_1")
         ];
     }
 

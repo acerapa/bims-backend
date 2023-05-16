@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
- * 
+ * \App\Http\Controllers\plugin_user\GetProfile::header($user_refid);
  */
 
 class GetProfile extends Controller

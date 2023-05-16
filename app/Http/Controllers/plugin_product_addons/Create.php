@@ -37,24 +37,26 @@ class Create extends Controller
         }
         else {
             $created = DB::table("plugin_product_addons")->insert([
-                "reference_id"  => $reference_id,
-                "store_refid"   => $request['store_refid'],
-                "name"          => $request['name'],
-                "price"         => $request['price'],
-                "photo_cover"   => $request['photo_cover'],
-                "created_by"    => $request['created_by']
+                "reference_id"      => $reference_id,
+                "store_refid"       => $request['store_refid'],
+                "name"              => $request['name'],
+                "price"             => $request['price'],
+                "photo_cover"       => $request['photo_cover'],
+                "created_by"        => $request['created_by']
             ]);
 
             if($created) {
+                $addons_list    = \App\Http\Controllers\plugin_product_addons\Fetch::allByStore(0, $request['store_refid']);
                 return [
-                    "success"   => true,
-                    "message"   => "Successfully created"
+                    "success"       => true,
+                    "message"       => "Successfully created",
+                    "addons_list"   => $addons_list
                 ];
             }
             else {
                 return [
-                    "success"   => false,
-                    "message"   => "Something went wrong, please try again later."
+                    "success"       => false,
+                    "message"       => "Something went wrong, please try again later."
                 ];
             }
         }
