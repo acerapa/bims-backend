@@ -68,7 +68,7 @@ class GetProfile extends Controller
             return \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
         }
         else {
-            $data = [];
+            $data = DB::table("plugin_user_social_media")->where("user_refid", $user_refid)->get();
             \App\Http\Controllers\plugin_json_data\Create::createJSON($file_path, $data);
             return $data;
         }
@@ -83,7 +83,7 @@ class GetProfile extends Controller
             return \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
         }
         else {
-            $data = [];
+            $data = DB::table("plugin_user_personalize")->where("user_refid", $user_refid)->get();
             \App\Http\Controllers\plugin_json_data\Create::createJSON($file_path, $data);
             return $data;
         }
