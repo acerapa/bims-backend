@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
  *      Check if user exist in new database, if exist update 
  *      else register as new user.
  **************************************************************
- *      foxcity/userRegistrationClone?user_refid=&firstname=&lastname=&middlename=&mobile=&email=&password=&photo=
+ *      foxcity/userRegistrationClone?reference_id=56790&first_name=sdds&last_name=sdsd&middlename=sdsd&mobile=ds&email=sdsd&password=sds&photo=sd
  * 
  */
 
@@ -70,7 +70,7 @@ class UserRegistrationClone extends Controller
 
         if($created) {
             
-            \App\Http\Controllers\plugin_user_notifications\Create::create(
+            $notif = \App\Http\Controllers\plugin_user_notifications\Create::create(
                 $request['reference_id'], 
                 "info", 
                 "Welcome to Foxcity Nation Wide!", 
@@ -84,9 +84,15 @@ class UserRegistrationClone extends Controller
                 1
             );
 
+            $personalize        = \App\Http\Controllers\plugin_user_personalize\Init::init($request['reference_id']);
+            $social_media       = \App\Http\Controllers\plugin_user_social_media\Init::init($request['reference_id']);
+
             return [
-                "success"   => true,
-                "message"   => "Account successfully created"
+                "success"           => true,
+                "message"           => "Account successfully created",
+                "notif"             => $notif,
+                "personalize"       => $personalize,
+                "social_media"      => $social_media
             ];
         }
         else {

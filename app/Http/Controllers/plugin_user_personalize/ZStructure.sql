@@ -8,7 +8,7 @@
 CREATE TABLE `plugin_user_personalize` (
   `dataid` int(10) NOT NULL,
   `user_refid` varchar(22) DEFAULT NULL,
-  `theme_mode` varchar(10) DEFAULT NULL
+  `theme_mode` varchar(10) DEFAULT 'light'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 ALTER TABLE `plugin_user_personalize` ADD PRIMARY KEY (`dataid`);
