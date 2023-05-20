@@ -30,8 +30,31 @@ class Fetch extends Controller
             ])
             ->orderBy("name","ASC")
             ->get();
-            \App\Http\Controllers\plugin_json_data\Create::createJSON($file_path, $data);
-            return $data;
+            
+            
+            $list = [];
+            foreach($data as $item) {
+                $counts             = Fetch::count($store_refid, $item->reference_id);
+                $list[] = [
+                    "reference_id"  => $item->reference_id,
+                    "store_refid"   => $item->store_refid,
+                    "name"          => $item->name,
+                    "count"         => $counts,  
+                    "status"        => $item->status,
+                ];
+            }
+
+            \App\Http\Controllers\plugin_json_data\Create::createJSON($file_path, $list);
+            return $list;
+            
         }
+    }
+
+    public static function count($store_refid, $menu_group_refid) {
+        return DB::table("plugin_product")->where([
+            "store_refid"           => $store_refid,
+            "store_menu_refid"      => $menu_group_refid
+        ])
+        ->count();
     }
 }

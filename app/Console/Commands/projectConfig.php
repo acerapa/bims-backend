@@ -4,6 +4,10 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
+/**
+ * TEST SEND 3
+ */
+
 class projectConfig extends Command
 {
     /**

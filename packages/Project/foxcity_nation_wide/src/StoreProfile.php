@@ -35,10 +35,11 @@ class StoreProfile extends Controller
 
             $data = [
                 "header"            => $header,
-                "category_store"    => \App\Http\Controllers\plugin_store_menu_group\Fetch::getAll(1, $store_refid),
+                "category_store"    => \App\Http\Controllers\plugin_store_menu_group\Fetch::getAll($json_memory, $store_refid),
+                "product_page_1"    => \App\Http\Controllers\plugin_product\Masterlist::byStoreMethod(["memory_json" => $json_memory,"store_refid" => $store_refid,"page" => 1]),
                 "category_global"   => \App\Http\Controllers\plugin_product_category_global\Fetch::all(),
                 "branches"          => null,
-                "addons"            => \App\Http\Controllers\plugin_product_addons\Fetch::allByStore(1, $store_refid),
+                "addons"            => \App\Http\Controllers\plugin_product_addons\Fetch::allByStore($json_memory, $store_refid),
                 "followers"         => [
                     "number"            => $header['followers'],
                     "string"            => \App\Http\Controllers\plugin_utility\NumberAbbreviation::shorten($header['followers'])

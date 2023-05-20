@@ -39,7 +39,7 @@ class Fetch extends Controller
         foreach($data['data'] as $item) {
             $temp[] = [
                 "header"        => $item,
-                "user_profile"  => \App\Http\Controllers\plugin_user\GetProfile::header($item->user_refid),
+                "user_profile"  => \App\Http\Controllers\plugin_user\GetProfile::header(1, $item->user_refid),
                 "likes"         => [
                     "liked"         => false,
                     "likes"         => rand(1, 500)

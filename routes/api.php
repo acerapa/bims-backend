@@ -111,6 +111,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('gitInfo', [\App\Http\Controllers\plugin_project_config\Environment::class, 'gitInfo']);
   });
 
+  Route::group(['prefix' => 'plugin_project_sync'], function () {
+    Route::get('init', [\App\Http\Controllers\plugin_project_sync\ReadFiles::class, 'init']);
+    Route::get('sync', [\App\Http\Controllers\plugin_project_sync\ReadFiles::class, 'sync']);
+    Route::get('target', [\App\Http\Controllers\plugin_project_sync\ReadFiles::class, 'target']);
+  });
+
   Route::group(['prefix' => 'plugin_email'], function () {
     Route::get('sendText', [\App\Http\Controllers\plugin_email\SendBasic::class, 'sendText']);
     Route::get('sendHTML', [\App\Http\Controllers\plugin_email\SendBasic::class, 'sendHTML']);
@@ -207,7 +213,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
   Route::group(['prefix' => 'plugin_user'], function () {
     Route::get('changePassword', [\App\Http\Controllers\plugin_user\ChangePassword::class, 'change']);
-    Route::get('getProfile/{user_refid}', [\App\Http\Controllers\plugin_user\GetProfile::class, 'get']);
+    Route::get('getProfile/{memory_json}/{user_refid}', [\App\Http\Controllers\plugin_user\GetProfile::class, 'get']);
     Route::get('register', [\App\Http\Controllers\plugin_user\Register::class, 'register']);
     Route::get('setTheme/{user_refid}/{theme}', [\App\Http\Controllers\plugin_user\Personalize::class, 'setTheme']);
   });
