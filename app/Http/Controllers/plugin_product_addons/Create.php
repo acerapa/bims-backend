@@ -46,7 +46,9 @@ class Create extends Controller
             ]);
 
             if($created) {
+                
                 $addons_list    = \App\Http\Controllers\plugin_product_addons\Fetch::allByStore(0, $request['store_refid']);
+
                 return [
                     "success"       => true,
                     "message"       => "Successfully created",
