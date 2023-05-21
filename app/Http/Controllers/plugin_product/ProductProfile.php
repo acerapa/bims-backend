@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
- * plugin_product/productProfile?json_memory=0&product_refid=PRD-05102023024701-NKA
+ * plugin_product/productProfile?json_file=0&product_refid=PRD-05102023024701-NKA
  * \App\Http\Controllers\plugin_product\ProductProfile::ProductProfile::photos($product_refid);
  * \App\Http\Controllers\plugin_product\ProductProfile::ProductProfile::pricing($product_refid);
  * \App\Http\Controllers\plugin_product\ProductProfile::ProductProfile::stock($product_refid);
@@ -19,12 +19,12 @@ class ProductProfile extends Controller
     public static function get(Request $request) {
 
         $product_refid  = $request['product_refid'];
-        $json_memory    = $request['json_memory'];
+        $json_file    = $request['json_file'];
 
         $file_path      = "product_profile/" . $product_refid .".json";
         $json_exist     = \App\Http\Controllers\plugin_json_data\Exist::JSONExist($file_path);
         
-        if(($json_exist) && ($json_memory == '1')) {
+        if(($json_exist) && ($json_file == '1')) {
             return \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
         }
         else {

@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\DB;
 /**********************************************************************************************************
  *      Save JSON File for page 1 only
  **********************************************************************************************************
- *      \App\Http\Controllers\plugin_product\Masterlist::byStoreMethod(["memory_json" => "0","store_refid" => $store_refid,"page" => 1])
- *      plugin_product/masterlistByStore?memory_json=0&store_refid=STR-05042023044205-QEN&page=2
+ *      \App\Http\Controllers\plugin_product\Masterlist::byStoreMethod(["json_file" => "0","store_refid" => $store_refid,"page" => 1])
+ *      plugin_product/masterlistByStore?json_file=0&store_refid=STR-05042023044205-QEN&page=2
  */
 
 class Masterlist extends Controller
@@ -23,10 +23,10 @@ class Masterlist extends Controller
 
         $store_refid    = $request['store_refid'];
         $page           = $request['page'];
-        $memory_json    = '0';
+        $json_file    = '0';
         
-        if($request['memory_json']) {
-            $memory_json    = $request['memory_json'];
+        if($request['json_file']) {
+            $json_file    = $request['json_file'];
         }
         
         if($page == '1') {
@@ -34,7 +34,7 @@ class Masterlist extends Controller
             $file_path      = "plugin_product/". $store_refid ."-page-1.json";
             $json_exist     = \App\Http\Controllers\plugin_json_data\Exist::JSONExist($file_path);
             
-            if(($json_exist) && ($memory_json == '0')) {
+            if(($json_exist) && ($json_file == '0')) {
                 return \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
             }
             else {

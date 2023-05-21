@@ -25,7 +25,7 @@ class ScheduleTaskStore extends Controller
 
             $store_profile = \Project\Foxcity\StoreProfile::method([
                 "store_refid"   => $store->reference_id,
-                "json_memory"   => 0
+                "json_file"   => 0
             ]);
 
             $generate_list[] = [

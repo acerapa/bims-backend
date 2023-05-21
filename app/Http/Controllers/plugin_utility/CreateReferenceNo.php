@@ -31,6 +31,7 @@ class CreateReferenceNo extends Controller
             ["table" => "plugin_store","key"                                => "STR"],
             ["table" => "plugin_store_menu_group","key"                     => "SMN"],
             ["table" => "plugin_user","key"                                 => "USR"],
+            ["table" => "plugin_voucher","key"                              => "VCH"]
         ];
 
         $key = $identifier;
