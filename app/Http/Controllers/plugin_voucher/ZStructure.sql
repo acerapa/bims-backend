@@ -14,6 +14,12 @@
         plugin_voucher.voucher_label
          - Visible name of the voucher
         
+        plugin_voucher.status
+          1: New voucher posted
+          2: Claimed voucher
+          3: Used voucher
+          4: Unused expired voucher
+        
 */
 
 CREATE TABLE `plugin_voucher` (
@@ -26,7 +32,7 @@ CREATE TABLE `plugin_voucher` (
   `min_order_cost` decimal(10,2) DEFAULT NULL,
   `voucher_type` varchar(22) DEFAULT NULL,
   `voucher_label` varchar(100) DEFAULT NULL,
-  `voucher_value` text DEFAULT NULL,
+  `voucher_value` decimal(10,2) DEFAULT 0.00,
   `valid_from` datetime DEFAULT NULL,
   `valid_until` datetime DEFAULT NULL,
   `claim_user_refid` varchar(22) DEFAULT NULL,

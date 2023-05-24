@@ -31,7 +31,7 @@ class StoreProfile extends Controller
         }
         else {
 
-            $header                 = \App\Http\Controllers\plugin_store\FetchStoreHeader::get($store_refid);
+            $header                 = \App\Http\Controllers\plugin_store\FetchStoreHeader::get(1 , $store_refid);
 
             $data = [
                 "header"            => $header,

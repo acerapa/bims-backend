@@ -22,7 +22,7 @@ class CustomerPlaceOrder extends Controller
         $user_refid                 = $request['user_refid'];
         $user_address_refid         = $request['user_address_refid'];
 
-        $store_profile              = \App\Http\Controllers\plugin_store\FetchStoreHeader::get($store_refid);
+        $store_profile              = \App\Http\Controllers\plugin_store\FetchStoreHeader::get(1 ,$store_refid);
         $cart_items                 = \App\Http\Controllers\plugin_order_item\FetchItems::get($user_refid, $store_refid, 0);
         $matrix_distance            = \App\Http\Controllers\plugin_gps\MatrixDistance::getDistance("11.173259194540984,123.73126137252197", "11.1999448,123.740596");
         $user_address               = null;

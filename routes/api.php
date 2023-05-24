@@ -27,6 +27,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('table_data', [\App\Http\Controllers\plugin_back_up\Data::class, 'table_data']);
   });
 
+  Route::group(['prefix' => 'plugin_store'], function () {
+    Route::get('fetchstoreheader/{json_file}/{store_refid}', [\App\Http\Controllers\plugin_store\FetchStoreHeader::class, 'get']);
+  });
+
   Route::group(['prefix' => 'plugin_store_menu_group'], function () {
     Route::get('create', [\App\Http\Controllers\plugin_store_menu_group\Create::class, 'create']);
     Route::get('delete', [\App\Http\Controllers\plugin_store_menu_group\Delete::class, 'delete']);
@@ -220,6 +224,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
   Route::group(['prefix' => 'plugin_voucher'], function () {
     Route::get('create', [\App\Http\Controllers\plugin_voucher\Create::class, 'create']);
+    Route::get('fetchAll', [\App\Http\Controllers\plugin_voucher\Fetch::class, 'fetchAll']);
+    Route::get('fetchByStore', [\App\Http\Controllers\plugin_voucher\Fetch::class, 'fetchByStore']);
+    Route::get('claim', [\App\Http\Controllers\plugin_voucher\Claim::class, 'claim']);
   });
 
   
