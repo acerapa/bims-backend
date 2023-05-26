@@ -53,7 +53,7 @@ class Add extends Controller
                 "quantity"                  => $quantity,
                 "price"                     => $price,
                 "total"                     => $total,
-                "variant_refid"             => $request['variant_refid'],
+                "variant_info"              => $request['variant_info'],
                 "add_ons_array"             => $request['add_ons_array'],
                 "add_ons_total"             => $add_ons_total,
                 "grand_total"               => $grand_total

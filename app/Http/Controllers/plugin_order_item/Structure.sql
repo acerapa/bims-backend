@@ -34,7 +34,7 @@ CREATE TABLE `plugin_order_item` (
   `quantity` decimal(10,2) NOT NULL DEFAULT 0.00,
   `price` decimal(10,2) NOT NULL DEFAULT 0.00,
   `total` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `variant_refid` varchar(22) DEFAULT NULL,
+  `variant_info` text DEFAULT NULL,
   `add_ons_array` text DEFAULT NULL,
   `add_ons_total` decimal(10,2) NOT NULL DEFAULT 0.00,
   `grand_total` decimal(10,2) NOT NULL DEFAULT 0.00,

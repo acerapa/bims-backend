@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
- * http://127.0.0.1:8000/api/plugin_product_review/create??product_refid=PRD-0001&user_refid=USR-456&score=3&comment=ok%20KAAYU&photos=[]
+ * api/plugin_product_review/create?product_refid=PRD-0001&user_refid=USR-456&score=3&comment=ok%20KAAYU&photos=[]
  * 
  */
 

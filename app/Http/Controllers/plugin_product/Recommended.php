@@ -45,10 +45,10 @@ class Recommended extends Controller
         foreach($data_list as $item) {
             $temp[] = [
                 "header"    => $item,
-                "photos"    => \App\Http\Controllers\plugin_product\ProductProfile::photos($item->product_refid),
-                "stock"     => \App\Http\Controllers\plugin_product\ProductProfile::stock($item->product_refid),
-                "pricing"   => \App\Http\Controllers\plugin_product\ProductProfile::pricing($item->product_refid),
-                "sold"      => \App\Http\Controllers\plugin_product\ProductProfile::sold($item->product_refid)
+                "photos"    => \App\Http\Controllers\plugin_product\ProductProfile::photos(1, $item->product_refid),
+                "stock"     => \App\Http\Controllers\plugin_product\ProductProfile::stock(1, $item->product_refid),
+                "pricing"   => \App\Http\Controllers\plugin_product\ProductProfile::pricing(1, $item->product_refid),
+                "sold"      => \App\Http\Controllers\plugin_product\ProductProfile::sold(1, $item->product_refid)
             ];
         }
 
