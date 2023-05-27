@@ -22,12 +22,13 @@ class ProductProfile extends Controller
         $json_file      = $request['json_file'];
 
         return [
-            "header"    => ProductProfile::header($json_file, $product_refid),
-            "photos"    => ProductProfile::photos($json_file, $product_refid),
-            "pricing"   => ProductProfile::pricing($json_file, $product_refid),
-            "stock"     => ProductProfile::stock($json_file, $product_refid),
-            "sold"      => ProductProfile::sold($json_file, $product_refid),
-            "hostlink"  => env("FTP_SERVER_HOSTLINK_1")
+            "header"                => ProductProfile::header($json_file, $product_refid),
+            "photos"                => ProductProfile::photos($json_file, $product_refid),
+            "pricing"               => ProductProfile::pricing($json_file, $product_refid),
+            "stock"                 => ProductProfile::stock($json_file, $product_refid),
+            "sold"                  => ProductProfile::sold($json_file, $product_refid),
+            "reviews_page_1"        => ProductProfile::reviews($json_file, $product_refid),
+            "hostlink"              => env("FTP_SERVER_HOSTLINK_1")
         ];
     }
 
@@ -163,6 +164,10 @@ class ProductProfile extends Controller
             \App\Http\Controllers\plugin_json_data\Create::createJSON($file_path, $data);
             return $data;
         }
+    }
+
+    public static function reviews($json_file, $product_refid) {
+        return \App\Http\Controllers\plugin_product_review\Fetch::method(['json_file' => $json_file, 'product_refid' => $product_refid, 'order_by' => 'most_recent', 'page'=>1]);
     }
 
     public static function sold($json_file, $product_refid) {

@@ -13,6 +13,12 @@
                 filepath: '
               }
             ]
+        plugin_product_review.score
+          - 1: Terrible
+          - 2: Poor
+          - 3: Okey
+          - 4: Good
+          - 5: Great
 
 */
 

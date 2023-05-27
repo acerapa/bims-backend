@@ -44,7 +44,7 @@ class StoreProfile extends Controller
                     "number"            => $header['followers'],
                     "string"            => \App\Http\Controllers\plugin_utility\NumberAbbreviation::shorten($header['followers'])
                 ],
-                "reviews_page_1"    => [],
+                "staff"             => [],
                 "hostlink"          => env("FTP_SERVER_HOSTLINK_1")
             ];
             \App\Http\Controllers\plugin_json_data\Create::createJSON($file_path, $data);

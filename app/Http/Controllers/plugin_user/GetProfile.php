@@ -54,8 +54,14 @@ class GetProfile extends Controller
         }
         else {
             $data = DB::table("plugin_user")->select("reference_id","firstname","lastname","middlename","mobile","email","photo","access","status")->where("reference_id", $user_refid)->get();
-            \App\Http\Controllers\plugin_json_data\Create::createJSON($file_path, $data);
-            return $data;
+            if(count($data) > 0) {
+                $data_json = $data[0];
+            }
+            else {
+                $data_json = [];
+            }
+            \App\Http\Controllers\plugin_json_data\Create::createJSON($file_path, $data_json);
+            return $data_json;
         }
     }
 

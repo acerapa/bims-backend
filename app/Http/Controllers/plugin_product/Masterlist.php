@@ -23,18 +23,14 @@ class Masterlist extends Controller
 
         $store_refid    = $request['store_refid'];
         $page           = $request['page'];
-        $json_file      = '0';
+        $json_file      = $request['json_file'];
         
-        if($request['json_file']) {
-            $json_file    = $request['json_file'];
-        }
-        
-        if($page == '1') {
+        if($page == 1) {
 
             $file_path      = "plugin_product/". $store_refid ."-page-1.json";
             $json_exist     = \App\Http\Controllers\plugin_json_data\Exist::JSONExist($file_path);
             
-            if(($json_exist) && ($json_file == '0')) {
+            if(($json_exist) && ($json_file == 1)) {
                 return \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
             }
             else {
