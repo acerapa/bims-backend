@@ -67,6 +67,7 @@ class Add extends Controller
                     "success"               => true,
                     "reference_id"          => $reference_id,
                     "cart_item_count"       => $cart_item_count,
+                    "store_refid"           => $store_refid,
                     "message"               => "Product successfully added to the cart"
                 ];
             }

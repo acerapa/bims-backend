@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 /**
  * plugin_user/getProfile/USR-033121093459-TCS
- * \App\Http\Controllers\plugin_user\GetProfile::header($user_refid);
+ * \App\Http\Controllers\plugin_user\GetProfile::header($json_file, $user_refid);
  */
 
 class GetProfile extends Controller

@@ -15,7 +15,7 @@ class FetchItems extends Controller
 {
     public static function get($user_refid, $store_refid, $status) {
         $items = DB::table("plugin_order_item")
-        ->select("reference_id","product_refid","quantity","price","total","variant_refid","add_ons_array","add_ons_total","grand_total")
+        ->select("reference_id","product_refid","quantity","price","total","variant_info","add_ons_array","add_ons_total","grand_total")
         ->where([
             ["user_refid", $user_refid],
             ["store_refid", $store_refid],
@@ -34,8 +34,8 @@ class FetchItems extends Controller
                     "quantity"              => floatval($item->quantity),
                     "price"                 => floatval($item->price),
                     "total"                 => floatval($item->total),
-                    "variant_refid"         => $item->variant_refid,
-                    "add_ons_array"         => $item->add_ons_array,
+                    "variant_info"          => json_decode($item->variant_info),
+                    "add_ons_array"         => json_decode($item->add_ons_array),
                     "add_ons_total"         => floatval($item->add_ons_total),
                     "grand_total"           => floatval($item->grand_total),
                 ];
