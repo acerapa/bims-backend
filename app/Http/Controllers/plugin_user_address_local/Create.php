@@ -49,7 +49,9 @@ class Create extends Controller
             ->where("user_refid", $request['user_refid'])
             ->update([
                 "address"       => $request['address'],
-                "info_json"     => $request['info_json']
+                "info_json"     => $request['info_json'],
+                "landmark"      => $request['landmark'],
+                "note_to_rider" => $request['note_to_rider']
             ]);
 
             if($created) {

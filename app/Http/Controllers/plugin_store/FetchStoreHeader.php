@@ -30,6 +30,7 @@ class FetchStoreHeader extends Controller
                 $list = [
                     "reference_id"              => $data[0]->reference_id,
                     "name"                      => $data[0]->name,
+                    "store_type"                => $data[0]->store_type,
                     "description"               => $data[0]->description,
                     "photo_refid_logo"          => json_decode($data[0]->photo_refid_logo),
                     "photo_refid_cover"         => json_decode($data[0]->photo_refid_cover),

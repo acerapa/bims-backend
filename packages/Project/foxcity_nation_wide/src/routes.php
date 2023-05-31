@@ -5,5 +5,6 @@
         Route::get("storeProfile",[Project\Foxcity\StoreProfile::class, 'get']);
         Route::get("generateStoreProfiles",[Project\Foxcity\ScheduleTaskStore::class, 'generateStoreProfiles']);
         Route::get("userRegistrationClone",[Project\Foxcity\UserRegistrationClone::class, 'clone']);
-        Route::get("mycartProfile/{json_file}/{user_refid}/{store_refid}",[Project\Foxcity\MyCartProfile::class, 'get']);
+        
+        Route::get("mycartProfileLocal/{json_file}/{user_refid}/{store_refid}/{lat}/{lng}",[Project\Foxcity\MyCartProfile::class, 'local']);
     });

@@ -27,6 +27,8 @@ class Fetch extends Controller
                     "address_refid"     => $source[0]->reference_id,
                     "user_refid"        => $source[0]->user_refid,
                     "address"           => $source[0]->address,
+                    "landmark"          => $source[0]->landmark,
+                    "note_to_rider"     => $source[0]->note_to_rider,
                     "info_json"         => json_decode($source[0]->info_json)
                 ];
             }

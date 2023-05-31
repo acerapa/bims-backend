@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 /**
  * Description: Calculate distance from point A to B
  * 
- * ?origins=11.173259194540984,123.73126137252197&destinations=11.1999448,123.740596
+ * plugin_gps/getDistance/11.173259194540984,123.73126137252197/11.1999448,123.740596
  * \App\Http\Controllers\plugin_gps\MatrixDistance::getDistance($origins, $destinations);
  * 
  */
