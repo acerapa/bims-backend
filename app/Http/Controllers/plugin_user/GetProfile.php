@@ -13,35 +13,22 @@ use Illuminate\Support\Facades\DB;
 
 class GetProfile extends Controller
 {
-    public static function get($json_file = 1, $user_refid) {
+    public static function get($json_file, $user_refid) {
 
-        $profile            = GetProfile::header($json_file, $user_refid);
-        
-        if(count($profile) > 0) {
-            
-            $social_media   = GetProfile::social_media($json_file, $user_refid);
-            $personalize    = GetProfile::personalize($json_file, $user_refid);
-            $searches       = GetProfile::searches($json_file, $user_refid);
+        $profile        = GetProfile::header($json_file, $user_refid);
+        $social_media   = GetProfile::social_media($json_file, $user_refid);
+        $personalize    = GetProfile::personalize($json_file, $user_refid);
+        $searches       = GetProfile::searches($json_file, $user_refid);
+        $address_local  = \App\Http\Controllers\plugin_user_address_local\Fetch::get($json_file, $user_refid);
 
-            return [
-                "success"           => true,
-                "profile"           => $profile[0],
-                "social_media"      => $social_media,
-                "personalize"       => $personalize,
-                "searches"          => $searches
-            ];
-            
-        }
-        else {
-            return [
-                "success"           => false,
-                "profile"           => [],
-                "permissions"       => [],
-                "social_media"      => [],
-                "theme"             => [],
-                "searches"          => []
-            ];
-        }
+        return [
+            "header"            => $profile,
+            "social_media"      => $social_media,
+            "personalize"       => $personalize,
+            "searches"          => $searches,
+            "address_local"     => $address_local,
+            "address_national"  => []
+        ];
     }
 
     public static function header($json_file, $user_refid) {
@@ -53,7 +40,7 @@ class GetProfile extends Controller
             return \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
         }
         else {
-            $data = DB::table("plugin_user")->select("reference_id","firstname","lastname","middlename","mobile","email","photo","access","status")->where("reference_id", $user_refid)->get();
+            $data = DB::table("plugin_user")->select("reference_id as user_refid","firstname","lastname","middlename","mobile","email","photo","access","status")->where("reference_id", $user_refid)->get();
             if(count($data) > 0) {
                 $data_json = $data[0];
             }

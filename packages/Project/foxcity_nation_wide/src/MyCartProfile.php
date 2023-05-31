@@ -22,7 +22,8 @@ class MyCartProfile extends Controller
             "store_ship_del_method"     => \App\Http\Controllers\plugin_store_ship_del_method\Fetch::get($json_file, $store_refid),
             "customer"                  => [
                 "header"                => \App\Http\Controllers\plugin_user\GetProfile::header($json_file, $user_refid),
-                "address"               => []
+                "address_local"         => \App\Http\Controllers\plugin_user_address_local\Fetch::get($json_file, $user_refid),
+                "address_national"      => [],
             ],
             "cart_items"                => \App\Http\Controllers\plugin_order_item\FetchItems::get($user_refid, $store_refid, 0),
             "voucher"                   => [
