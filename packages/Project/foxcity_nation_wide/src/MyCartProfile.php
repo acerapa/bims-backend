@@ -21,7 +21,23 @@ class MyCartProfile extends Controller
         $customer_address               = \App\Http\Controllers\plugin_user_address_local\Fetch::get($json_file, $user_refid);
         $customer_distance_matrix       = MyCartProfile::matrix($store_header['geo_lat'], $store_header['geo_lng'], floatval($lat), floatval($lng));
         $cart_items                     = \App\Http\Controllers\plugin_order_item\FetchItems::get($user_refid, $store_refid, 0);
-        $summary                        = MyCartProfile::summary($store_header['geo_lat'], $store_header['geo_lng'], $customer_address['info_json']['lat'], $customer_address['info_json']['lng']);
+        $customer_address_matrix        = MyCartProfile::summary($store_header['geo_lat'], $store_header['geo_lng'], $customer_address['info_json']['lat'], $customer_address['info_json']['lng']);
+
+        /** Sample base only */
+        $first_km_rate                  = 49;
+        $next_km_rate                   = 10;
+        $distance                       = $customer_address_matrix['data']['distance_km_value'];
+        $delivery_fee                   = 0;
+        $grand_total                    = 0;
+
+        if($distance <= 1) {
+            $delivery_fee               = $first_km_rate;
+        }
+        else {
+            $delivery_fee               = (($distance - 1) * $next_km_rate) + $first_km_rate;
+        }
+
+        $grand_total                    = $cart_items['grand_total'] + $delivery_fee;
 
         return [
             "store_header"              => $store_header,
@@ -33,7 +49,9 @@ class MyCartProfile extends Controller
             "voucher_claimed"           => [],
             "voucher_store"             => [],
             "voucher_foxcity"           => [],
-            "customer_address_matrix"   => $summary,
+            "customer_address_matrix"   => $customer_address_matrix,
+            "delivery_fee"              => round($delivery_fee, 2, PHP_ROUND_HALF_UP),
+            "grand_total"               => round($grand_total, 2, PHP_ROUND_HALF_UP),
             "hostlink"                  => env("FTP_SERVER_HOSTLINK_1")
         ];
     }

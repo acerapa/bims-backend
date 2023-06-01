@@ -223,6 +223,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('setTheme/{user_refid}/{theme}', [\App\Http\Controllers\plugin_user\Personalize::class, 'setTheme']);
   });
 
+  Route::group(['prefix' => 'plugin_user_extender'], function () {
+    Route::get('createEdit/{user_refid}/{name}/{value}', [\App\Http\Controllers\plugin_user_extender\CreateEdit::class, 'method']);
+    Route::get('getAll/{user_refid}', [\App\Http\Controllers\plugin_user_extender\Fetch::class, 'getAll']);
+    Route::get('getSingle/{user_refid}/{name}', [\App\Http\Controllers\plugin_user_extender\Fetch::class, 'getSingle']);
+  });
+
   Route::group(['prefix' => 'plugin_voucher'], function () {
     Route::get('create', [\App\Http\Controllers\plugin_voucher\Create::class, 'create']);
     Route::get('fetchAll', [\App\Http\Controllers\plugin_voucher\Fetch::class, 'fetchAll']);
