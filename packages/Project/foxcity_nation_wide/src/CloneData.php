@@ -81,7 +81,7 @@ class CloneData extends Controller
                     ];
  
                 }
-
+                \App\Http\Controllers\plugin_user_notifications\Create::create("USR-033121093459-TCS", "info", "Clone Data", "fetchStores from ".$from." to ".$to);
                 return $list;
             }
             else {
@@ -129,7 +129,7 @@ class CloneData extends Controller
             }
 
         }
-
+        \App\Http\Controllers\plugin_user_notifications\Create::create("USR-033121093459-TCS", "info", "Clone Data", "fetchStoresFixLogo");
         return $list;
     }
 
@@ -171,6 +171,7 @@ class CloneData extends Controller
 
         }
 
+        \App\Http\Controllers\plugin_user_notifications\Create::create("USR-033121093459-TCS", "info", "Clone Data", "fetchStoresFixCover");
         return $list;
     }
 
@@ -218,6 +219,7 @@ class CloneData extends Controller
                     ];
                 }
             }
+            \App\Http\Controllers\plugin_user_notifications\Create::create("USR-033121093459-TCS", "info", "Clone Data", "fetchStoresMenuGroup from ". $from ." to ". $to);
             return $list;
         }
         else {
@@ -271,6 +273,7 @@ class CloneData extends Controller
                     ];
                 }
 
+                \App\Http\Controllers\plugin_user_notifications\Create::create("USR-033121093459-TCS", "info", "Clone Data", "fetchProducts from ". $from ." to ". $to);
                 return $list;
             }
         }
@@ -309,6 +312,7 @@ class CloneData extends Controller
             }
         }
 
+        \App\Http\Controllers\plugin_user_notifications\Create::create("USR-033121093459-TCS", "info", "Clone Data", "fetchProductInitPrice from ". $from ." to ". $to);
         return $list;
     }
 
@@ -363,6 +367,7 @@ class CloneData extends Controller
                 }
             }
 
+            \App\Http\Controllers\plugin_user_notifications\Create::create("USR-033121093459-TCS", "info", "Clone Data", "fetchProductPriceVariant from ". $from ." to ". $to);
             return $list;
         }
     }
@@ -428,6 +433,7 @@ class CloneData extends Controller
                     ];
                 }
             }
+            \App\Http\Controllers\plugin_user_notifications\Create::create("USR-033121093459-TCS", "info", "Clone Data", "fetchProductPriceFixed from ". $from ." to ". $to);
             return $list;
         }
     }
@@ -478,6 +484,7 @@ class CloneData extends Controller
                 }
             }
 
+            \App\Http\Controllers\plugin_user_notifications\Create::create("USR-033121093459-TCS", "info", "Clone Data", "fetchUsers from ". $from ." to ". $to);
             return $list;
         }
     }
