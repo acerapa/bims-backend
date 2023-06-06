@@ -10,8 +10,15 @@
 
         /** CLONE DATA START */
         Route::get("connection",[Project\Foxcity\CloneData::class, 'connection']);
-        Route::get("fetchStores",[Project\Foxcity\CloneData::class, 'fetchStores']);
+        Route::get("fetchStores/{from}/{to}",[Project\Foxcity\CloneData::class, 'fetchStores']);
         Route::get("fetchStoresFixLogo",[Project\Foxcity\CloneData::class, 'fetchStoresFixLogo']);
         Route::get("fetchStoresFixCover",[Project\Foxcity\CloneData::class, 'fetchStoresFixCover']);
+        Route::get("fetchProducts/{from}/{to}",[Project\Foxcity\CloneData::class, 'fetchProducts']);
+        Route::get("fetchProductInitPrice/{from}/{to}",[Project\Foxcity\CloneData::class, 'fetchProductInitPrice']);
+        Route::get("fetchProductPriceVariant/{from}/{to}",[Project\Foxcity\CloneData::class, 'fetchProductPriceVariant']);
+        Route::get("fetchProductPriceFixed/{from}/{to}",[Project\Foxcity\CloneData::class, 'fetchProductPriceFixed']);
+        Route::get("fetchStoresMenuGroup/{from}/{to}",[Project\Foxcity\CloneData::class, 'fetchStoresMenuGroup']);
+        Route::get("fetchUsers/{from}/{to}",[Project\Foxcity\CloneData::class, 'fetchUsers']);
+        
         /** CLONE DATA END */
     });
