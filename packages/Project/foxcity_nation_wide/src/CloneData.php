@@ -28,6 +28,7 @@ class CloneData extends Controller
     /**
      * Clone store data by creating or updating existing
      * RUN: foxcity/fetchStores/1/10
+     * CRON: wget -qO- https://www.foxcityph.tech/dataserver-nation-wide/version-1/public/foxcity/fetchStores/1/200
      * RUN: \Project\Foxcity\CloneData::fetchStores(1, 250);
     */
     public static function fetchStores($from, $to) {

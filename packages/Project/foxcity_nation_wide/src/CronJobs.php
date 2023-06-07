@@ -6,16 +6,17 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * CRON LINK: wget -qO- https://www.foxcityph.tech/dataserver-nation-wide/version-1/public/foxcity/execute
+ */
+
 class CronJobs extends Controller
 {
-    public static function test($value) {
-        return $value;
-    }
-
     public static function execute() {
-
-        $file_path      = "foxcity_nation_wide/execute.json";
-        $json_exist     = \App\Http\Controllers\plugin_json_data\Exist::JSONExist($file_path);
+        $list[0] = \Project\Foxcity\CloneData::fetchStores(1, 50);
+        $list[1] = \Project\Foxcity\CloneData::fetchStores(51, 100);
+        $list[2] = \Project\Foxcity\CloneData::fetchStores(101, 150);
+        /*
         $list           = [
             \Project\Foxcity\CloneData::fetchStores(1, 50),
             \Project\Foxcity\CloneData::fetchStores(51, 100),
@@ -54,7 +55,6 @@ class CronJobs extends Controller
             \Project\Foxcity\CloneData::fetchProducts(1251, 1300),
             \Project\Foxcity\CloneData::fetchProducts(1301, 1350),
             \Project\Foxcity\CloneData::fetchProducts(1351, 1400),
-            
             \Project\Foxcity\CloneData::fetchProductInitPrice(1, 100),
             \Project\Foxcity\CloneData::fetchProductInitPrice(101, 200),
             \Project\Foxcity\CloneData::fetchProductInitPrice(201, 300),
@@ -69,7 +69,6 @@ class CronJobs extends Controller
             \Project\Foxcity\CloneData::fetchProductInitPrice(1101, 1200),
             \Project\Foxcity\CloneData::fetchProductInitPrice(1201, 1300),
             \Project\Foxcity\CloneData::fetchProductInitPrice(1301, 1400),
-
             \Project\Foxcity\CloneData::fetchProductPriceVariant(1, 100),
             \Project\Foxcity\CloneData::fetchProductPriceVariant(101, 200),
             \Project\Foxcity\CloneData::fetchProductPriceVariant(201, 300),
@@ -133,36 +132,25 @@ class CronJobs extends Controller
             \Project\Foxcity\CloneData::fetchUsers(3201, 3300),
             \Project\Foxcity\CloneData::fetchUsers(3301, 3400),
             \Project\Foxcity\CloneData::fetchUsers(3401, 3500),
-            \Project\Foxcity\CloneData::fetchUsers(3501, 3600)
+            \Project\Foxcity\CloneData::fetchUsers(3501, 3600),
+            \Project\Foxcity\CloneData::fetchUsers(3601, 3650)
         ];
-        
-        if($json_exist) {
-            $cronjob    = \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
-            $length     = count($list) - 1;
-            $index      = $cronjob['index'];
+        */
+        return $list[0];
+        /*
+        $file_path      = "foxcity_nation_wide/execute.json";
+        $cronjob        = \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
 
-            if($length == $index) {
-                $index = 0;
-            }
-            else {
-                $index = $index + 1;
-            }
-            $cronjob    = ["index" => $index];
-            \App\Http\Controllers\plugin_json_data\Create::createJSON($file_path, $cronjob);
-        }
-        else {
-            $cronjob    = ["index" => 0];
-            \App\Http\Controllers\plugin_json_data\Create::createJSON($file_path, $cronjob);
-            $index      = 0;
-        }
-
+        $length         = 115;
+        $index          = intval($cronjob['index']);
         $execute        = $list[$index];
-
+        \App\Http\Controllers\plugin_json_data\Create::createJSON($file_path, ["index"=> ($index + 1)]);
         return [
             "index"     => $index,
             "length"    => $length,
             "execute"   => $execute,
             "cronjob"   => $cronjob
         ];
+        */
     }
 }
