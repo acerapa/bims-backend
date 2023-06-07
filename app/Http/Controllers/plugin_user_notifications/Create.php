@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 /*
 
-    \App\Http\Controllers\plugin_user_notifications\Create::create($user_refid, $icon_code, $subject, $body);
+    \App\Http\Controllers\plugin_user_notifications\Create::create($user_refid, $icon_code, $subject, $body, $element, $push_notif_required);
     \App\Http\Controllers\plugin_user_notifications\Create::create(
         $request['user_refid'], 
         "info", 
