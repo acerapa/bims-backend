@@ -40,9 +40,23 @@ class GetProfile extends Controller
             return \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
         }
         else {
-            $data = DB::table("plugin_user")->select("reference_id as user_refid","firstname","lastname","middlename","mobile","email","photo","access","status")->where("reference_id", $user_refid)->get();
+            $data = DB::table("plugin_user")->select("reference_id as user_refid","firstname","lastname","middlename","mobile","email","photo","access","location_json","location_gps","firebase_token","status")->where("reference_id", $user_refid)->get();
             if(count($data) > 0) {
                 $data_json = $data[0];
+                $data_json = [
+                    "user_refid"    => $data[0]->user_refid,
+                    "firstname"     => $data[0]->firstname,
+                    "lastname"      => $data[0]->lastname,
+                    "middlename"    => $data[0]->middlename,
+                    "mobile"        => $data[0]->mobile,
+                    "email"         => $data[0]->email,
+                    "photo"         => json_decode($data[0]->photo),
+                    "access"        => $data[0]->access,
+                    "location_json" => json_decode($data[0]->location_json),
+                    "location_gps"  => json_decode($data[0]->location_gps),
+                    "firebase_token"=> $data[0]->firebase_token,
+                    "status"        => intval($data[0]->status)
+                ];
             }
             else {
                 $data_json = [];

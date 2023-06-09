@@ -7,6 +7,7 @@
 CREATE TABLE `plugin_banner` (
   `dataid` int(10) NOT NULL,
   `reference_id` varchar(22) DEFAULT NULL,
+  `group` varchar(60) DEFAULT NULL,
   `photo` text NOT NULL DEFAULT '[IMG_REF,PATH]',
   `date_start` datetime DEFAULT NULL,
   `date_end` datetime DEFAULT NULL,

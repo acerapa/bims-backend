@@ -13,9 +13,12 @@ use Carbon\Carbon;
 
 class Fetch extends Controller
 {
-    public static function get() {
+    public static function get($group) {
         $data = DB::table("plugin_banner")
         ->select("reference_id","photo","date_start","date_end","status")
+        ->whereDate('date_start', '<=', Carbon::now())
+        ->whereDate('date_end', '>=', Carbon::now())
+        ->where("group", $group)
         ->get();
         if(count($data) > 0) {
             $list = [];
