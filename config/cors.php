@@ -22,6 +22,7 @@ return [
         'cims/*',
         'exploriatravel/*',
         'foxcity/*',
+        'foxcity_food/*',
         'multistoreapp/*',
         'dencentcare/*',
         'sanctum/csrf-cookie',

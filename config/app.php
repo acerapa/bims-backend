@@ -199,6 +199,7 @@ return [
         Project\CIMS\CIMSServiceProvider::class,
         Project\ExploriaTravel\ExploriaTravelServiceProvider::class,
         Project\Foxcity\FoxcityServiceProvider::class,
+        Project\FoxcityFood\FoxcityFoodServiceProvider::class,
         Project\MultiStoreApp\MultiStoreAppServiceProvider::class,
         Project\DencentCare\DencentCareServiceProvider::class,
 
