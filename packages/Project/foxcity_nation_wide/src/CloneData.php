@@ -96,6 +96,7 @@ class CloneData extends Controller
     /**
      * Fix store logo
      * RUN: foxcity/fetchStoresFixLogo
+     * RMT: https://www.foxcityph.tech/dataserver-nation-wide/version-1/public/foxcity/fetchStoresFixLogo
      * RUN: \Project\Foxcity\CloneData::fetchStoresFixLogo();
      */
     public static function fetchStoresFixLogo() {
@@ -137,6 +138,7 @@ class CloneData extends Controller
     /**
      * Fix store cover photo
      * RUN: foxcity/fetchStoresFixCover
+     * RMT: https://www.foxcityph.tech/dataserver-nation-wide/version-1/public/foxcity/fetchStoresFixCover
      * RUN: \Project\Foxcity\CloneData::fetchStoresFixCover();
      */
     public static function fetchStoresFixCover() {

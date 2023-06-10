@@ -24,7 +24,7 @@ class Init extends Controller
             "banner"            => \App\Http\Controllers\plugin_banner\Fetch::get("foxcity_food"),
             "cuisine"           => \App\Http\Controllers\plugin_product_cuisine\Fetch::get($json_file),
             "resto_popular"     => \App\Http\Controllers\plugin_store\FetchRecomendedResto::method("FOOD", $city_code),
-            "resto_all"         => [],
+            "resto_all"         => \App\Http\Controllers\plugin_store\FetchAllResto::method("FOOD", $city_code),
             "hostlink"          => env("FTP_SERVER_HOSTLINK_1")
         ];
     }
