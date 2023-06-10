@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
- * \App\Http\Controllers\plugin_store\FetchRecomendedStore::allOpen();
+ * \App\Http\Controllers\plugin_store\FetchRecomendedStore::allOpen('FOOD');
  * \App\Http\Controllers\plugin_store\FetchRecomendedStore::reviewScore(8);
  */
 

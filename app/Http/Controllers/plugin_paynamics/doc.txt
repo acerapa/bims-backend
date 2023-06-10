@@ -1,2 +1,4 @@
 
-https://packagist.org/packages/artisaninweb/laravel-soap
+https://wiki.paynamics.net/en/API_Paygate
+Email: jasonlipreso@gmail.com
+Password: rylle161710
