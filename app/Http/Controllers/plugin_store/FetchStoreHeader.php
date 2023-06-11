@@ -16,10 +16,11 @@ class FetchStoreHeader extends Controller
 {
     public static function get($json_file, $store_refid) {
 
+        $json_file      = intval($json_file);
         $file_path      = "plugin_store/". $store_refid .".json";
         $json_exist     = \App\Http\Controllers\plugin_json_data\Exist::JSONExist($file_path);
         
-        if(($json_exist) && ($json_file == '1')) {
+        if(($json_exist) && ($json_file == 1)) {
             return \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
         }
         else {

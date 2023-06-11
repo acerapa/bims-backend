@@ -15,6 +15,7 @@ class Fetch extends Controller
 {
     public static function getAll($json_file, $store_refid) {
 
+        $json_file      = intval($json_file);
         $file_path      = "plugin_store_menu_group/". $store_refid .".json";
         $json_exist     = \App\Http\Controllers\plugin_json_data\Exist::JSONExist($file_path);
         

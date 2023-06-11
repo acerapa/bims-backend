@@ -152,21 +152,27 @@ class CloneData extends Controller
         if(count($data) > 0) {
             $connection     = CloneData::connection();
             for($i = 0; $i < count($data); $i++) {
-                $sql = "SELECT * FROM photo WHERE reference_id = '".$data[$i]->photo_refid_cover."'";
-                if($result = mysqli_query($connection, $sql)){
-                    if(mysqli_num_rows($result) > 0){
-                        while($row = mysqli_fetch_array($result)){
-                            $formatted = [$data[$i]->photo_refid_cover, "https://foxcityph.tech/fileserver/" . $row['file_path']];
-                            $list[] = [
-                                "header"  => $data[$i],
-                                "photo"   => [
-                                    "file_path"     => "https://foxcityph.tech/fileserver/" . $row['file_path'],
-                                    "extension"     => $row['extension']
-                                ],
-                                "formatted"         => $formatted
-                            ];
+                if($data[$i]->photo_refid_cover == 'IMG-DEFAULT-COVER') {
+                    $formatted = [$data[$i]->photo_refid_cover, "https://foxcityph.tech/fileserver/defaultPhotos/wallpaper-background.png"];
+                    DB::table("plugin_store")->where("dataid", $data[$i]->dataid)->update(["photo_refid_cover" => $formatted]);
+                }
+                else {
+                    $sql = "SELECT * FROM photo WHERE reference_id = '".$data[$i]->photo_refid_cover."'";
+                    if($result = mysqli_query($connection, $sql)){
+                        if(mysqli_num_rows($result) > 0){
+                            while($row = mysqli_fetch_array($result)){
+                                $formatted = [$data[$i]->photo_refid_cover, "https://foxcityph.tech/fileserver/" . $row['file_path']];
+                                $list[] = [
+                                    "header"  => $data[$i],
+                                    "photo"   => [
+                                        "file_path"     => "https://foxcityph.tech/fileserver/" . $row['file_path'],
+                                        "extension"     => $row['extension']
+                                    ],
+                                    "formatted"         => $formatted
+                                ];
 
-                            DB::table("plugin_store")->where("dataid", $data[$i]->dataid)->update(["photo_refid_cover" => $formatted]);
+                                DB::table("plugin_store")->where("dataid", $data[$i]->dataid)->update(["photo_refid_cover" => $formatted]);
+                            }
                         }
                     }
                 }
