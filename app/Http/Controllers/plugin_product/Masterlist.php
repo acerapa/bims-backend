@@ -25,7 +25,7 @@ class Masterlist extends Controller
         $page           = $request['page'];
         $json_file      = $request['json_file'];
         
-        return DB::table("plugin_product")
+        $source = DB::table("plugin_product")
         ->select(
             "reference_id as product_refid",
             "store_refid",

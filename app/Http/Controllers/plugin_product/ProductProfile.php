@@ -34,10 +34,11 @@ class ProductProfile extends Controller
 
     public static function header($json_file, $product_refid) {
 
+        $json_file      = intval($json_file);
         $file_path      = "plugin_product/" . $product_refid .".json";
         $json_exist     = \App\Http\Controllers\plugin_json_data\Exist::JSONExist($file_path);
         
-        if(($json_exist) && ($json_file == '1')) {
+        if(($json_exist) && ($json_file == 1)) {
             return \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
         }
         else {
@@ -60,18 +61,40 @@ class ProductProfile extends Controller
 
     public static function photos($json_file, $product_refid) {
 
+        $json_file      = intval($json_file);
         $file_path      = "plugin_photo/" . $product_refid .".json";
         $json_exist     = \App\Http\Controllers\plugin_json_data\Exist::JSONExist($file_path);
         
-        if(($json_exist) && ($json_file == '1')) {
+        if(($json_exist) && ($json_file == 1)) {
             return \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
         }
         else {
 
             $data = DB::table("plugin_photo")
-            ->select("dataid","reference_id","filepath","filename","description","size","extension","server_no","status")
-            ->where("tagged", $product_refid)
+            ->join("plugin_photo_tagging","plugin_photo.reference_id","=","plugin_photo_tagging.photo_refid")
+            ->select(
+                "plugin_photo.reference_id as photo_refid",
+                "plugin_photo.filepath",
+                "plugin_photo.thumbnail",
+                "plugin_photo.filename",
+                "plugin_photo.description",
+                "plugin_photo.size",
+                "plugin_photo.extension")
+            ->where("plugin_photo_tagging.tagged", $product_refid)
+            ->orderBy("plugin_photo.dataid","asc")
             ->get();
+
+            if(count($data) == 0) {
+                $data[] = [
+                    "photo_refid"   => "IMG-12162021021738-MUV",
+                    "filepath"      => "https://foxcityph.tech/fileserver/defaultPhotos/wallpaper-background.png",
+                    "thumbnail"     => "https://foxcityph.tech/fileserver/defaultPhotos/wallpaper-background.png",
+                    "filename"      => "",
+                    "description"   => "",
+                    "size"          => 0,
+                    "extension"     => "jpg"
+                ];
+            }
 
             \App\Http\Controllers\plugin_json_data\Create::createJSON($file_path, $data);
             return $data;
@@ -81,16 +104,17 @@ class ProductProfile extends Controller
 
     public static function pricing($json_file, $product_refid) {
 
+        $json_file      = intval($json_file);
         $file_path      = "plugin_product_pricing/" . $product_refid .".json";
         $json_exist     = \App\Http\Controllers\plugin_json_data\Exist::JSONExist($file_path);
         
-        if(($json_exist) && ($json_file == '1')) {
+        if(($json_exist) && ($json_file == 1)) {
             return \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
         }
         else {
 
             $data = DB::table("plugin_product_pricing")
-            ->select("price","price_less","price_variants","price_type","addons")
+            ->select("price","price_less","price_variants_label","price_variants","price_type","addons")
             ->where("product_refid", $product_refid)
             ->get();
             if(count($data) > 0) {
@@ -137,10 +161,11 @@ class ProductProfile extends Controller
 
     public static function stock($json_file, $product_refid){
 
+        $json_file      = intval($json_file);
         $file_path      = "plugin_product_stock/" . $product_refid .".json";
         $json_exist     = \App\Http\Controllers\plugin_json_data\Exist::JSONExist($file_path);
         
-        if(($json_exist) && ($json_file == '1')) {
+        if(($json_exist) && ($json_file == 1)) {
             return \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
         }
         else {

@@ -19,5 +19,7 @@
         Route::get("fetchProductPriceFixed/{from}/{to}",[Project\Foxcity\CloneData::class, 'fetchProductPriceFixed']);
         Route::get("fetchStoresMenuGroup/{from}/{to}",[Project\Foxcity\CloneData::class, 'fetchStoresMenuGroup']);
         Route::get("fetchUsers/{from}/{to}",[Project\Foxcity\CloneData::class, 'fetchUsers']);
+        Route::get("fetchPhotos/{from}/{to}",[Project\Foxcity\CloneData::class, 'fetchPhotos']);
+        Route::get("fetchPhotosTagging/{from}/{to}",[Project\Foxcity\CloneData::class, 'fetchPhotosTagging']);
         /** CLONE DATA END */
     });

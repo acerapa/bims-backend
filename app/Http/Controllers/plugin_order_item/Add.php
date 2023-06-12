@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
- * plugin_order_item/add?product_refid=&user_refid=&store_refid=&quantity=7&price=123&variant_refid=&add_ons_total=56
+ * plugin_order_item/add?product_refid=&user_refid=&store_refid=&quantity=7&price=123&variant_info=&add_ons_array=&add_ons_total=56
  * 
  */
 

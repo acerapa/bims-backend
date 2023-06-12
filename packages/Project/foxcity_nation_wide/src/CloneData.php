@@ -498,4 +498,91 @@ class CloneData extends Controller
         }
     }
 
+    /**
+     * Copy Photos
+     * RUN: foxcity/fetchPhotos/1/100
+     * 
+     */
+
+     public static function fetchPhotos($from, $to) {
+        
+        $from   = floatval($from) - 1;
+        $to     = floatval($to) + 1;
+
+        $connection     = CloneData::connection();
+        $sql            = "SELECT * FROM photo WHERE dataid > " . $from . " AND dataid < " . $to;
+        $list           = [];
+
+        if($result = mysqli_query($connection, $sql)){
+            $list = [];
+            if(mysqli_num_rows($result) > 0){
+                while($row = mysqli_fetch_array($result)){
+                    $photo = [
+                        "reference_id"          => $row['reference_id'],
+                        "filepath"              => "https://foxcityph.tech/fileserver/" . $row['file_path'],
+                        "filename"              => null,
+                        "thumbnail"             => "https://foxcityph.tech/fileserver/" . $row['thumbnail'],
+                        "description"           => $row['description'],
+                        "size"                  => 0,
+                        "extension"             => $row['extension'],
+                        "server_no"             => 1,
+                        "created_at"            => date("Y-m-d h:i:s"),
+                        "created_by"            => $row['created_by_refid'],
+                    ];
+
+                    $exist                      = \App\Http\Controllers\plugin_query\IsExist::isExist("plugin_photo", [['reference_id','=', $row['reference_id']]]);
+                    if($exist == false) {
+                        DB::table("plugin_photo")->insert($photo);
+                    }
+
+                    $list[] = [
+                        "header"    => $photo,
+                        "exist"     => $exist
+                    ];
+                }
+            }
+
+            return $list;
+        }
+    }
+
+    /**
+     * Copy photo tagging
+     * RUN: foxcity/fetchPhotosTagging/100/500
+     * 
+     */
+    public static function fetchPhotosTagging($from, $to) {
+        
+        $from   = floatval($from) - 1;
+        $to     = floatval($to) + 1;
+
+        $connection     = CloneData::connection();
+        $sql            = "SELECT * FROM photo_tagging WHERE dataid > " . $from . " AND dataid < " . $to;
+        $list           = [];
+
+        if($result = mysqli_query($connection, $sql)){
+            $list = [];
+            if(mysqli_num_rows($result) > 0){
+                while($row = mysqli_fetch_array($result)) {
+                    $tagging = [
+                        "photo_refid"   => $row['photo_refid'],
+                        "tagged"        => $row['tagged_refid'],
+                        "created_by"    => $row['created_by_refid'],
+                        "created_at"    => date("Y-m-d h:i:s")
+                    ];
+
+                    $exist              = \App\Http\Controllers\plugin_query\IsExist::isExist("plugin_photo_tagging", [['photo_refid','=', $row['photo_refid']]]);
+                    if($exist == false) {
+                        DB::table("plugin_photo_tagging")->insert($tagging);
+                    }
+
+                    $list[] = [
+                        "header"    => $tagging,
+                        "exist"     => $exist
+                    ];
+                }
+            }
+            return $list;
+        }
+    }
 }
