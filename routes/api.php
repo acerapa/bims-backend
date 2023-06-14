@@ -97,6 +97,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('log_position', [\App\Http\Controllers\plugin_gps\LogPosition::class, 'log']);
     Route::get('get_last_position', [\App\Http\Controllers\plugin_gps\GetPosition::class, 'getLastPosition']);
     Route::get('getDistance/{origins}/{destinations}', [\App\Http\Controllers\plugin_gps\MatrixDistance::class, 'getDistance']);
+    Route::get('placesAutoComplete/{keyword}', [\App\Http\Controllers\plugin_gps\MatrixDistance::class, 'placesAutoComplete']);
+    Route::get('geocode/{place_id}', [\App\Http\Controllers\plugin_gps\MatrixDistance::class, 'geocode']);
   });
 
   Route::group(['prefix' => 'plugin_faq'], function () {
