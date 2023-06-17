@@ -13,12 +13,12 @@ use Illuminate\Support\Facades\DB;
 
 class Fetch extends Controller
 {
-    public static function allByStore($memory_json, $store_refid) {
+    public static function allByStore($json_file, $store_refid) {
 
         $file_path      = "plugin_product_addons/".$store_refid.".json";
         $json_exist     = \App\Http\Controllers\plugin_json_data\Exist::JSONExist($file_path);
         
-        if(($json_exist) && ($memory_json == 1)) {
+        if(($json_exist) && ($json_file == 1)) {
             return \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
         }
         else {

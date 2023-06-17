@@ -27,6 +27,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('table_data', [\App\Http\Controllers\plugin_back_up\Data::class, 'table_data']);
   });
 
+  Route::group(['prefix' => 'plugin_store'], function () {
+    Route::get('fetchstoreheader/{json_file}/{store_refid}', [\App\Http\Controllers\plugin_store\FetchStoreHeader::class, 'get']);
+  });
+
   Route::group(['prefix' => 'plugin_store_menu_group'], function () {
     Route::get('create', [\App\Http\Controllers\plugin_store_menu_group\Create::class, 'create']);
     Route::get('delete', [\App\Http\Controllers\plugin_store_menu_group\Delete::class, 'delete']);
@@ -92,6 +96,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
   Route::group(['prefix' => 'plugin_gps'], function () {
     Route::get('log_position', [\App\Http\Controllers\plugin_gps\LogPosition::class, 'log']);
     Route::get('get_last_position', [\App\Http\Controllers\plugin_gps\GetPosition::class, 'getLastPosition']);
+    Route::get('getDistance/{origins}/{destinations}', [\App\Http\Controllers\plugin_gps\MatrixDistance::class, 'getDistance']);
+    Route::get('placesAutoComplete/{keyword}', [\App\Http\Controllers\plugin_gps\MatrixDistance::class, 'placesAutoComplete']);
+    Route::get('geocode/{place_id}', [\App\Http\Controllers\plugin_gps\MatrixDistance::class, 'geocode']);
   });
 
   Route::group(['prefix' => 'plugin_faq'], function () {
@@ -213,9 +220,26 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
   Route::group(['prefix' => 'plugin_user'], function () {
     Route::get('changePassword', [\App\Http\Controllers\plugin_user\ChangePassword::class, 'change']);
-    Route::get('getProfile/{memory_json}/{user_refid}', [\App\Http\Controllers\plugin_user\GetProfile::class, 'get']);
+    Route::get('getProfile/{json_file}/{user_refid}', [\App\Http\Controllers\plugin_user\GetProfile::class, 'get']);
     Route::get('register', [\App\Http\Controllers\plugin_user\Register::class, 'register']);
     Route::get('setTheme/{user_refid}/{theme}', [\App\Http\Controllers\plugin_user\Personalize::class, 'setTheme']);
+  });
+
+  Route::group(['prefix' => 'plugin_user_extender'], function () {
+    Route::get('createEdit/{user_refid}/{name}/{value}', [\App\Http\Controllers\plugin_user_extender\CreateEdit::class, 'method']);
+    Route::get('getAll/{user_refid}', [\App\Http\Controllers\plugin_user_extender\Fetch::class, 'getAll']);
+    Route::get('getSingle/{user_refid}/{name}', [\App\Http\Controllers\plugin_user_extender\Fetch::class, 'getSingle']);
+  });
+
+  Route::group(['prefix' => 'plugin_voucher'], function () {
+    Route::get('create', [\App\Http\Controllers\plugin_voucher\Create::class, 'create']);
+    Route::get('fetchAll', [\App\Http\Controllers\plugin_voucher\Fetch::class, 'fetchAll']);
+    Route::get('fetchByStore', [\App\Http\Controllers\plugin_voucher\Fetch::class, 'fetchByStore']);
+    Route::get('claim', [\App\Http\Controllers\plugin_voucher\Claim::class, 'claim']);
+  });
+
+  Route::group(['prefix' => 'plugin_user_address_local'], function () {
+    Route::get('create', [\App\Http\Controllers\plugin_user_address_local\Create::class, 'create']);
   });
 
   

@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\DB;
 class FetchItems extends Controller
 {
     public static function get($user_refid, $store_refid, $status) {
+
         $items = DB::table("plugin_order_item")
-        ->select("reference_id","product_refid","quantity","price","total","variant_refid","add_ons_array","add_ons_total","grand_total")
+        ->select("reference_id","product_refid","quantity","price","total","variant_info","add_ons_array","add_ons_total","grand_total")
         ->where([
             ["user_refid", $user_refid],
             ["store_refid", $store_refid],
@@ -29,13 +30,15 @@ class FetchItems extends Controller
             foreach($items as $item) {
                 $total      = $total + floatval($item->grand_total);
                 $list[]     = [
+                    "header"                => \App\Http\Controllers\plugin_product\Fetch::header(1, $item->product_refid),
+                    "photos"                => \App\Http\Controllers\plugin_product\ProductProfile::photos(1, $item->product_refid),
                     "cart_item_refid"       => $item->reference_id,
                     "product_refid"         => $item->product_refid,
                     "quantity"              => floatval($item->quantity),
                     "price"                 => floatval($item->price),
                     "total"                 => floatval($item->total),
-                    "variant_refid"         => $item->variant_refid,
-                    "add_ons_array"         => $item->add_ons_array,
+                    "variant_info"          => json_decode($item->variant_info),
+                    "add_ons_array"         => json_decode($item->add_ons_array),
                     "add_ons_total"         => floatval($item->add_ons_total),
                     "grand_total"           => floatval($item->grand_total),
                 ];

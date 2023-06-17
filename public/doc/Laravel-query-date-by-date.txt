@@ -1,0 +1,25 @@
+https://techvblogs.com/blog/get-data-between-two-dates-laravel
+https://stackoverflow.com/questions/67394987/how-to-get-data-which-has-expiry-date-nearest-to-current-date
+
+Get data between two dates using Eloquent Query
+
+?php
+  
+namespace App\Http\Controllers;
+  
+use Illuminate\Http\Request;
+use App\Models\Post;
+use Carbon\Carbon;
+class PostController extends Controller
+{
+    public function index(Request $request)
+    {
+        $startDate  = Carbon::createFromFormat('Y-m-d', '2022-06-01');
+        $endDate    = Carbon::createFromFormat('Y-m-d', '2022-06-30');
+        
+        $posts = Post::whereDate('created_at', '>=', $startDate)
+            ->whereDate('created_at', '<=', $endDate)
+            ->get();
+        return $posts;
+    }
+}

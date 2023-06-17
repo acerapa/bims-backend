@@ -7,18 +7,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
- * \App\Http\Controllers\plugin_product_review\Summary::get($memory_json, $product_refid);
+ * \App\Http\Controllers\plugin_product_review\Summary::get($json_file, $product_refid);
  * 
  */
 
 class Summary extends Controller
 {
-    public static function get($memory_json, $product_refid) {
+    public static function get($json_file, $product_refid) {
 
         $file_path      = "plugin_product_review/". $product_refid .".json";
         $json_exist     = \App\Http\Controllers\plugin_json_data\Exist::JSONExist($file_path);
         
-        if(($json_exist) && ($memory_json == 1)) {
+        if(($json_exist) && ($json_file == 1)) {
             return \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
         }
         else {

@@ -10,5 +10,6 @@
 10. Change the namespace to Project/Foxcity
 11. Open config/app.php and add the providers
 12. Add route sample
-13. Open FoxcityServiceProvider.php and add boot() include __DIR__ . '/routes.php';
-14. Test now! If it work add Controllers
+13. Add the api to CORS
+14. Open FoxcityServiceProvider.php and add boot() include __DIR__ . '/routes.php';
+15. Test now! If it work add Controllers

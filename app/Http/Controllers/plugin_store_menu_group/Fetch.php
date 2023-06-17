@@ -7,18 +7,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
- * \App\Http\Controllers\plugin_store_menu_group\Fetch::getAll($memory_json, $store_refid);
+ * \App\Http\Controllers\plugin_store_menu_group\Fetch::getAll($json_file, $store_refid);
  * 
  */
 
 class Fetch extends Controller
 {
-    public static function getAll($memory_json, $store_refid) {
+    public static function getAll($json_file, $store_refid) {
 
+        $json_file      = intval($json_file);
         $file_path      = "plugin_store_menu_group/". $store_refid .".json";
         $json_exist     = \App\Http\Controllers\plugin_json_data\Exist::JSONExist($file_path);
         
-        if(($json_exist) && ($memory_json == 1)) {
+        if(($json_exist) && ($json_file == 1)) {
             return \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
         }
         else {

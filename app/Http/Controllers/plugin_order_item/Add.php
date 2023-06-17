@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
- * plugin_order_item/add?product_refid=&user_refid=&store_refid=&quantity=7&price=123&variant_refid=&add_ons_total=56
+ * plugin_order_item/add?product_refid=&user_refid=&store_refid=&quantity=7&price=123&variant_info=&add_ons_array=&add_ons_total=56
  * 
  */
 
@@ -53,7 +53,7 @@ class Add extends Controller
                 "quantity"                  => $quantity,
                 "price"                     => $price,
                 "total"                     => $total,
-                "variant_refid"             => $request['variant_refid'],
+                "variant_info"              => $request['variant_info'],
                 "add_ons_array"             => $request['add_ons_array'],
                 "add_ons_total"             => $add_ons_total,
                 "grand_total"               => $grand_total
@@ -67,6 +67,7 @@ class Add extends Controller
                     "success"               => true,
                     "reference_id"          => $reference_id,
                     "cart_item_count"       => $cart_item_count,
+                    "store_refid"           => $store_refid,
                     "message"               => "Product successfully added to the cart"
                 ];
             }

@@ -74,7 +74,7 @@ class ReadFiles extends Controller
         $filesInFolder      = File::allFiles($project_root, true);
         $compare_list       = [];
         
-        $last_sync_date     = date("2023-05-17 00:00:00");
+        $last_sync_date     = date("2023-05-24 00:00:00");
         $last_sync_unix     = strtotime($last_sync_date);
 
         foreach ($filesInFolder as $path) {

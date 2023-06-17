@@ -7,18 +7,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
- * \App\Http\Controllers\plugin_follow\Fetch::count($json_memory, $target_refid);
+ * \App\Http\Controllers\plugin_follow\Fetch::count($json_file, $target_refid);
  * 
  */
 
 class Fetch extends Controller
 {
-    public static function count($json_memory, $target_refid) {
+    public static function count($json_file, $target_refid) {
 
         $file_path      = "plugin_follow/". $target_refid .".json";
         $json_exist     = \App\Http\Controllers\plugin_json_data\Exist::JSONExist($file_path);
         
-        if(($json_exist) && ($json_memory == 1)) {
+        if(($json_exist) && ($json_file == 1)) {
             return \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
         }
         else {
@@ -32,7 +32,7 @@ class Fetch extends Controller
         }
     }
 
-    public static function fetch($json_memory, $target_refid) {
+    public static function fetch($json_file, $target_refid) {
         return null;
     }
 }

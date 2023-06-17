@@ -12,120 +12,81 @@ use Illuminate\Http\Request;
 
 class PaymentRequest extends Controller
 {
+    public static function query() {
+        return [
+            "merchant_id"   => "",
+            "request_id"    => "",
+            "org_trxid2"
+        ];
+    }
+
     public static function send() {
 
-        $user_token             = "USR-" . date("YMDhms") . "-". date("YMDhms");
-        $merchant_key           = env("PAYNAMICS_MERCHANT_KEY");
-        $url                    = "https://payin.payserv.net/paygate/transactions"; // env("PAYNAMICS_END_POINT_URL");
-        $account_hash           = env("PAYNAMICS_BASIC_AUTH_USERNAME") . ":" . env("PAYNAMICS_BASIC_AUTH_PASSWORD");
-        $headers                = array("Authorization:Basic=". hash("sha512", $account_hash),"Content-Type:application/json");
-        $pmethod                = "wallet";
-        $pchannel               = "gc";
-        $payment_action         = "transfer";
-        $collection_method      = "single_pay";
-        $amount                 = 176.98;
-        $currency               = "php";
-        $mlogo_url              = env("PAYNAMICS_MERCHANT_LOGO");
-        $mtac_url               = env("PAYNAMICS_MERCHANT_TAC");
-        $payment_notif_status   = 4;
-        $payment_notif_channel  = 1;
-        $trans_signature        = env("PAYNAMICS_MERCHANT_ID") . date("YMDhms") . env("PAYNAMICS_NOTIF_URL") . env("PAYNAMICS_RESPONSE_URL") . env("PAYNAMICS_CANCEL_URL") 
-            . $user_token . $pmethod . $pchannel . $payment_action . $collection_method . $amount . $currency . $mlogo_url . $mtac_url . $payment_notif_status 
-            . $payment_notif_channel;
+        $merchant_id                    = "0000001703230B451534";
+        $request_id                     = "PYNMC981459233";
+        $notification_url               = "https://mcrichtravel.com/notification/";
+        $response_url                   = "https://mcrichtravel.com/response/";
+        $cancel_url                     = "https://mcrichtravel.com/cancelled/";
+        $user_token                     = "USR000000000112556";
+        $pmethod                        = "wallet;bank_otc";
+        $pchannel                       = "bdo_ph;pnb_ph;rcbc_ph;pp;gc;wechat;alipay;coins_ph;maya_ph";
+        $payment_action                 = "url_link";
+        $collection_method              = "single_pay";
+        $amount                         = 891.90;
+        $currency                       = "php";
+        $descriptor_note                = "Mcrich Booking";
+        $mlogo_url                      = "https://mcrichtravel.com/images/logo-100x100.png";
+        $mtac_url                       = "https://mcrichtravel.com/terms-and-conditions";
+        $payment_notification_status    = 2;
+        $payment_notification_channel   = 1;
+        $secure3d                       = "try3d";
 
-        $transaction = [
-            "merchant_id"                           => env("PAYNAMICS_MERCHANT_ID"),
-            "request_id"                            => "TRN" . date("Ymdhis"),
-            "notification_url"                      => env("PAYNAMICS_NOTIF_URL"),
-            "response_url"                          => env("PAYNAMICS_RESPONSE_URL"),
-            "cancel_url"                            => env("PAYNAMICS_CANCEL_URL"),
-            "user_token"                            => $user_token,
-            "pmethod"                               => $pmethod,
-            "pchannel"                              => $pchannel,
-            "payment_action"                        => $payment_action,
-            "collection_method"                     => $collection_method,
-            "amount"                                => $amount,
-            "currency"                              => $currency,
-            "mlogo_url"                             => $mlogo_url,
-            "mtac_url"                              => $mtac_url,
-            "payment_notification_status"           => $payment_notif_status,
-            "payment_notification_channel"          => $payment_notif_channel,
-            "signature"                             => hash("sha512", $trans_signature . $merchant_key)
+        $data = [
+            "transaction" => [
+                "merchant_id"                   => $merchant_id,
+                "request_id"                    => $request_id,
+                "notification_url"              => $notification_url,
+                "response_url"                  => $response_url,
+                "cancel_url"                    => $cancel_url,
+                "user_token"                    => $user_token,
+                "pmethod"                       => $pmethod,
+                "pchannel"                      => $pchannel,
+                "payment_action"                => $payment_action,
+                "collection_method"             => $collection_method,
+                "amount"                        => $amount,
+                "currency"                      => $currency,
+                "descriptor_note"               => $descriptor_note,
+                "mlogo_url"                     => $mlogo_url,
+                "mtac_url"                      => $mtac_url,
+                "payment_notification_status"   => $payment_notification_status,
+                "payment_notification_channel"  => $payment_notification_channel,
+                "secure3d"                      => $secure3d,
+                "signature"                     => hash("sha512", $merchant_id . $request_id . $notification_url . $response_url . $cancel_url . $user_token . $pmethod . $pchannel . $payment_action . $collection_method . $amount . $currency . $descriptor_note . $mlogo_url . $mtac_url . $payment_notification_status . $payment_notification_channel . $secure3d . "BB0B48519749896540B274CDCA2F94C4")
+            ],
+            "customer_info" => [
+                "fname"                 => "Jason",
+                "lname"                 => "Lipreso",
+                "mname"                 => "Barsalis",
+                "email"                 => "jasonlipreso@gmail.com",
+                "dob"                   => "1994-02-17",
+                "signature"             => hash("sha512", "JasonLipresoBarsalisjasonlipreso@gmail.com1994-02-17")
+            ],
+            "billing_info" => [
+                "billing_address1"      => "Lawaan 3 Talisay City Cebu",
+                "billing_address2"      => "Cantabaco Toledo City Cebu",
+                "billing_city"          => "Talisay",
+                "billing_state"         => "Cebu",
+                "billing_country"       => "PHP",
+                "billing_zip"           => "6036"
+            ]
         ];
 
-        $fname      = "Jason";
-        $lname      = "Lipreso";
-        $mname      = "Barsalis";
-        $email      = "jasonlipreso@gmail.com";
-        $phone      = "N/A";
-        $mobile     = "+639353152023";
-        $dob        = "1994-02-17";
-        $customer_signature = $fname . $lname . $mname . $email . $phone . $mobile . $dob;
-
-        $customer_info = [
-            "fname"             => $fname,
-            "lname"             => $lname,
-            "mname"             => $mname,
-            "email"             => $email,
-            "phone"             => $phone,
-            "mobile"            => $mobile,
-            "dob"               => $dob,
-            "signature"         => hash("sha512", $customer_signature),
-        ];
-
-        $billing_info = [
-            "billing_address1"          => "Apid Cantabaco, Toledo City, Cebu",
-            "billing_address2"          => "Lawaan III, City of Talisay, Cebu",
-            "billing_city"              => "Toledo",
-            "billing_state"             => "Cebu",
-            "billing_country"           => "Philippines",
-            "billing_zip"               => "6038",
-        ];
-
-        $payload = [
-            "transaction"               => $transaction,
-            "customer_info"             => $customer_info,
-            "billing_info"              => $billing_info,
-            /*
-            "client_ip"                 => "",
-            "device_identifier"         => "",
-            "device_information"        => "",
-            "user_agent"                => "",
-            "os_version"                => "",
-            "browser_resolution"        => "",
-            "gps_coordinates"           => "",
-            "sim_info"                  => "",
-            "number_of_apps_installed"  => "",
-
-            "success_email"             => "",
-            "success_sms"               => "",
-            "fail_email"                => "",
-            "fail_sms"                  => "",
-
-            "system_id"                 => "",
-            "field"                     => "",
-            "label"                     => "",
-            "value"                     => ""
-            */
-        ];
+        $header_hash = base64_encode("mcrich5ja1:5ja1oOyOROFH");
 
         return [
-            "headers" => $headers,
-            "payload" => $payload
+            "header_hash"   => $header_hash,
+            "parameters"    => $data
         ];
 
-        /*
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
-        curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
-        $result = curl_exec($ch);
-        curl_close($ch);
-        return $result;
-        */
-        
     }
 }

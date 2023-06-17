@@ -32,7 +32,7 @@ class StoreProfile extends Controller
             return \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
         }
         else {
-            $data = \App\Http\Controllers\plugin_store\FetchStoreHeader::get($store_refid);
+            $data = \App\Http\Controllers\plugin_store\FetchStoreHeader::get(1, $store_refid);
             \App\Http\Controllers\plugin_json_data\Create::createJSON($file_path, $data);
             return $data;
         }

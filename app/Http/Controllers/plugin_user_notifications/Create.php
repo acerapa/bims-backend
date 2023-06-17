@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 /*
 
-    \App\Http\Controllers\plugin_user_notifications\Create::create($user_refid, $icon_code, $subject, $body);
+    \App\Http\Controllers\plugin_user_notifications\Create::create($user_refid, $icon_code, $subject, $body, $element, $push_notif_required);
     \App\Http\Controllers\plugin_user_notifications\Create::create(
         $request['user_refid'], 
         "info", 
@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\DB;
 
 class Create extends Controller
 {
-    public static function create($user_refid, $icon_code, $subject, $body, $element, $push_notif_required) {
+    public static function create($user_refid, $icon_code, $subject, $body, $element = null, $push_notif_required = false) {
         
         $created = DB::table("plugin_user_notifications")->insert([
             "user_refid"                => $user_refid,

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
- * http://127.0.0.1:8000/api/plugin_product_review/create??product_refid=PRD-0001&user_refid=USR-456&score=3&comment=ok%20KAAYU&photos=[]
+ * api/plugin_product_review/create?product_refid=PRD-0001&user_refid=USR-456&score=3&comment=ok%20KAAYU&photos=[]
  * 
  */
 
@@ -27,11 +27,13 @@ class Create extends Controller
         ]);
 
         if($created) {
-            $summary = \App\Http\Controllers\plugin_product_review\Summary::get(0, $request['product_refid']);
+            $summary            = \App\Http\Controllers\plugin_product_review\Summary::get(0, $request['product_refid']);
+            $review_page_1      = \App\Http\Controllers\plugin_product_review\Fetch::method(['json_file' => 0, 'product_refid' => $request['product_refid'], 'order_by' => 'most_recent', 'page'=>1]);
             return [
                 "success"       => true,
                 "message"       => "Review successfully posted",
-                "summary"       => $summary
+                "summary"       => $summary,
+                "review_page_1" => $review_page_1
             ];
         }
         else {

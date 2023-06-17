@@ -1,0 +1,4 @@
+
+Link: https://laravel.com/docs/10.x/artisan
+
+1: php artisan make:command SendEmails

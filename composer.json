@@ -30,6 +30,7 @@
             "Project\\CIMS\\": "packages/Project/cims/src",
             "Project\\ExploriaTravel\\": "packages/Project/exploriatravel/src",
             "Project\\Foxcity\\": "packages/Project/foxcity_nation_wide/src",
+            "Project\\FoxcityFood\\": "packages/Project/foxcity_food/src",
             "Project\\MultiStoreApp\\": "packages/Project/multi_store_app/src",
             "Project\\DencentCare\\": "packages/Project/dencentcare/src"
         }

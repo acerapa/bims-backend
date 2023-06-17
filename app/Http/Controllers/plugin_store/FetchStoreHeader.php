@@ -7,41 +7,55 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
- * \App\Http\Controllers\plugin_store\FetchStoreHeader::get($store_refid);
+ * plugin_store/fetchstoreheader/1/STR-05042023044205-QEN
+ * \App\Http\Controllers\plugin_store\FetchStoreHeader::get($json_file, $store_refid);
  * 
  */
 
 class FetchStoreHeader extends Controller
 {
-    public static function get($store_refid) {
-        $data = DB::table("plugin_store")
-        ->where([
-            ["reference_id", $store_refid]
-        ])
-        ->get();
+    public static function get($json_file, $store_refid) {
 
-        if(count($data) > 0) {
-            $list = [];
-            foreach($data as $column) {
-                $list = [
-                    "reference_id"              => $column->reference_id,
-                    "name"                      => $column->name,
-                    "description"               => $column->description,
-                    "photo_refid_logo"          => json_decode($column->photo_refid_logo),
-                    "photo_refid_cover"         => json_decode($column->photo_refid_cover),
-                    "address"                   => $column->address,
-                    "geo_lat"                   => floatval($column->geo_lat),
-                    "geo_lng"                   => floatval($column->geo_lng),
-                    "order_cost_service_fee"    => floatval($column->order_cost_service_fee),
-                    "review_score"              => floatval($column->review_score),
-                    "followers"                 => floatval($column->followers),
-                    "open"                      => $column->open
-                ];
-            }
-            return $list;
+        $json_file      = intval($json_file);
+        $file_path      = "plugin_store/". $store_refid .".json";
+        $json_exist     = \App\Http\Controllers\plugin_json_data\Exist::JSONExist($file_path);
+        
+        if(($json_exist) && ($json_file == 1)) {
+            return \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
         }
         else {
-            return null;
+
+            $data = DB::table("plugin_store")->where("reference_id", $store_refid)->get();
+
+            if(count($data) > 0) {
+                $list = [
+                    "reference_id"              => $data[0]->reference_id,
+                    "name"                      => $data[0]->name,
+                    "branch_refid"              => $data[0]->branch_refid,
+                    "store_type"                => $data[0]->store_type,
+                    "description"               => $data[0]->description,
+                    "photo_refid_logo"          => json_decode($data[0]->photo_refid_logo),
+                    "photo_refid_cover"         => json_decode($data[0]->photo_refid_cover),
+                    "address"                   => $data[0]->address,
+                    "mobile"                    => $data[0]->mobile,
+                    "geo_lat"                   => floatval($data[0]->geo_lat),
+                    "geo_lng"                   => floatval($data[0]->geo_lng),
+                    "loc_region"                => $data[0]->loc_region,
+                    "loc_province"              => $data[0]->loc_province,
+                    "loc_city"                  => $data[0]->loc_city,
+                    "loc_brgy"                  => $data[0]->loc_brgy,
+                    "order_cost_service_fee"    => floatval($data[0]->order_cost_service_fee),
+                    "review_score"              => floatval($data[0]->review_score),
+                    "followers"                 => floatval($data[0]->followers),
+                    "open"                      => $data[0]->open
+                ];
+            }
+            else {
+                $list = [];
+            }
+
+            \App\Http\Controllers\plugin_json_data\Create::createJSON($file_path, $list);
+            return $list;
         }
     }
 }
