@@ -45,10 +45,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
   Route::group(['prefix' => 'plugin_order_item'], function () {
     Route::get('add', [\App\Http\Controllers\plugin_order_item\Add::class, 'add']);
     Route::get('remove', [\App\Http\Controllers\plugin_order_item\Remove::class, 'remove']);
-    Route::get('customerCancelOrder', [\App\Http\Controllers\plugin_order_item\CustomerCancelOrder::class, 'cancel']);
-    Route::get('storeAcceptOrder', [\App\Http\Controllers\plugin_order_item\StoreAcceptOrder::class, 'accept']);
-    Route::get('storeRefuseOrder', [\App\Http\Controllers\plugin_order_item\StoreRefuseOrder::class, 'refuse']);
-    Route::get('storeSeenOrder', [\App\Http\Controllers\plugin_order_item\StoreSeenOrder::class, 'seen']);
   });
 
   Route::group(['prefix' => 'plugin_order_placed'], function () {
