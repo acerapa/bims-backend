@@ -14,8 +14,15 @@ use Illuminate\Support\Facades\DB;
 class Fetch extends Controller
 {
     public static function fetch(Request $request) {
+
+        $city_code = $request['city_code'];
+
         $source = DB::table("plugin_vehicle_rent_vehicles")
-        ->paginate(12)
+        ->where([
+            ["city_code", $city_code],
+            ["group", $request['group']]
+        ])
+        ->paginate(6)
         ->toArray();
 
         $data_list = $source['data'];
@@ -38,6 +45,7 @@ class Fetch extends Controller
                 "photos"            => json_decode($item->photos),
                 "price_base"        => $price_base,
                 "service_fee"       => $service_fee,
+                "driver_fee"        => floatval($item->driver_fee),
                 "service_fee_amount"=> $service_fee_amount,
                 "price_charged"     => $price_charged,
                 "insured"           => $item->insured,
