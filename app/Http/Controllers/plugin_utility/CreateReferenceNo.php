@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 /**
  * 
- * \App\Http\Controllers\plugin_utility\CreateReferenceNo::create('plugin_vehicle_rent_booking');
+ * \App\Http\Controllers\plugin_utility\CreateReferenceNo::create('plugin_oncall_service_booking');
  */
 
 class CreateReferenceNo extends Controller
@@ -34,7 +34,8 @@ class CreateReferenceNo extends Controller
             ["table" => "plugin_vehicle_rent_vehicles","key"                => "VRV"],
             ["table" => "plugin_vehicle_rent_booking","key"                 => "VRB"],
             ["table" => "plugin_voucher","key"                              => "VCH"],
-            ["table" => "plugin_user_address_local","key"                   => "UAL"]
+            ["table" => "plugin_user_address_local","key"                   => "UAL"],
+            ["table" => "plugin_oncall_service_booking","key"               => "OSB"]
         ];
 
         $key = $identifier;

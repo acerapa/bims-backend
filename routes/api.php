@@ -245,6 +245,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
   Route::group(['prefix' => 'plugin_oncall_service_providers'], function () {
     Route::get('init', [\App\Http\Controllers\plugin_oncall_service_providers\Fetch::class, 'init']);
+    Route::get('profile/{json_file}/{provider_refid}', [\App\Http\Controllers\plugin_oncall_service_providers\Profile::class, 'get']);
+    Route::get('booking', [\App\Http\Controllers\plugin_oncall_service_booking\Booking::class, 'book']);
   });
 
   

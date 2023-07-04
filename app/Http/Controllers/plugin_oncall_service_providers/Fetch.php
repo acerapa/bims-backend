@@ -24,7 +24,7 @@ class Fetch extends Controller
         return [
             "services"              => \App\Http\Controllers\plugin_oncall_service_services\Fetch::method($json_file),
             "branch_info"           => $branch_info,
-            "offers_recommended"    =>  Fetch::offers_recommended($branch_info['neighboring_cities'], $service),
+            "offers_recommended"    => Fetch::offers_recommended($branch_info['neighboring_cities'], $service),
             "offers_regular"        => Fetch::offers_regular($branch_info['neighboring_cities'], $service)
         ];
     }
@@ -59,10 +59,13 @@ class Fetch extends Controller
                 "city_code"     => $item->city_code,
                 "fname"         => $item->fname,
                 "lname"         => $item->lname,
+                "address"       => $item->address,
                 "email"         => $item->email,
                 "mobile"        => $item->mobile,
                 "service"       => $item->service,
+                "service_text"  => Fetch::service_text($item->service),
                 "available"     => $item->available,
+                "review_score"  => $item->review_score,
                 "recommended"   => $item->recommended,
                 "profile_photo" => json_decode($item->profile_photo),
                 "cover_photo"   => json_decode($item->cover_photo)
@@ -97,6 +100,7 @@ class Fetch extends Controller
         foreach($data_list as $item) {
             $temp[] = [
                 "header"            => $item,
+                "service_text"      => Fetch::service_text($item->service),
                 "profile_photo"     => json_decode($item->profile_photo),
                 "cover_photo"       => json_decode($item->cover_photo)
             ];
@@ -113,5 +117,15 @@ class Fetch extends Controller
             "hostlink"          => env("FTP_SERVER_HOSTLINK_1")
         ];
         
+    }
+
+    public static function service_text($service_code) {
+        $service_list = \App\Http\Controllers\plugin_oncall_service_services\Fetch::method(1);
+        for($i = 0; $i < count($service_list); $i++) {
+            if($service_code == $service_list[$i]['code']) {
+                return $service_list[$i]['service'];
+            }
+        }
+        return $service_code;
     }
 }

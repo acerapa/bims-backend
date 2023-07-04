@@ -23,7 +23,10 @@ class Fetch extends Controller
             return \App\Http\Controllers\plugin_json_data\Get::getJSON($file_path);
         }
         else {
-            $data = DB::table("plugin_oncall_service_services")->get();
+            $data = DB::table("plugin_oncall_service_services")
+            ->where("status", 1)
+            ->orderBy("service","asc")
+            ->get();
             \App\Http\Controllers\plugin_json_data\Create::createJSON($file_path, $data);
             return $data;
         }
