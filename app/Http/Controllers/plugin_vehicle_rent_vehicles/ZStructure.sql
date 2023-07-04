@@ -22,6 +22,10 @@
           - Gas
 
         plugin_vehicle_rent_vehicles.seats
+
+        plugin_vehicle_rent_vehicles.gear_lever
+          MNL: Manual
+          AUT: Automatic
 */
 
 
@@ -33,8 +37,9 @@ CREATE TABLE `plugin_vehicle_rent_vehicles` (
   `name` varchar(100) DEFAULT NULL,
   `description` text DEFAULT NULL,
   `address` text DEFAULT NULL,
-  `fuel_type` int(3) NOT NULL DEFAULT 0,
+  `fuel_type` varchar(15) NOT NULL DEFAULT '0',
   `seats` int(3) NOT NULL DEFAULT 0,
+  `gear_lever` int(3) DEFAULT NULL,
   `photos` text DEFAULT NULL,
   `price_base` decimal(10,2) NOT NULL DEFAULT 0.00,
   `service_fee` decimal(10,2) NOT NULL DEFAULT 0.00,

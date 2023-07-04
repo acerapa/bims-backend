@@ -44,6 +44,8 @@ class Fetch extends Controller
                 "address"           => $item->address,
                 "fuel_type"         => $item->fuel_type,
                 "seats"             => $item->seats,
+                "gear_lever"        => $item->gear_lever,
+                "airconditioned"    => $item->airconditioned,
                 "photos"            => json_decode($item->photos),
                 "price_base"        => $price_base,
                 "service_fee"       => $service_fee,
