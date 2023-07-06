@@ -14,7 +14,15 @@ class Booking extends Controller
 {
     public static function book(Request $request) {
 
-        if($request['user_refid'] == '') {
+        $branch_info    = \App\Http\Controllers\plugin_branch\Fetch::get(1, $request['branch_refid']);
+
+        if($branch_info['open'] == 0) {
+            return [
+                "success"       => false,
+                "message"       => "The foxcity in your location is closed, try again later."
+            ];
+        }
+        else if($request['user_refid'] == '') {
             return [
                 "success"       => false,
                 "message"       => "Unable to indentify active user"
@@ -102,10 +110,27 @@ class Booking extends Controller
             ]);
 
             if($booked) {
-                /**
-                 * Notify branch admin via notif
-                 * Generate convo
-                 */
+     
+                /** Create conversation */
+                \App\Http\Controllers\plugin_messenger\CreateConvo::createHeader($convo_refid, $request['contact_person'], null);
+                /** Add customer to convo */
+                \App\Http\Controllers\plugin_messenger\CreateConvo::addMember($convo_refid, $request['user_refid'], 'CUSTOMER');
+
+                /** Add conversation member and notify admin */
+                $branch_admin   = $branch_info['chat_admin'];
+                if(count($branch_admin) > 0) {
+                    $message        = "A group chat is created for booking " . $reference_id;
+                    $group          = "GRP_CHT_CREATED";
+                    $payload        = [
+                        "convo_refid"     => $convo_refid,
+                        "user_refid"      => $request['user_refid']
+                    ];
+                    foreach($branch_admin as $admin) {
+                        \App\Http\Controllers\plugin_notification\Send::send($admin['user_refid'], $message, $group, $payload);
+                        \App\Http\Controllers\plugin_messenger\CreateConvo::addMember($convo_refid, $admin['user_refid'], 'BRCH_ADMN');
+                    }
+                }
+
                 return [
                     "success"       => true,
                     "message"       => "Booked successfully"

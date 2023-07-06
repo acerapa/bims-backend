@@ -252,6 +252,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('profile/{json_file}/{provider_refid}', [\App\Http\Controllers\plugin_oncall_service_providers\Profile::class, 'get']);
     Route::get('booking', [\App\Http\Controllers\plugin_oncall_service_booking\Booking::class, 'book']);
     Route::get('fetchBooking', [\App\Http\Controllers\plugin_oncall_service_booking\Fetch::class, 'get']);
+    Route::get('cancelBooking', [\App\Http\Controllers\plugin_oncall_service_booking\CancelBooking::class, 'cancel']);
   });
 
   
