@@ -21,8 +21,16 @@ class Profile extends Controller
             return [];
         }
         else {
+
+            $header         = Profile::header($provider_refid);
+            $branch_refid   = $header['branch_refid'];
+            $branch_info    = \App\Http\Controllers\plugin_branch\Fetch::get($json_file, $branch_refid);
+            $total_fee      = $branch_info['service_oncall_foxcity_fee'] + $header['provider_fee'];
+
             return [
-                "header"    => Profile::header($provider_refid),
+                "branch"    => $branch_info,
+                "header"    => $header,
+                "total_fee" => $total_fee,
                 "reviews"   => []
             ];
         } 
@@ -44,10 +52,11 @@ class Profile extends Controller
                 "service_text"              => \App\Http\Controllers\plugin_oncall_service_providers\Fetch::service_text($data[0]->service),
                 "service_description"       => $data[0]->service_description,
                 "available"                 => $data[0]->available,
-                "review_score"              => $data[0]->review_score,
+                "review_score"              => floatval($data[0]->review_score),
                 "recommended"               => $data[0]->recommended,
                 "profile_photo"             => json_decode($data[0]->profile_photo),
-                "cover_photo"               => json_decode($data[0]->cover_photo)
+                "cover_photo"               => json_decode($data[0]->cover_photo),
+                "provider_fee"              => floatval($data[0]->provider_fee)
             ];
         }
         else {

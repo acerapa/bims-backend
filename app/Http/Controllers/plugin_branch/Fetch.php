@@ -26,17 +26,18 @@ class Fetch extends Controller
             $source = DB::table("plugin_branch")->where("reference_id", $branch_refid)->get();
             if(count($source) > 0) {
                 $data = [
-                    "branch_refid"          => $source[0]->reference_id,
-                    "name"                  => $source[0]->name,
-                    "open"                  => $source[0]->open,
-                    "chat_admin"            => json_decode($source[0]->chat_admin),
-                    "neighboring_cities"    => json_decode($source[0]->neighboring_cities),
-                    "service_food"          => $source[0]->service_food,
-                    "service_food_first_km" => floatval($source[0]->service_food_first_km),
-                    "service_food_next_km"  => floatval($source[0]->service_food_next_km),
-                    "service_food_km_limit" => floatval($source[0]->service_food_km_limit),
-                    "service_pabili"        => $source[0]->service_pabili,
-                    "service_pasakay"       => $source[0]->service_pasakay
+                    "branch_refid"                  => $source[0]->reference_id,
+                    "name"                          => $source[0]->name,
+                    "open"                          => $source[0]->open,
+                    "chat_admin"                    => json_decode($source[0]->chat_admin),
+                    "neighboring_cities"            => json_decode($source[0]->neighboring_cities),
+                    "service_food"                  => $source[0]->service_food,
+                    "service_food_first_km"         => floatval($source[0]->service_food_first_km),
+                    "service_food_next_km"          => floatval($source[0]->service_food_next_km),
+                    "service_food_km_limit"         => floatval($source[0]->service_food_km_limit),
+                    "service_pabili"                => $source[0]->service_pabili,
+                    "service_pasakay"               => $source[0]->service_pasakay,
+                    "service_oncall_foxcity_fee"    => floatval($source[0]->service_oncall_foxcity_fee)
                 ];
             }
             else {
@@ -45,5 +46,17 @@ class Fetch extends Controller
             \App\Http\Controllers\plugin_json_data\Create::createJSON($file_path, $data);
             return $data;
         }
+    }
+
+    public static function updateLocal() {
+        $data = DB::table("plugin_branch")->select("dataid","reference_id")->get();
+        $list = [];
+        for($i = 0; $i < count($data); $i++) {
+            $list[] = [
+                "header"    => $data[$i],
+                "local"     => Fetch::get(0, $data[$i]->reference_id)
+            ];
+        }
+        return $list;
     }
 }

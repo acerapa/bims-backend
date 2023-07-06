@@ -68,7 +68,8 @@ class Fetch extends Controller
                 "review_score"  => $item->review_score,
                 "recommended"   => $item->recommended,
                 "profile_photo" => json_decode($item->profile_photo),
-                "cover_photo"   => json_decode($item->cover_photo)
+                "cover_photo"   => json_decode($item->cover_photo),
+                "provider_fee"  => floatval($item->provider_fee)
             ];
         }
 
