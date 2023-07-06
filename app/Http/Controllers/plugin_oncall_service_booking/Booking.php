@@ -122,6 +122,7 @@ class Booking extends Controller
                     $message        = "A group chat is created for booking " . $reference_id;
                     $group          = "GRP_CHT_CREATED";
                     $payload        = [
+                        "booking_refid"   => $reference_id,
                         "convo_refid"     => $convo_refid,
                         "user_refid"      => $request['user_refid']
                     ];

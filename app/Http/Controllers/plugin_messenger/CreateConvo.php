@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 /**
  * \App\Http\Controllers\plugin_messenger\CreateConvo::createHeader($convo_refid, $name, $icon_path);
  * \App\Http\Controllers\plugin_messenger\CreateConvo::addMember($convo_refid, $user_refid, $position);
+ * \App\Http\Controllers\plugin_messenger\CreateConvo::sysMessage($convo_refid, $content);
  */
 
 class CreateConvo extends Controller
@@ -27,6 +28,16 @@ class CreateConvo extends Controller
             "convo_refid"   => $convo_refid,
             "user_refid"    => $user_refid,
             "position"      => $position
+        ]);
+    }
+
+    public static function sysMessage($convo_refid, $content) {
+        return DB::table("plugin_message_thread")
+        ->insert([
+            "convo_refid"   => $convo_refid,
+            "user_refid"    => "system",
+            "type"          => "TXT",
+            "content"       => $content
         ]);
     }
 }

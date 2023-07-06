@@ -46,7 +46,7 @@ class CancelBooking extends Controller
                 if($cancelled) {
 
                     /**Send message to convo that it was cancelled*/
-                    /**TODO: Add code here */
+                    \App\Http\Controllers\plugin_messenger\CreateConvo::sysMessage($booking_info[0]->convo_refid, "This booking with Ref. No. ". $booking_refid ." was cancelled by customer");
 
                      /** Notify admin about the cancellation */
                     $branch_admin   = $branch_info['chat_admin'];
