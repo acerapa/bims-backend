@@ -32,7 +32,8 @@
             "Project\\Foxcity\\": "packages/Project/foxcity_nation_wide/src",
             "Project\\FoxcityFood\\": "packages/Project/foxcity_food/src",
             "Project\\MultiStoreApp\\": "packages/Project/multi_store_app/src",
-            "Project\\DencentCare\\": "packages/Project/dencentcare/src"
+            "Project\\DencentCare\\": "packages/Project/dencentcare/src",
+            "Project\\Foxcity4Dashboard\\": "packages/Project/foxcity_4_dashboard/src"
         }
     },
     "autoload-dev": {

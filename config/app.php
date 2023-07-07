@@ -202,6 +202,7 @@ return [
         Project\FoxcityFood\FoxcityFoodServiceProvider::class,
         Project\MultiStoreApp\MultiStoreAppServiceProvider::class,
         Project\DencentCare\DencentCareServiceProvider::class,
+        Project\Foxcity4Dashboard\Foxcity4DashboardServiceProvider::class,
 
     ],
 

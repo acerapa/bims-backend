@@ -25,6 +25,7 @@ return [
         'foxcity_food/*',
         'multistoreapp/*',
         'dencentcare/*',
+        'foxcity_4_dashboard/*',
         'sanctum/csrf-cookie',
         'plugin_chatbox/*'
     ],
