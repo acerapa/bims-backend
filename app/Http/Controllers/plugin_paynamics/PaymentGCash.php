@@ -24,10 +24,10 @@ class PaymentGCash extends Controller
         $mtac_url               = env("PAYNAMICS_MERCHANT_TAC");
         $payment_notif_status   = 4;
         $payment_notif_channel  = 1;
-
+        
         $transaction = [
             "merchant_id"                   => env("PAYNAMICS_MERCHANT_ID"),
-            "request_id"                    => "27617341680478080799",
+            "request_id"                    => "PYNMC" . rand(1000000, 9999999),
             "notification_url"              => "http://testpti.payserv.net/truemoney/NotificationReceiver.aspx",
             "response_url"                  => "http://testpti.payserv.net/truemoney/NotificationReceiver.aspx",
             "cancel_url"                    => "http://testpti.payserv.net/truemoney/NotificationReceiver.aspx",

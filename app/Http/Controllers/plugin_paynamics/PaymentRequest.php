@@ -22,8 +22,10 @@ class PaymentRequest extends Controller
 
     public static function send() {
 
+        
+
         $merchant_id                    = "0000001703230B451534";
-        $request_id                     = "PYNMC981459233";
+        $request_id                     = "PYNMC" . rand(1000000, 9999999);
         $notification_url               = "https://mcrichtravel.com/notification/";
         $response_url                   = "https://mcrichtravel.com/response/";
         $cancel_url                     = "https://mcrichtravel.com/cancelled/";
