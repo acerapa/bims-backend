@@ -112,7 +112,8 @@ class Booking extends Controller
             if($booked) {
      
                 /** Create conversation */
-                \App\Http\Controllers\plugin_messenger\CreateConvo::createHeader($convo_refid, $request['contact_person'], null);
+                \App\Http\Controllers\plugin_messenger\CreateConvo::createHeader($convo_refid, $request['branch_refid'], $request['contact_person'], null);
+                
                 /** Add customer to convo */
                 \App\Http\Controllers\plugin_messenger\CreateConvo::addMember($convo_refid, $request['user_refid'], 'CUSTOMER');
 

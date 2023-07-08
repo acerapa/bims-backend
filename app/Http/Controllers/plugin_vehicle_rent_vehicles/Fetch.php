@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 /**
  * plugin_vehicle_rent_vehicles/fetch?user_refid=USR-033121093459-TCS&city_code=072250&group=MTRCL&page=1
+ * plugin_vehicle_rent_vehicles/fetchSingle?reference_id=VRB-07032023114741-3KJ
  * 
  */
 
@@ -68,5 +69,92 @@ class Fetch extends Controller
             "total"             => $source['total'],
             "data"              => $temp
         ];
+    }
+
+    public static function single(Request $request) {
+        $data = DB::table("plugin_vehicle_rent_booking")->where("reference_id", $request['reference_id'])->get();
+        if(count($data) > 0) {
+            return [
+                "success"   => true,
+                "header"    => [
+                    "reference_id"          => $data[0]->reference_id,
+                    "branch_refid"          => $data[0]->branch_refid,
+                    "vehicle_refid"         => $data[0]->vehicle_refid,
+                    "user_refid"            => $data[0]->user_refid,
+                    "rent_from"             => $data[0]->rent_from,
+                    "rent_to"               => $data[0]->rent_to,
+                    "price_base"            => floatval($data[0]->price_base),
+                    "price_charged"         => floatval( $data[0]->price_charged),
+                    "service_fee"           => floatval($data[0]->service_fee),
+                    "service_fee_amount"    => floatval($data[0]->service_fee_amount),
+                    "driver"                => $data[0]->driver,
+                    "driver_fee"            => floatval($data[0]->driver_fee),
+                    "message"               => $data[0]->message,
+                    "convo_refid"           => $data[0]->convo_refid,
+                    "total"                 => floatval($data[0]->total),
+                    "created_at"            => $data[0]->created_at,
+                    "status"                => $data[0]->status
+                ],
+                "status_text"               => Fetch::status_text($data[0]->status),
+                "vehicle_info"              => Fetch::vehicle_info($data[0]->vehicle_refid)
+            ];
+        }
+        else {
+            return [
+                "success"   => false,
+                "message"   => "Transaction not found"
+            ];
+        }
+    }
+
+    public static function vehicle_info($vehicle_refid) {
+        $data = \App\Http\Controllers\plugin_query\GetRowBasic::get("plugin_vehicle_rent_vehicles", "all", "reference_id", $vehicle_refid);
+        if(count($data) > 0 ) {
+            return [
+                "success"               => true,
+                "reference_id"          => $data[0]->reference_id,
+                "branch_refid"          => $data[0]->branch_refid,
+                "group"                 => $data[0]->group,
+                "name"                  => $data[0]->name,
+                "description"           => $data[0]->description,
+                "address"               => $data[0]->address,
+                "fuel_type"             => $data[0]->fuel_type,
+                "seats"                 => $data[0]->seats,
+                "gear_lever"            => $data[0]->gear_lever,
+                "airconditioned"        => $data[0]->airconditioned,
+                "photos"                => json_decode($data[0]->photos),
+                "price_base"            => floatval($data[0]->price_base),
+                "service_fee"           => floatval($data[0]->service_fee),
+                "driver_fee"            => floatval($data[0]->driver_fee),
+                "insured"               => $data[0]->insured,
+                "city_code"             => $data[0]->city_code,
+                "owner_refid"           => $data[0]->owner_refid,
+                "available"             => $data[0]->available
+            ];
+        }
+        else {
+            return [
+                "success"   => false
+            ];
+        }
+    }
+
+    public static function status_text($status) {
+        $status = intval($status);
+        if($status == 1) {
+            return "New";
+        }
+        else if($status == 2) {
+            return "Cancelled by customer";
+        }
+        else if($status == 3) {
+            return "Accepted";
+        }
+        else if($status == 4) {
+            return "Done";
+        }
+        else {
+            return $status;
+        }
     }
 }
