@@ -88,15 +88,16 @@ class Fetch extends Controller
                     "service_fee"           => floatval($data[0]->service_fee),
                     "service_fee_amount"    => floatval($data[0]->service_fee_amount),
                     "driver"                => $data[0]->driver,
+                    "driver_text"           => Fetch::driver_text($data[0]->driver),
                     "driver_fee"            => floatval($data[0]->driver_fee),
                     "message"               => $data[0]->message,
                     "convo_refid"           => $data[0]->convo_refid,
                     "total"                 => floatval($data[0]->total),
                     "created_at"            => $data[0]->created_at,
-                    "status"                => $data[0]->status
+                    "status"                => $data[0]->status,
+                    "status_text"           => Fetch::status_text($data[0]->status),
                 ],
-                "status_text"               => Fetch::status_text($data[0]->status),
-                "vehicle_info"              => Fetch::vehicle_info($data[0]->vehicle_refid)
+                "vehicle_info"              => Fetch::vehicle_info($data[0]->vehicle_refid),
             ];
         }
         else {
@@ -117,19 +118,26 @@ class Fetch extends Controller
                 "group"                 => $data[0]->group,
                 "name"                  => $data[0]->name,
                 "description"           => $data[0]->description,
+                "owner_refid"           => $data[0]->owner_refid,
+                "owner_name"            => $data[0]->owner_name,
+                "owner_mobile"          => $data[0]->owner_mobile,
+                "owner_email"           => $data[0]->owner_email,
                 "address"               => $data[0]->address,
                 "fuel_type"             => $data[0]->fuel_type,
                 "seats"                 => $data[0]->seats,
                 "gear_lever"            => $data[0]->gear_lever,
+                "gear_lever_text"       => Fetch::gear_lever_text($data[0]->gear_lever),
                 "airconditioned"        => $data[0]->airconditioned,
+                "airconditioned_text"   => Fetch::airconditioned_text($data[0]->airconditioned),
                 "photos"                => json_decode($data[0]->photos),
                 "price_base"            => floatval($data[0]->price_base),
                 "service_fee"           => floatval($data[0]->service_fee),
                 "driver_fee"            => floatval($data[0]->driver_fee),
                 "insured"               => $data[0]->insured,
+                "insured_text"          => Fetch::insured_text($data[0]->insured),
                 "city_code"             => $data[0]->city_code,
-                "owner_refid"           => $data[0]->owner_refid,
-                "available"             => $data[0]->available
+                "available"             => $data[0]->available,
+                "available_text"        => Fetch::available_text($data[0]->available),
             ];
         }
         else {
@@ -155,6 +163,69 @@ class Fetch extends Controller
         }
         else {
             return $status;
+        }
+    }
+
+    public static function driver_text($driver) {
+        if($driver == 'SD') {
+            return "Self Drive";
+        }
+        else if($driver == 'ID') {
+            return "Include Driver";
+        }
+        else {
+            return $driver;
+        }
+    }
+
+    public static function gear_lever_text($gear_lever) {
+        if($gear_lever == 'MNL') {
+            return "Manual";
+        }
+        else if($gear_lever == 'AUT') {
+            return "Automatic";
+        }
+        else {
+            return $gear_lever;
+        }
+    }
+
+    public static function insured_text($insured) {
+        $insured = intval($insured);
+        if($insured == 1) {
+            return "Yes";
+        }
+        else if($insured == 0) {
+            return "No";
+        }
+        else {
+            return $insured;
+        }
+    }
+
+    public static function airconditioned_text($airconditioned) {
+        $airconditioned = intval($airconditioned);
+        if($airconditioned == 1) {
+            return "Yes";
+        }
+        else if($airconditioned == 0) {
+            return "No";
+        }
+        else {
+            return $airconditioned;
+        }
+    }
+
+    public static function available_text($available) {
+        $available = intval($available);
+        if($available == 1) {
+            return "Yes";
+        }
+        else if($available == 0) {
+            return "No";
+        }
+        else {
+            return $available;
         }
     }
 }

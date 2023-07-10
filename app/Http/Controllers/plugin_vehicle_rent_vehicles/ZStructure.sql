@@ -56,6 +56,10 @@ ALTER TABLE `plugin_vehicle_rent_vehicles` MODIFY `dataid` int(10) NOT NULL AUTO
 /*******************************************************************************************
         DATABASE TABLE STRUCTURE
 ********************************************************************************************
+        plugin_vehicle_rent_booking.driver
+          SD: Self Drive
+          ID: Include Driver
+
         plugin_vehicle_rent_booking.status
           1: New
           2: Cancelled by customer
