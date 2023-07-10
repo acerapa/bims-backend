@@ -18,6 +18,7 @@ class Booking extends Controller
         ->insert([
             "reference_id"          => \App\Http\Controllers\plugin_utility\CreateReferenceNo::create('plugin_vehicle_rent_booking'),
             "vehicle_refid"         => $request['vehicle_refid'],
+            "branch_refid"          => $request['branch_refid'],
             "user_refid"            => $request['user_refid'],
             "rent_from"             => $request['rent_from'],
             "rent_to"               => $request['rent_to'],

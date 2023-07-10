@@ -245,6 +245,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('create', [\App\Http\Controllers\plugin_user_address_local\Create::class, 'create']);
   });
 
+  Route::group(['prefix' => 'plugin_vehicle_rent_booking'], function () {
+    Route::get('userBooking', [\App\Http\Controllers\plugin_vehicle_rent_booking\Fetch::class, 'userBooking']);
+  });
+
   Route::group(['prefix' => 'plugin_vehicle_rent_vehicles'], function () {
     Route::get('fetch', [\App\Http\Controllers\plugin_vehicle_rent_vehicles\Fetch::class, 'fetch']);
     Route::get('fetchSingle', [\App\Http\Controllers\plugin_vehicle_rent_vehicles\Fetch::class, 'single']);
