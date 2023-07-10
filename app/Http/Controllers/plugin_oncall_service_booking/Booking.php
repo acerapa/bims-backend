@@ -117,6 +117,9 @@ class Booking extends Controller
                 /** Add customer to convo */
                 \App\Http\Controllers\plugin_messenger\CreateConvo::addMember($convo_refid, $request['user_refid'], 'CUSTOMER');
 
+                /** Send Initial Message */
+                \App\Http\Controllers\plugin_messenger\CreateConvo::sysMessage($convo_refid, "Welcome! This conversation is created to allow in-app communication for Foxcity staff, admin service provider and customer.");
+
                 /** Add conversation member and notify admin */
                 $branch_admin   = $branch_info['chat_admin'];
                 if(count($branch_admin) > 0) {

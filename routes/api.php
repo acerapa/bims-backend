@@ -246,6 +246,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
   });
 
   Route::group(['prefix' => 'plugin_vehicle_rent_booking'], function () {
+    Route::get('book', [\App\Http\Controllers\plugin_vehicle_rent_booking\Booking::class, 'book']);
     Route::get('userBooking', [\App\Http\Controllers\plugin_vehicle_rent_booking\Fetch::class, 'userBooking']);
     Route::get('cancelBooking', [\App\Http\Controllers\plugin_vehicle_rent_booking\Cancel::class, 'cancel']);
   });
@@ -253,7 +254,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
   Route::group(['prefix' => 'plugin_vehicle_rent_vehicles'], function () {
     Route::get('fetch', [\App\Http\Controllers\plugin_vehicle_rent_vehicles\Fetch::class, 'fetch']);
     Route::get('fetchSingle', [\App\Http\Controllers\plugin_vehicle_rent_vehicles\Fetch::class, 'single']);
-    Route::get('book', [\App\Http\Controllers\plugin_vehicle_rent_vehicles\Booking::class, 'book']);
+    
   });
 
   Route::group(['prefix' => 'plugin_oncall_service_providers'], function () {

@@ -5,6 +5,7 @@
          - ONCALL_SERV_CANCELLED: On-call service was cancelled by customer
          - GRP_CHT_CREATED: Group Chat created
          - VHCL_RENT_CANCELLED: Vehicle rent booking was cancelled
+         - VHCL_RENT_NEW_BOOKING: Vehicle rent new booking
 */
 
 CREATE TABLE `plugin_notification` (

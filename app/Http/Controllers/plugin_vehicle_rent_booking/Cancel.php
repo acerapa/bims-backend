@@ -31,9 +31,7 @@ class Cancel extends Controller
 
         if($cancelled) {
 
-            /**
-             * Send message to convo
-             */
+            /** Send message to convo */
 
             $branch_info    = \App\Http\Controllers\plugin_branch\Fetch::get(1, $request['branch_refid']);
             $branch_admin   = $branch_info['chat_admin'];
