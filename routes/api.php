@@ -247,6 +247,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
   Route::group(['prefix' => 'plugin_vehicle_rent_booking'], function () {
     Route::get('userBooking', [\App\Http\Controllers\plugin_vehicle_rent_booking\Fetch::class, 'userBooking']);
+    Route::get('cancelBooking', [\App\Http\Controllers\plugin_vehicle_rent_booking\Cancel::class, 'cancel']);
   });
 
   Route::group(['prefix' => 'plugin_vehicle_rent_vehicles'], function () {

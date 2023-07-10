@@ -69,7 +69,7 @@ class Fetch extends Controller
             return "New";
         }
         else if($status == 2) {
-            return "Cancelled by customer";
+            return "Cancelled";
         }
         else if($status == 3) {
             return "Accepted";

@@ -4,6 +4,7 @@
         plugin_notification.group
          - ONCALL_SERV_CANCELLED: On-call service was cancelled by customer
          - GRP_CHT_CREATED: Group Chat created
+         - VHCL_RENT_CANCELLED: Vehicle rent booking was cancelled
 */
 
 CREATE TABLE `plugin_notification` (
