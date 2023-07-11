@@ -7,7 +7,6 @@
           3: Cancelled by admin
           4: Accepted
           5: Worked Done (Automatic at 11:00 PM)
-          6: 
 
 */
 
