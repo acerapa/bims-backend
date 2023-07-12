@@ -270,5 +270,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('cancelBooking', [\App\Http\Controllers\plugin_oncall_service_booking\CancelBooking::class, 'cancel']);
   });
 
+  Route::group(['prefix' => 'plugin_sms_gsm'], function () {
+    Route::get('method/{user_refid}/{mobile}/{message}', [\App\Http\Controllers\plugin_sms_gsm\QueueSMS::class, 'method']);
+    Route::get('fetchQuee', [\App\Http\Controllers\plugin_sms_gsm\QueueSMS::class, 'fetchQuee']);
+  });
+
   
 
