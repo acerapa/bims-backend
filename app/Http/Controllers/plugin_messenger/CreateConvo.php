@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\plugin_messenger;
 
 use App\Http\Controllers\Controller;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,12 +16,17 @@ use Illuminate\Support\Facades\DB;
 class CreateConvo extends Controller
 {
     public static function createHeader($convo_refid, $branch_refid, $name, $icon_path) {
+
+        $date_expire        = new DateTime( date('Y-m-d h:i:s') . ' + 30 day');
+
         return DB::table("plugin_message_convo")
         ->insert([
             "reference_id"  => $convo_refid,
             "branch_refid"  => $branch_refid,
             "name"          => $name,
-            "icon_path"     => $icon_path
+            "icon_path"     => $icon_path,
+            "date_created"  => date("Y-m-d h:i:s"),
+            "date_expire"   => $date_expire
         ]);
     }
 

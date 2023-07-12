@@ -115,6 +115,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('sendText', [\App\Http\Controllers\plugin_chatbox\MessageSend::class, 'sendText']);
   });
 
+  Route::group(['prefix' => 'plugin_messenger'], function () {
+    Route::get('userConvoList', [\App\Http\Controllers\plugin_messenger\Fetch::class, 'userConvoList']);
+    Route::get('thread', [\App\Http\Controllers\plugin_messenger\Fetch::class, 'thread']);
+  });
+
   Route::group(['prefix' => 'plugin_project_config'], function () {
     Route::get('setProjectEnv/{hostname}', [\App\Http\Controllers\plugin_project_config\Environment::class, 'setProjectEnv']);
     Route::get('setProjectEnvAuto', [\App\Http\Controllers\plugin_project_config\Environment::class, 'setProjectEnvAuto']);
