@@ -43,7 +43,7 @@ class ResidentMasterlist extends Controller
             "plugin_user.photo"
         )
         ->orderBy("plugin_user.lastname","ASC")
-        ->paginate(25);
+        ->get();
     }
 
     public static function get(Request $request) {
@@ -67,6 +67,26 @@ class ResidentMasterlist extends Controller
             "plugin_user.photo"
         )
         ->orderBy("plugin_user.lastname","ASC")
-        ->paginate(25);
+        ->get();
+    }
+
+    public static function all() {
+        return DB::table("plugin_user")
+        ->join("cims_user_location","plugin_user.reference_id","=","cims_user_location.user_refid")
+        ->select(
+            "plugin_user.reference_id",
+            "plugin_user.firstname",
+            "plugin_user.lastname",
+            "plugin_user.middlename",
+            "plugin_user.gender",
+            "plugin_user.birthday",
+            "plugin_user.mobile",
+            "plugin_user.email",
+            "plugin_user.photo",
+            "plugin_user.created_at",
+            "plugin_user.photo"
+        )
+        ->orderBy("plugin_user.lastname","ASC")
+        ->get();
     }
 }

@@ -9,19 +9,19 @@ use Illuminate\Http\Request;
  * Switch Environment
  * api/plugin_project_config/setProjectEnv/mcrichtravel.com
  * api/plugin_project_config/setProjectEnvAuto
- * 
+ *
  * Get Git Info
  * api/plugin_project_config/gitInfo
- * 
+ *
  * \App\Http\Controllers\plugin_project_config\setProjectEnv($hostname)
- * 
- * 
+ *
+ *
  */
 
 class Environment extends Controller
 {
     public static function setProjectEnvAuto() {
-        
+
         $git        = Environment::gitInfo();
         $branch     = $git['branch'];
 
@@ -95,7 +95,7 @@ class Environment extends Controller
 
         }
         else if($hostname == "deanleifproperties.com") {
-            
+
             Environment::setKeyValue("DB_CONNECTION", "mysql");
             Environment::setKeyValue("DB_HOST", "82.180.152.1");
             Environment::setKeyValue("DB_PORT", "3306");
@@ -153,7 +153,7 @@ class Environment extends Controller
              *      Database Name: foxc_shop_national
              *      User Name: foxc_foxc_nw_161710
              *      Password: bDr2JwoKu@4M77jh
-             * 
+             *
              ***********************************************
              * Local Database:
              ***********************************************
@@ -220,7 +220,7 @@ class Environment extends Controller
             Environment::setKeyValue("DB_DATABASE", "u200905711_clipcard");
             Environment::setKeyValue("DB_USERNAME", "u200905711_clipcard");
             Environment::setKeyValue("DB_PASSWORD", "!e7Pj3IQvF");
-            
+
             Environment::setKeyValue("MAIL_MAILER", "smtp");
             Environment::setKeyValue("MAIL_HOST", "smtp.hostinger.com");
             Environment::setKeyValue("MAIL_PORT", "465");
@@ -263,14 +263,15 @@ class Environment extends Controller
 
         }
         else if($hostname == "cims.com") {
-            
+
             Environment::setKeyValue("DB_CONNECTION", "mysql");
-            Environment::setKeyValue("DB_HOST", "45.130.228.154");
+            // Environment::setKeyValue("DB_HOST", "45.130.228.154");
+            Environment::setKeyValue("DB_HOST", "localhost");
             Environment::setKeyValue("DB_PORT", "3306");
             Environment::setKeyValue("DB_DATABASE", "u200905711_jl_cims");
             Environment::setKeyValue("DB_USERNAME", "u200905711_jl_cims");
             Environment::setKeyValue("DB_PASSWORD", "NSbWzt>Q5t");
-            
+
             Environment::setKeyValue("MAIL_MAILER", "smtp");
             Environment::setKeyValue("MAIL_HOST", "smtp.hostinger.com");
             Environment::setKeyValue("MAIL_PORT", "465");
@@ -313,14 +314,14 @@ class Environment extends Controller
 
         }
         else if($hostname == "multistoreapp.tech") {
-            
+
             Environment::setKeyValue("DB_CONNECTION", "mysql");
             Environment::setKeyValue("DB_HOST", "185.201.9.191");
             Environment::setKeyValue("DB_PORT", "3306");
             Environment::setKeyValue("DB_DATABASE", "foxc_multi_store_app");
             Environment::setKeyValue("DB_USERNAME", "foxc_multi_store_app");
             Environment::setKeyValue("DB_PASSWORD", "ILqGfq2#t31doxD^");
-            
+
             Environment::setKeyValue("MAIL_MAILER", "smtp");
             Environment::setKeyValue("MAIL_HOST", "smtp.hostinger.com");
             Environment::setKeyValue("MAIL_PORT", "465");
@@ -430,7 +431,7 @@ class Environment extends Controller
 
         $gitBasePath    = base_path().'/.git';
         $gitStr         = file_get_contents($gitBasePath.'/HEAD');
-        $gitBranchName  = rtrim(preg_replace("/(.*?\/){2}/", '', $gitStr));                                                                                            
+        $gitBranchName  = rtrim(preg_replace("/(.*?\/){2}/", '', $gitStr));
         $gitPathBranch  = $gitBasePath.'/refs/heads/'.$gitBranchName;
         $gitHash        = file_get_contents($gitPathBranch);
         $gitDate        = date(DATE_ATOM, filemtime($gitPathBranch));

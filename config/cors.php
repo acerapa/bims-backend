@@ -27,7 +27,8 @@ return [
         'dencentcare/*',
         'foxcity_4_dashboard/*',
         'sanctum/csrf-cookie',
-        'plugin_chatbox/*'
+        'plugin_chatbox/*',
+        'partition-api-multi-purpose/*'
     ],
 
     'allowed_methods' => ['*'],
