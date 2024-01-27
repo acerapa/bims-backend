@@ -26,5 +26,7 @@ Route::group(['prefix' => 'cims'], function () {
     Route::get("resident_all", [\Project\CIMS\ResidentMasterlist::class, 'all']);
 
     Route::get("incident_report_registration",[Project\CIMS\BrgyIncidentReportRegistration::class, 'register']);
+    Route::get("all_reports", [\Project\CIMS\BrgyIncidentReportRegistration::class, 'all']);
+
     Route::get("barangay_printables", [\Project\CIMS\PritableDocuments::class, 'register']);
 });

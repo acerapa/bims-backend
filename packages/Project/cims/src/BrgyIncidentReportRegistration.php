@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 /**
  * ?reference_id=&city_code=&brgy_code=&incident_type=&incident_date=&incident_time=&location_text=&location_lat=&location_lon=&incident_narrative=&action_taken=&recomendation=&prepared_date=&prepared_by=&created_by=
- * 
+ *
  */
 
 class BrgyIncidentReportRegistration extends Controller
@@ -49,6 +49,10 @@ class BrgyIncidentReportRegistration extends Controller
     }
 
     public static function involved(Request $request) {
-        
+
+    }
+
+    public static function all() {
+        return DB::table('cims_brgy_incident_report')->get();
     }
 }
