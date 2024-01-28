@@ -53,6 +53,10 @@ class BrgyIncidentReportRegistration extends Controller
     }
 
     public static function all() {
-        return DB::table('cims_brgy_incident_report')->get();
+        return DB::table('cims_brgy_incident_report')
+            ->join('cims_brgy_incident_report_type', 'cims_brgy_incident_report.incident_type', '=', 'cims_brgy_incident_report_type.reference_id')
+            ->join('plugin_user', 'cims_brgy_incident_report.created_by', 'plugin_user.reference_id')
+            ->select('cims_brgy_incident_report.*','cims_brgy_incident_report_type.name as type_name', DB::raw('CONCAT(plugin_user.firstname," ",plugin_user.lastname) as created_by_name'))
+            ->get();
     }
 }
