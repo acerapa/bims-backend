@@ -2,6 +2,7 @@
 
 namespace Project\CIMS;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -20,10 +21,20 @@ use Illuminate\Support\Facades\DB;
  class PritableDocuments extends Controller
  {
     public static function register(Request $request) {
-        $id = DB::table("cims_barangay_printables")->insertGetId($request->all());
+        $data = $request->all();
+
+        $data['issue_date'] = Carbon::parse($data['issue_date']);
+
+        $id = DB::table("cims_barangay_printables")->insertGetId($data);
 
         if ($id) {
             return [
+                'data' => [
+                    'id' => $id,
+                    'captain' => $data['captain'],
+                    'secretary' => $data['secretary'],
+                    'requestor' => $data['requestor'],
+                ],
                 'success' => true,
                 'message' => 'Successfully added!'
             ];

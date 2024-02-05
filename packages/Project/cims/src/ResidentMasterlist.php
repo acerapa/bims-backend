@@ -72,7 +72,6 @@ class ResidentMasterlist extends Controller
 
     public static function all() {
         return DB::table("plugin_user")
-        ->join("cims_user_location","plugin_user.reference_id","=","cims_user_location.user_refid")
         ->select(
             "plugin_user.reference_id",
             "plugin_user.firstname",
